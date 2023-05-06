@@ -6,41 +6,6 @@ export const styles = StyleSheet.create({
     container:{
         flex: 1,
     },
-
-    header:{
-        
-        backgroundColor: '#121212',
-        shadowOpacity: 0.1,
-        elevation: 6,
-        shadowOffset : { width: 1, height: 5},
-        borderBottomRightRadius: 0,
-        borderBottomWidth:5,
-        borderBottomColor:"#413B33",
-        height: 55,
-    },
-
-    menu:{
-        position: 'absolute',
-        left: 20,   
-        alignSelf: "center",
-        top: 10,
-    },
-
-    logo:{
-        width: 130,
-        height: 30,
-        alignSelf: "center",
-/*         marginTop: 10,
-        marginBottom: 10, */
-        margin: 10
-    },
-
-    containerHeader:{
-        flexDirection: 'row',
-        justifyContent: "center",
-        alignItems: "center",
-    },
-
     titleTasks:{
         flexDirection: 'row',
         marginBottom: 5,

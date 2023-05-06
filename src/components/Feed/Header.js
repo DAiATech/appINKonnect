@@ -1,31 +1,25 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
-import { Touchable } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 
 
 
 const Header = () => {
     return (
-        <View style={styles.container}>
-            <TouchableOpacity>
-                <Image style={styles.logoText} source={require('../../assets/images/instagram_text.png')} />
+        <View style={styles.header}>
+        <View style={styles.containerHeader}>
+
+            <TouchableOpacity
+                style={styles.menu}
+                onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+            >
+                <MaterialIcons name="menu" size={35} color="black" />
             </TouchableOpacity>
-            <View style={styles.iconContainer}>
-                <TouchableOpacity>
-                    <Ionicons style={styles.icone} name='add-circle-outline' size={25} color={'#fff'} />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Ionicons style={styles.icone} name='heart-circle' size={25} color={'#fff'} />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <View style={styles.unreadBadget}>
-                        <Text style={styles.unreadBadgetText}>5</Text>
-                    </View>
-                    <Ionicons style={styles.icone} name='chatbubble-ellipses-outline' size={25} color={'#fff'} />
-                </TouchableOpacity>
-            </View>
+
+            <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
+
         </View>
+    </View>
     );
 };
 const styles = StyleSheet.create({
@@ -65,6 +59,34 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: '600',
     },  
+    header:{
+        
+        backgroundColor: '#121212',
+        shadowOpacity: 0.1,
+        elevation: 6,
+        shadowOffset : { width: 1, height: 5},
+        borderBottomRightRadius: 0,
+        borderBottomWidth:5,
+        borderBottomColor:"#413B33",
+        height: 55,
+    },
+
+    menu:{
+        position: 'absolute',
+        left: 20,   
+        alignSelf: "center",
+        top: 10,
+    },
+
+    logo:{
+        width: 130,
+        height: 30,
+        alignSelf: "center",
+/*         marginTop: 10,
+        marginBottom: 10, */
+        margin: 10
+    },
+
 });
 
 export default Header;

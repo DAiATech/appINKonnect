@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { styles } from './style';
 
-import AsyncStorage from "@react-native-async-storage/async-storage"; 
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import Header from '../../components/PagePreSet/Header';
 
 import {
     SafeAreaView,
@@ -26,7 +28,7 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { useIsFocused } from '@react-navigation/native';
 
 export default function Home() {
-    const navigation= useNavigation();
+    const navigation = useNavigation();
     const isFocused = useIsFocused();
 
     const [dados, setDados] = useState([]);
@@ -63,87 +65,68 @@ export default function Home() {
 
 
     return (
-        <View style={{ flex: 1,backgroundColor:"#121212" }}>
+        <View style={{ flex: 1, backgroundColor: "#121212" }}>
             <StatusBar barStyle="light-content" />
             <View style={{ flex: 1 }}>
-                <View style={styles.header}>
-                    <View style={styles.containerHeader}>
+                <Header />
 
-                        <TouchableOpacity
-                            style={styles.menu}
-                            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+
+                <ScrollView
+                    style={{ flex: 1 }}
+                    showsVerticalScrollIndicator={false}
+                    nestedScrollEnabled={true}
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={refreshing}
+                            onRefresh={onRefresh}
+                        />
+                    }
+                >
+
+                    <View style={styles.circleProgressView}>
+                        <View style={styles.textProgressContainer}>
+                            <Text style={styles.textProgressTitle}>Tarefas de Hoje</Text>
+                            <Text style={styles.textProgress}>1 concluída</Text>
+                        </View>
+
+                        <AnimatedCircularProgress
+                            size={80}
+                            width={8}
+                            fill={50}
+                            tintColor="#00e0ff"
+                            backgroundColor="#e0e0e0"
+                            lineCap={"round"}
                         >
-                            <MaterialIcons name="menu" size={35} color="black" />
+                            {
+                                (fill) => (
+                                    <Text style={styles.numberInside}>50%</Text>
+                                )
+                            }
+                        </AnimatedCircularProgress>
+                    </View>
+
+
+                    <View style={styles.containerBox}>
+
+                        <TouchableOpacity onPress={() => navigation.navigate("Usuario")}>
+                            <View>
+                                <View style={styles.box}>
+                                    <MaterialIcons style={styles.iconRegistered} name="lock-clock" size={70} color="#b82d" />
+                                    <View style={styles.textos}>
+                                        <Text style={styles.rText}>Total de usuários</Text>
+                                        <Text style={styles.lenghtText}>{dados.total_usuarios}</Text>
+                                    </View>
+                                </View>
+                                <Text style={styles.textFooter}>Usuários Cadastrados</Text>
+                            </View>
                         </TouchableOpacity>
 
-                        <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
-
                     </View>
-                </View>
 
 
-                    <ScrollView
-                        style={{ flex: 1 }}
-                        showsVerticalScrollIndicator={false}
-                        nestedScrollEnabled={true}
-                        refreshControl={
-                            <RefreshControl
-                                refreshing={refreshing}
-                                onRefresh={onRefresh}
-                            />
-                        }
-                    >
+                </ScrollView>
 
-                        <View style={styles.circleProgressView}>
-                            <View style={styles.textProgressContainer}>
-                                <Text style={styles.textProgressTitle}>Tarefas de Hoje</Text>
-                                <Text style={styles.textProgress}>1 concluída</Text>
-                            </View>
-
-                            <AnimatedCircularProgress
-                                size={80}
-                                width={8}
-                                fill={50}
-                                tintColor="#00e0ff"
-                                backgroundColor="#e0e0e0"
-                                lineCap={"round"}
-                            >
-                                {
-                                    (fill) => (
-                                        <Text style={styles.numberInside}>50%</Text>
-                                    )
-                                }
-                            </AnimatedCircularProgress>
-                        </View>
-
-
-                        <View style={styles.containerBox}>
-
-                            <TouchableOpacity onPress={() => navigation.navigate("Usuario")}>
-                                <View>
-                                    <View style={styles.box}>
-                                        <MaterialIcons style={styles.iconRegistered} name="lock-clock" size={70} color="#b82d" />
-                                        <View style={styles.textos}>
-                                            <Text style={styles.rText}>Total de usuários</Text>
-                                            <Text style={styles.lenghtText}>{dados.total_usuarios}</Text>
-                                        </View>
-                                    </View>
-                                    <Text style={styles.textFooter}>Usuários Cadastrados</Text>
-                                </View>
-                            </TouchableOpacity>
-
-                        </View>
-
-
-                    </ScrollView>
-                
             </View>
         </View>
-
-
-
-
-
-
-    )
-}
+    );
+};

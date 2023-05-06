@@ -2,10 +2,10 @@ import { View, Text, StyleSheet, ScrollView, Image } from 'react-native'
 import React from 'react'
 import { USERS } from '../../assets/data/users';
 
-const Stories = () => {
+const SearchFilter = () => {
     return (
         <View style={styles.container}>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {/* <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {
                     USERS.map((story, index) => (
                         <View key={index} style={styles.storyContainer}>
@@ -14,28 +14,14 @@ const Stories = () => {
                         </View>
                     ))
                 }
-            </ScrollView>
+            </ScrollView> */}
+
         </View>
     );
 };
 const styles = StyleSheet.create({
     container: {
-        marginBottom: 13,
+        height:100,
     },
-    storyContainer: {
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    story: {
-        width: 70,
-        height: 70,
-        marginLeft: 5,
-        borderWidth: 3,
-        borderColor: '#ff8501',
-        borderRadius: 70,
-    },
-    storyText: {
-        color: 'white',
-    }
 });
-export default Stories;
+export default SearchFilter;

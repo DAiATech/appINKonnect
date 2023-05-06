@@ -1,18 +1,20 @@
-import { View, Text, SafeAreaView, StyleSheet, ScrollView } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, ScrollView,TouchableOpacity } from 'react-native'
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { DrawerActions, useNavigation } from '@react-navigation/core';
 
-import Header from '../../components/Feed/Header';
-import Stories from '../../components/Feed/Stories';
+import Header from '../../components/PagePreSet/Header';
+import SearchBar from '../../components/Feed/SearchBar';
 import Post from '../../components/Feed/Post';
 import { POSTS } from '../../assets/data/posts';
 
 
 const Feed = () => {
+    const navigation = useNavigation();
     return (
         <SafeAreaProvider style={styles.container}>
             <Header />
-            <Stories />
+            <SearchBar />
             <ScrollView>
                 {
                     POSTS.map((post, index) => (
@@ -20,7 +22,10 @@ const Feed = () => {
                     ))
                 }
             </ScrollView>
+            <View style={styles.containerBox}>
+                    </View>
         </SafeAreaProvider>
+        
     );
 };
 
