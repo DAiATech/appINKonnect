@@ -4,7 +4,12 @@ import fonts from "../../styles/fonts";
 
 export const styles = StyleSheet.create({
     container: {
+        backgroundColor: '#121212',
         flex: 1,
+    },
+    feedContainer: {
+        width: '90%',
+        alignSelf: 'center',
     },
     header: {
         backgroundColor: '#121212',

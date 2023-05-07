@@ -10,16 +10,17 @@ import { POSTS } from '../../assets/data/posts';
 
 
 const Feed = () => {
-    const navigation = useNavigation();
     return (
         <SafeAreaProvider style={styles.container}>
 
             {/* Tutorial para FEED DE POSTS do instagram: https://www.youtube.com/watch?v=pQmixUIdLN4*/}
 
             <Header />
-            {/* Caso queira colocar o feed sem repetir, apagaga a <SearchBar /> e descomenta a ScrollView */}
+            {/* Caso queira colocar o feed sem repetir, apagaga a <SearchBar /> e descomenta a ScrollView 
+            */}
             <SearchBar />
-            <ScrollView>
+
+            <ScrollView style={styles.feedContainer}>
                 {
                     POSTS.map((post, index) => (
                         <Post post={post} key={index} />
@@ -36,9 +37,13 @@ const Feed = () => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#000',
+        backgroundColor: '#121212',
         flex: 1,
     },
+    feedContainer: {
+        width: '90%',
+        alignSelf: 'center',
+    }
 
 });
 export default Feed;

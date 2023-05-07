@@ -4,6 +4,7 @@ import { USERS } from '../../assets/data/users';
 import { Feather, Search } from 'react-native-feather';
 import SearchFIlter from '../SearchFilter';
 import { POSTS } from '../../assets/data/posts';
+import { set } from 'react-native-reanimated';
 
 const SearchBar = () => {
     const [input, setInput] = useState("");
@@ -25,7 +26,7 @@ const SearchBar = () => {
             <View style={styles.box}>
                 <Search
                     name="search"
-                    size={20}
+                    size={10}
                     color="#EAE0D5"
                     style={styles.iconSearch}
                 />
@@ -35,24 +36,24 @@ const SearchBar = () => {
                 </TextInput>
             </View>
 
-             <SearchFIlter data={POSTS} input={input} setInput={setInput} /> 
+            {/* <SearchFIlter data={POSTS} input={input} setInput={setInput} /> */}
+
         </View>
     );
 };
 const styles = StyleSheet.create({
     container: {
-        margin: 15,
+        margin: 20,
         width: "90%",
-        marginBottom: 10,
+        alignSelf:'center',
     },
     box: {
-        padding: 2,
+        padding: 3,
         flexDirection: 'row',
-        width: "95%",
+        width: "100%",
         backgroundColor: "#413B33",
-        borderRadius: 10,
-        alignItems: "center",
-        marginBottom: 10,
+        borderRadius: 50,
+        alignSelf:'center',
     },
     inputTexto: {
         fontSize: 15,
