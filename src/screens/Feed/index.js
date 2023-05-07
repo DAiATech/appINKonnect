@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, StyleSheet, ScrollView,TouchableOpacity } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { DrawerActions, useNavigation } from '@react-navigation/core';
@@ -13,7 +13,11 @@ const Feed = () => {
     const navigation = useNavigation();
     return (
         <SafeAreaProvider style={styles.container}>
+
+            {/* Tutorial para FEED DE POSTS do instagram: https://www.youtube.com/watch?v=pQmixUIdLN4*/}
+
             <Header />
+            {/* Caso queira colocar o feed sem repetir, apagaga a <SearchBar /> e descomenta a ScrollView */}
             <SearchBar />
             <ScrollView>
                 {
@@ -22,10 +26,11 @@ const Feed = () => {
                     ))
                 }
             </ScrollView>
+
             <View style={styles.containerBox}>
-                    </View>
+            </View>
         </SafeAreaProvider>
-        
+
     );
 };
 

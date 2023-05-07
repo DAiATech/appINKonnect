@@ -66,9 +66,21 @@ export default function Home() {
 
     return (
         <View style={{ flex: 1, backgroundColor: "#121212" }}>
-            <StatusBar barStyle="light-content" />
             <View style={{ flex: 1 }}>
-                <Header />
+                <View style={styles.header}>
+                    <View style={styles.containerHeader}>
+                        <TouchableOpacity
+                            style={styles.menu}
+                            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                        >
+                            <MaterialIcons name="menu" size={35} color="#EAE0D5" />
+                        </TouchableOpacity>
+
+                        <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
+
+                        <Image style={styles.profilePicture} source={require('../../assets/images/profilePicture.png')} />
+                    </View>
+                </View>
 
 
                 <ScrollView

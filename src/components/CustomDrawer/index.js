@@ -45,6 +45,7 @@ const CustomDrawer= FC = () => {
                         style={styles.Pages}
                         onPress={() => {
                             navigation.navigate("Usuario")
+                            navigation.navigate("")
                             navigation.dispatch(DrawerActions.closeDrawer())
                         }}
                     >

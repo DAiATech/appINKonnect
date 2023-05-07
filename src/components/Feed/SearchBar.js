@@ -1,10 +1,16 @@
-import { View, Text, StyleSheet, ScrollView, Image } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, ScrollView, Image, TextInput } from 'react-native'
+import React, { useState } from 'react'
 import { USERS } from '../../assets/data/users';
+import { Feather, Search } from 'react-native-feather';
+import SearchFIlter from '../SearchFilter';
+import { POSTS } from '../../assets/data/posts';
 
-const SearchFilter = () => {
+const SearchBar = () => {
+    const [input, setInput] = useState("");
+    console.log(input)
     return (
         <View style={styles.container}>
+            {/* Tutorial para searchBar FUNCIONAL: https://www.youtube.com/watch?v=achVk8c_93Y */}
             {/* <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {
                     USERS.map((story, index) => (
@@ -14,14 +20,46 @@ const SearchFilter = () => {
                         </View>
                     ))
                 }
-            </ScrollView> */}
+            </ScrollView>  */}
 
+            <View style={styles.box}>
+                <Search
+                    name="search"
+                    size={20}
+                    color="#EAE0D5"
+                    style={styles.iconSearch}
+                />
+                <TextInput value={input} onChangeText={(text) => setInput(text)} placeholder="Search"
+                    style={styles.inputTexto}
+                >
+                </TextInput>
+            </View>
+
+             <SearchFIlter data={POSTS} input={input} setInput={setInput} /> 
         </View>
     );
 };
 const styles = StyleSheet.create({
     container: {
-        height:100,
+        margin: 15,
+        width: "90%",
+        marginBottom: 10,
+    },
+    box: {
+        padding: 2,
+        flexDirection: 'row',
+        width: "95%",
+        backgroundColor: "#413B33",
+        borderRadius: 10,
+        alignItems: "center",
+        marginBottom: 10,
+    },
+    inputTexto: {
+        fontSize: 15,
+    },
+    iconSearch: {
+        marginLeft: 1,
+        marginRight: 4,
     },
 });
-export default SearchFilter;
+export default SearchBar;

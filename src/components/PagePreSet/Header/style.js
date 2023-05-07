@@ -14,35 +14,29 @@ export const styles = StyleSheet.create({
         height: 60,
         paddingTop: 10,
         paddingBottom: 30,
-    },
-
-    menu: {
-        left: 20,
-        height:40,
-        alignSelf: "center",
-        left:20
+        marginBottom: 5,
     },
 
     logo: {
-        width:100,
+        width: 100,
         height: 40,
         resizeMode: 'contain',
         alignSelf: "center",
-
+        marginLeft:'28%',
     },
 
     profilePicture: {
-        width:40,
+        width: 40,
         height: 40,
-        borderRadius:50,
+        borderRadius: 50,
         resizeMode: 'contain',
-        right:20,
+        left: 20,
     },
 
     containerHeader: {
         flexDirection: 'row',
-        justifyContent: "space-between",
+        justifyContent: "flex-start",
         alignItems: "center",
     },
-   
+
 });
