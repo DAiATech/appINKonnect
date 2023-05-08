@@ -28,10 +28,7 @@ const PostHeader = ({ post }) => (
       <Text style={styles.storyText}>
         {post.user}
       </Text>
-    </View>
-    <TouchableOpacity>
-      <Ionicons style={styles.icone} name='ellipsis-horizontal-outline' size={25} color={'#fff'} />
-    </TouchableOpacity>
+    </View>    
   </View>
 );
 
@@ -42,6 +39,11 @@ const PostImage = ({ post }) => (
 );
 
 const PostFooter = ({ post }) => (
+  <View /* style={styles.postFooterContainer} */>    
+    
+  </View>
+);
+/* const PostFooter = ({ post }) => (
   <View style={styles.postFooterContainer}>
     <View style={styles.postFooterIconContainer} >
       <TouchableOpacity>
@@ -60,23 +62,24 @@ const PostFooter = ({ post }) => (
       </TouchableOpacity>
     </View>
   </View>
-);
+); */
 
 const PostLikes = ({ post }) => (
-  <View style={styles.postLikesContainer}>
+  <View></View>
+  /* <View style={styles.postLikesContainer}>
     <Text style={styles.likesText}>
       {
         post.likes//.toLocaleString('en')
       }likes
     </Text>
-  </View>
+  </View> */
 );
 
 const PostCaption = ({ post }) => (
   <View style={styles.postCaptionContainer}>
     <Text style={styles.captionText}>
       <Text style={styles.captionUserText} >
-        {post.user}
+        {post.user}:...  
       </Text>
       {post.caption}
     </Text>
@@ -122,21 +125,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     margin: 5,
+    marginTop: 15,
     alignItems: 'center',
   },
 
   story: {
     width: 35,
     height: 35,
-    marginLeft: 10,
-    borderWidth: 3,
-    borderColor: '#ff8501',
+    marginLeft: 0,
+    borderWidth: 1,
+    borderColor: '#413B33',
     borderRadius: 70,
   },
   storyText: {
-    color: '#fff',
+    color:'#EAE0D5',
     marginLeft: 5,
-    fontWeight: '700',
+    fontWeight: '500',
+    fontSize:20,
   },
   icone: {
     marginLeft: 10,
@@ -148,6 +153,7 @@ const styles = StyleSheet.create({
   postImageImg: {
     height: '100%',
     resizeMode: 'cover',
+    borderRadius:50,
   },
   postFooterContainer: {
     flexDirection: 'row',
@@ -171,7 +177,6 @@ const styles = StyleSheet.create({
   },
   postCaptionContainer: {
     flexDirection: 'row',
-    marginTop: 5,
   },
   captionText: {
     color: '#fff',
