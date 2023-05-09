@@ -5,6 +5,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { useNavigation } from '@react-navigation/core';
 
 import Home from '../screens/Home';
+import Feed from '../screens/Feed';
 import CustomDrawer from '../components/CustomDrawer';
 
 const DrawerRoutes = () => {
@@ -29,6 +30,11 @@ const DrawerRoutes = () => {
         <Drawer.Screen 
             name="Home"
             component={Home}
+            
+        />
+        <Drawer.Screen 
+            name="Aba3"
+            component={Feed}
             
         />
 
