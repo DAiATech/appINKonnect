@@ -3,106 +3,115 @@ import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
 
 export const styles = StyleSheet.create({
-    container:{
+    container: {
+        backgroundColor: '#121212',
         flex: 1,
     },
-
-    header:{
-        
+    feedContainer: {
+        width: '90%',
+        alignSelf: 'center',
+    },
+    header: {
         backgroundColor: '#121212',
-        shadowOpacity: 0.1,
-        elevation: 6,
-        shadowOffset : { width: 1, height: 5},
-        borderBottomRightRadius: 0,
-        borderBottomWidth:5,
-        borderBottomColor:"#413B33",
-        height: 55,
+        borderBottomWidth: 3,
+        borderBottomColor: "#413B33",
+        height: 60,
+        paddingTop: 10,
+        paddingBottom: 30,
+        marginBottom: 5,
     },
 
-    menu:{
-        position: 'absolute',
-        left: 20,   
+    menu: {
+        left: 20,
+        height: 40,
         alignSelf: "center",
-        top: 10,
+        left: 20
     },
 
-    logo:{
-        width: 130,
-        height: 30,
+    logo: {
+        width: 100,
+        height: 40,
+        resizeMode: 'contain',
         alignSelf: "center",
-/*         marginTop: 10,
-        marginBottom: 10, */
-        margin: 10
+
     },
 
-    containerHeader:{
+    profilePicture: {
+        width: 40,
+        height: 40,
+        borderRadius: 50,
+        resizeMode: 'contain',
+        right: 20,
+    },
+
+    containerHeader: {
         flexDirection: 'row',
-        justifyContent: "center",
+        justifyContent: "space-between",
         alignItems: "center",
     },
 
-    titleTasks:{
+    titleTasks: {
         flexDirection: 'row',
         marginBottom: 5,
         marginTop: 50,
     },
 
-    greeting:{
+    greeting: {
         fontSize: 18,
         color: colors.heading,
         fontFamily: fonts.text,
         alignSelf: "center",
     },
 
-    userName:{
+    userName: {
         fontSize: 22,
         color: colors.heading,
         lineHeight: 40,
         fontFamily: fonts.text,
     },
 
-    image:{
+    image: {
         width: 70,
         height: 70,
         borderRadius: 30
     },
 
-    lenghtText:{
-        color: colors.green, 
-        fontSize: 35, 
+    lenghtText: {
+        color: colors.green,
+        fontSize: 35,
         fontFamily: fonts.text,
     },
 
-    tasks:{
+    tasks: {
         marginTop: 20,
         marginBottom: 50,
     },
 
-    taskBackground:{
+    taskBackground: {
         backgroundColor: '#333333'
     },
 
-    tasksText:{
+    tasksText: {
         marginTop: 10,
         fontSize: 20,
         marginBottom: 10,
         color: '#000'
     },
 
-    logout:{
+    logout: {
         position: 'absolute',
         right: 0,
         color: colors.red,
         alignSelf: "center"
     },
 
-    containerBox:{
+    containerBox: {
         width: '85%',
         alignSelf: "center",
         marginBottom: 25,
     },
 
-    box:{
+    box: {
         backgroundColor: 'gray',
         justifyContent: 'space-between',
         flexDirection: 'row',
@@ -114,20 +123,20 @@ export const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         elevation: 5,
         shadowRadius: 15,
-        shadowOffset : { width: 1, height: 1},
-        
+        shadowOffset: { width: 1, height: 1 },
+
     },
 
-    rText:{
+    rText: {
         fontSize: 20,
         color: 'gray',
         fontFamily: fonts.text,
     },
 
-    textFooter:{
+    textFooter: {
         borderTopColor: '#ccc',
-        paddingTop: 15, 
-        paddingBottom: 10, 
+        paddingTop: 15,
+        paddingBottom: 10,
         borderTopWidth: 1,
         color: '#FFF',
         backgroundColor: '#871003',
@@ -138,40 +147,40 @@ export const styles = StyleSheet.create({
         fontFamily: fonts.text,
     },
 
-    iconRegistered:{
+    iconRegistered: {
         justifyContent: 'center',
         alignSelf: 'center',
     },
 
-    textos:{
+    textos: {
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
     },
 
-    circleProgressView:{
+    circleProgressView: {
         flexDirection: 'row',
         alignSelf: "center",
         marginTop: 20,
     },
 
-    textProgress:{
+    textProgress: {
         fontFamily: fonts.text,
         fontSize: 16,
         color: 'f0f',
     },
 
-    textProgressTitle:{
+    textProgressTitle: {
         fontFamily: fonts.text,
         fontSize: 20,
         color: '#000',
     },
 
-    textProgressContainer:{
+    textProgressContainer: {
         alignSelf: "center",
         marginRight: 20,
     },
 
-    numberInside:{
+    numberInside: {
         fontFamily: fonts.text,
         fontSize: 18,
         color: '#000',
@@ -179,7 +188,7 @@ export const styles = StyleSheet.create({
 
     },
 
-    boxContainer:{
+    boxContainer: {
         marginRight: 20,
         width: 200,
         marginLeft: 10,

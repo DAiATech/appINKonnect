@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { styles } from './style';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import AsyncStorage from "@react-native-async-storage/async-storage"; 
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import Header from '../../components/PagePreSet/Header';
+import SearchBar from '../../components/Feed/SearchBar';
+import Post from '../../components/Feed/Post';
+import { POSTS } from '../../assets/data/posts';
 import {
     SafeAreaView,
     Text,
@@ -26,7 +31,7 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { useIsFocused } from '@react-navigation/native';
 
 export default function Home() {
-    const navigation= useNavigation();
+    const navigation = useNavigation();
     const isFocused = useIsFocused();
 
     const [dados, setDados] = useState([]);
@@ -60,28 +65,59 @@ export default function Home() {
         listarDados();
 
     };
-
-
     return (
-        <View style={{ flex: 1,backgroundColor:"#121212" }}>
-            <StatusBar barStyle="light-content" />
-            <View style={{ flex: 1 }}>
-                <View style={styles.header}>
-                    <View style={styles.containerHeader}>
+        <SafeAreaProvider style={styles.container}>
 
-                        <TouchableOpacity
-                            style={styles.menu}
-                            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-                        >
-                            <MaterialIcons name="menu" size={35} color="black" />
-                        </TouchableOpacity>
+            {/* Tutorial para FEED DE POSTS do instagram: https://www.youtube.com/watch?v=pQmixUIdLN4*/}
+            <View style={styles.header}>
+                <View style={styles.containerHeader}>
+                    <TouchableOpacity
+                        style={styles.menu}
+                        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                    >
+                        <MaterialIcons name="menu" size={35} color="#EAE0D5" />
+                    </TouchableOpacity>
 
-                        <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
+                    <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
 
-                    </View>
+                    <Image style={styles.profilePicture} source={require('../../assets/images/profilePicture.png')} />
                 </View>
+            </View>
 
+            {/* Caso queira colocar o feed sem repetir, apagaga a <SearchBar /> e descomenta a ScrollView 
+        */}
+            <SearchBar />
 
+            <ScrollView style={styles.feedContainer}>
+                {
+                    POSTS.map((post, index) => (
+                        <Post post={post} key={index} />
+                    ))
+                }
+            </ScrollView>
+
+            <View style={styles.containerBox}>
+            </View>
+        </SafeAreaProvider>
+
+        /* <View style={{ flex: 1, backgroundColor: "#121212" }}>
+                <View style={{ flex: 1 }}>
+                    <View style={styles.header}>
+                        <View style={styles.containerHeader}>
+                            <TouchableOpacity
+                                style={styles.menu}
+                                onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                            >
+                                <MaterialIcons name="menu" size={35} color="#EAE0D5" />
+                            </TouchableOpacity>
+    
+                            <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
+    
+                            <Image style={styles.profilePicture} source={require('../../assets/images/profilePicture.png')} />
+                        </View>
+                    </View>
+    
+    
                     <ScrollView
                         style={{ flex: 1 }}
                         showsVerticalScrollIndicator={false}
@@ -93,13 +129,13 @@ export default function Home() {
                             />
                         }
                     >
-
+    
                         <View style={styles.circleProgressView}>
                             <View style={styles.textProgressContainer}>
                                 <Text style={styles.textProgressTitle}>Tarefas de Hoje</Text>
                                 <Text style={styles.textProgress}>1 concluída</Text>
                             </View>
-
+    
                             <AnimatedCircularProgress
                                 size={80}
                                 width={8}
@@ -115,10 +151,10 @@ export default function Home() {
                                 }
                             </AnimatedCircularProgress>
                         </View>
-
-
+    
+    
                         <View style={styles.containerBox}>
-
+    
                             <TouchableOpacity onPress={() => navigation.navigate("Usuario")}>
                                 <View>
                                     <View style={styles.box}>
@@ -131,19 +167,13 @@ export default function Home() {
                                     <Text style={styles.textFooter}>Usuários Cadastrados</Text>
                                 </View>
                             </TouchableOpacity>
-
+    
                         </View>
-
-
+    
+    
                     </ScrollView>
-                
-            </View>
-        </View>
-
-
-
-
-
-
-    )
-}
+    
+                </View>
+            </View> */
+    );
+};
