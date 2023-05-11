@@ -1,16 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { styles } from './style';
-import {
-  TouchableOpacity,
-  View,
-  Text,
-  TextInput,
-  Image,
-  StatusBar,
-  Alert,
-
-} from 'react-native';
+import {TouchableOpacity,View,Text,TextInput,Image,StatusBar,Alert,} from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -42,14 +33,13 @@ export default function Cadastrar() {
         routes: [{ name: 'Home' }]
       });
     }
-
+ 
   }
 
 
-  async function saveData() {
-    alert("oi!");
+  async function saveCadastro() {
 
-    if (nome == "" || senha == "" || email =="" ) {
+    if (nome == "" || senha == "" || email =="" || confirmarSenha != "" && confirmarSenha == senha ) {
         showMessage({
             message: "Erro ao Salvar",
             description: 'Preencha os Campos Obrigatórios!',
@@ -57,16 +47,14 @@ export default function Cadastrar() {
         });
         return;
     }
-
     try {
         const obj = {
-            id: id,
             nome: nome,
             email: email,
             senha: senha,
         }
 
-        const res = await api.post('pam3etim/bd/usuarios/cadastrar.php', obj);
+        const res = await api.post('pam3etim/bd/login/cadastro.php', obj);
 
         if (res.data.sucesso === false) {
             showMessage({
@@ -93,35 +81,23 @@ export default function Cadastrar() {
         setSucess(false);
     }
 }
-  const checkLogin = async () => {
+/*   const checkLogin = async () => {
     
     const user = await AsyncStorage.getItem('@user');
     if (confirmarSenha != "" && confirmarSenha == senha ) {
        
-        navigation.navigate('Login');
        navigate({saveData}) ;
-        
-        /* if (user) {
-            setLogged(1);
-      
-            navigation.reset({
-              index: 0,
-              routes: [{ name: 'Home' }],
-            });
-          } else {
-            setLogged(2)
-          } */
     }
     else {
         Alert.alert('Senhas Diferentes !')
     }
 
    
-  }
+  } */
 
-  useEffect(() => {
+/*   useEffect(() => {
     checkLogin();
-  }, []);
+  }, []); */
 
 
   return (
@@ -182,10 +158,7 @@ export default function Cadastrar() {
  */}
       <TouchableOpacity
         style={styles.loginSave}
-        onPress={checkLogin}
-      /* onPress={} */
-      >
-
+        onPress={saveCadastro}>
         <Text style={styles.text}>Cadastrar</Text>
       </TouchableOpacity>
 
