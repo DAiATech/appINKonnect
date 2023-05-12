@@ -160,7 +160,7 @@ export default function Cadastrar() {
       <TouchableOpacity
         style={styles.loginSave}
         onPress={saveCadastro}>
-        <Text style={styles.text}>Cadastrar</Text>
+        <Text style={styles.text}>Kadastrar</Text>
       </TouchableOpacity>
 
       <Image style={styles.logoInk} source={require('../../assets/logo_2.png')} />
