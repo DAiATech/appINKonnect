@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         marginTop: 15,
         marginBottom: 15,
+        alignContent: 'center'
     },
 
     iconRegistered:{
@@ -27,7 +28,7 @@ export const styles = StyleSheet.create({
     PagesText:{
         fontFamily: fonts.text,
         fontSize: 18,
-        color: '#000',
+        color: '#EAE0D5',
         alignSelf: "center",
         marginLeft: 10,
     },
@@ -35,7 +36,7 @@ export const styles = StyleSheet.create({
     SairText:{
         fontFamily: fonts.text,
         fontSize: 18,
-        color: '#000',
+        color: '#EAE0D5',
         alignSelf: "center",
         marginLeft: 20,
     },
@@ -45,9 +46,12 @@ export const styles = StyleSheet.create({
     },
 
     logo:{
-        width: 135,
-        height: 50,
+        width: 120,
+        height: 35,
         alignSelf: "center",
-        marginTop: 10,
+        resizeMode: 'contain',
+        alignSelf: "center",
+        marginTop: 15,
+        marginBottom: 10
     },
 })
