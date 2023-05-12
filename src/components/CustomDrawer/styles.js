@@ -54,4 +54,11 @@ export const styles = StyleSheet.create({
         marginTop: 15,
         marginBottom: 10
     },
+    perfil:{
+        height: 50,
+        resizeMode: 'contain',
+        marginTop: 15,
+        marginBottom: 10,
+        marginLeft: 10
+    },
 })

@@ -41,6 +41,14 @@ const CustomDrawer= FC = () => {
                 style={styles.container}
             >
                 <View>
+                <View style={{ width: '100%', backgroundColor: '#c1c1c1', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 20 }}></View>
+
+                <Image style={styles.perfil} source={require('../../assets/perfil.png')} />
+                <Text>
+
+
+                </Text>
+
                     <TouchableOpacity
                         style={styles.Pages}
                         onPress={() => {
