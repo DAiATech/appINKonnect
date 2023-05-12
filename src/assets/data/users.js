@@ -1,13 +1,13 @@
 export const USERS = [{
-    user: 'codesolution',
+    user: 'AndréTatttoo',
     image: "https://i.pinimg.com/564x/28/4d/b5/284db5c86a8d3ad1b6e83e3a154f0d20.jpg",
 },
 {
-    user: 'codesolution',
+    user: 'Lucas',
     image: 'https://img.freepik.com/vetores-gratis/ilustracao-em-vetor-logotipo-estudio-de-tatuagem-vintage-equipamento-cruzado-monocromatico-para-profissionais_74855-11252.jpg?w=2000'
 },
 {
-    user: 'codesolution',
+    user: 'Roger',
     image: 'https://i.pinimg.com/564x/07/26/68/0726683291a9b4be59306df24ef57ba2.jpg'
 },
 {

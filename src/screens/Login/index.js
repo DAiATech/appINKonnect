@@ -84,7 +84,7 @@ export default function Login() {
         <Text style={styles.formLabel}>Senha:</Text>
         <TextInput
           placeholderTextColor='#413B33'
-          secureTextEntry={true}
+          secureTextEntry={false}
           style={styles.login}
           placeholder="Senha"
           value={senha}
