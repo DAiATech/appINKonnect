@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 import Login from '../screens/Login';
+import ChooseUser from '../screens/ChooseUser';
 //import { Splash } from '../lotties/Splash';
 import AuthRoutes from './tab.routes';
 import Usuario from '../screens/Usuario';
@@ -16,7 +17,7 @@ function StackNavigator(){
     return (
         <Stack.Navigator screenOptions={{headerShown: false}
         }>
-            
+            <Stack.Screen name="ChooseUser" component={ChooseUser}  /> 
             <Stack.Screen name="Login" component={Login}  /> 
             <Stack.Screen name="Home" component={AuthRoutes} />      
             <Stack.Screen name="Usuario" component={Usuario} /> 
