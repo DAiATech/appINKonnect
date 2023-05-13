@@ -11,6 +11,7 @@ import {
     RefreshControl,
     StatusBar,
     Alert,
+    ImageBackground,
 
 } from 'react-native';
 export default function ChooseUser() {
@@ -18,39 +19,43 @@ export default function ChooseUser() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.containerlogo}>
-                <Image style={styles.logo} source={require('./../../assets/logo_2.png')} />
-                <Text style={styles.Title}>Seja Bem vinde ao INKonnect</Text>
-            </View>
-            <View style={styles.containerButtons}>
-                <TouchableOpacity
-                    style={styles.buttonClient}
-                    onPress={() => {
-                        navigation.navigate("Login")
-                    }}
-                /* onPress={} */
-                >
+            <ImageBackground source={require('../../assets/images/fundo.jpg')} resizeMode="cover" style={styles.backgroundImg}>
+                <View style={styles.containerContent}>
 
-                    <Text style={styles.Buttontext}>Quero me Tatuar</Text>
+                    <View style={styles.containerlogo}>
+                        <Image style={styles.logo} source={require('./../../assets/logo_2.png')} />
+                        <Text style={styles.Title}>Seja Bem vinde ao INKonnect</Text>
+                    </View>
+                    <View style={styles.containerButtons}>
+                        <TouchableOpacity
+                            style={styles.buttonClient}
+                            onPress={() => {
+                                alert('Os dois botoes mandam para a mesma tela de login ainda /os caminhos corretos nao foram definidos ass.Diego ');
+                                navigation.navigate("Login")
+                                /* Insert the path that client should follow  */
+                            }}
+                        /* onPress={} */
+                        >
 
-                </TouchableOpacity>
+                            <Text style={styles.Buttontext}>Quero me Tatuar</Text>
 
-                <TouchableOpacity
-                    style={styles.buttonArtist}
-                    onPress={() => {
-                        navigation.navigate("Login")
-                    }}
-                /* onPress={} */
-                >
+                        </TouchableOpacity>
 
-                    <Text style={styles.Buttontext}>Quero me Tatuar</Text>
+                        <TouchableOpacity
+                            style={styles.buttonArtist}
+                            onPress={() => {
+                                navigation.navigate("Login")
+                                /* Insert the path that artist should follow  */
+                            }}
+                        /* onPress={} */
+                        >
 
-                </TouchableOpacity>
-            </View>
-            <View>
+                            <Text style={styles.Buttontext}>Sou Tatuador</Text>
 
-
-            </View>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </ImageBackground>
         </View>
     );
 };
