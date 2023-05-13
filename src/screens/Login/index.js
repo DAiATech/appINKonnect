@@ -84,7 +84,7 @@ export default function Login() {
         <Text style={styles.formLabel}>Senha:</Text>
         <TextInput
           placeholderTextColor='#413B33'
-          secureTextEntry={true}
+          secureTextEntry={false}
           style={styles.login}
           placeholder="Senha"
           value={senha}
@@ -109,7 +109,7 @@ export default function Login() {
       /* onPress={} */
       >
 
-        <Text style={styles.text}>Cadastrar</Text>
+        <Text style={styles.text}>Kadastrar</Text>
       </TouchableOpacity>
 
       <Image style={styles.logoInk} source={require('../../assets/logo_2.png')} />

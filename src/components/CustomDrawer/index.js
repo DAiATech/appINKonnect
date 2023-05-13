@@ -32,15 +32,23 @@ const CustomDrawer= FC = () => {
     }
 
     return (
-        <View style={{ flex: 1, backgroundColor: '#fff' }}>
-            <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
+        <View style={{ flex: 1, backgroundColor: '#121212' }}>
+           
 
-            <View style={{ width: '90%', backgroundColor: '#c1c1c1', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 20 }}></View>
+            
 
             <ScrollView
                 style={styles.container}
             >
                 <View>
+                <View style={{ width: '100%', backgroundColor: '#c1c1c1', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 20 }}></View>
+
+                <Image style={styles.perfil} source={require('../../assets/perfil.png')} />
+                <Text>
+
+
+                </Text>
+
                     <TouchableOpacity
                         style={styles.Pages}
                         onPress={() => {
@@ -78,6 +86,7 @@ const CustomDrawer= FC = () => {
             </ScrollView>
 
             <View style={styles.footer}>
+            <View style={{ width: '90%', backgroundColor: '#c1c1c1', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 5 }}></View>
                 <TouchableOpacity
                     onPress={() => logout()}
                     style={styles.Sair}
@@ -85,6 +94,8 @@ const CustomDrawer= FC = () => {
                     <MaterialIcons name="subdirectory-arrow-left" size={25} color="gray" />
                     <Text style={styles.SairText}>Sair da conta</Text>
                 </TouchableOpacity>
+                <View style={{ width: '90%', backgroundColor: '#c1c1c1', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 5 }}></View>
+                <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
             </View>
         </View>
     );

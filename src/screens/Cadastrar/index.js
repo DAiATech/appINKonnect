@@ -1,16 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { styles } from './style';
-import {
-  TouchableOpacity,
-  View,
-  Text,
-  TextInput,
-  Image,
-  StatusBar,
-  Alert,
-
-} from 'react-native';
+import { TouchableOpacity, View, Text, TextInput, Image, StatusBar, Alert, } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -19,13 +10,11 @@ import api from '../../services/api';
 
 export default function Cadastrar() {
   const navigation = useNavigation();
-
-  const [logged, setLogged] = useState(0);
-  const [id, setId] = useState('');
   const [email, setEmail] = useState('');
   const [nome, setNome] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
+  const [success, setSuccess] = useState(false);
 
   async function login() {
     const obj = { email, senha };
@@ -46,82 +35,70 @@ export default function Cadastrar() {
   }
 
 
-  async function saveData() {
-    alert("oi!");
-
-    if (nome == "" || senha == "" || email =="" ) {
-        showMessage({
-            message: "Erro ao Salvar",
-            description: 'Preencha os Campos Obrigatórios!',
-            type: "warning",
-        });
-        return;
-    }
-
-    try {
-        const obj = {
-            id: id,
-            nome: nome,
-            email: email,
-            senha: senha,
-        }
-
-        const res = await api.post('pam3etim/bd/usuarios/cadastrar.php', obj);
-
-        if (res.data.sucesso === false) {
-            showMessage({
-                message: "Erro ao Salvar",
-                description: res.data.mensagem,
-                type: "warning",
-                duration: 3000,
-            });
-
-            return;
-        }
-
-        setSucess(true);
-        showMessage({
-            message: "Salvo com Sucesso",
-            description: "Registro Salvo",
-            type: "success",
-            duration: 800,
-        });
-        navigation.push("Usuario")
-
-    } catch (error) {
-        Alert.alert("Ops", "Alguma coisa deu errado, tente novamente.");
-        setSucess(false);
-    }
-}
-  const checkLogin = async () => {
-    
-    const user = await AsyncStorage.getItem('@user');
-    if (confirmarSenha != "" && confirmarSenha == senha ) {
-       
-        navigation.navigate('Login');
-       navigate({saveData}) ;
-        
-        /* if (user) {
-            setLogged(1);
-      
-            navigation.reset({
-              index: 0,
-              routes: [{ name: 'Home' }],
-            });
-          } else {
-            setLogged(2)
-          } */
+  async function saveCadastro() {
+    if (nome == "" || senha == "" || email == "")/* || confirmarSenha != "" && confirmarSenha == senha )*/ {
+      console.log("diego");
+      Alert({
+        message: "Erro ao Salvar",
+        description: 'Preencha os Campos Obrigatórios!',
+        type: "warning",
+      });
+      return;
     }
     else {
-        Alert.alert('Senhas Diferentes !')
+      {
+        const obj = {
+          nome: nome,
+          email: email,
+          senha: senha,
+        }
+
+        const res = await api.post('pam3etim/bd/login/cadastro.php', obj);
+
+        if (res.data.sucesso === false) {
+          /* showMessage({
+            message: "Erro ao Salvar",
+            description: res.data.mensagem,
+            type: "warning",
+            duration: 3000,
+          }); */
+
+          return;
+        }
+
+        setSuccess(true);
+        /* showMessage({
+          message: "Salvo com Sucesso",
+          description: "Registro Salvo",
+          type: "success",
+          duration: 800,
+        }); */
+        console.log("chegou!!!!");
+        navigation.push("Login")
+
+        /* } catch (error) {
+           Alert.alert("Ops", "Alguma coisa deu errado, tente novamente.");
+           setSucess(false); */
+      }
     }
-
-   
   }
+  /*   const checkLogin = async () => {
+      
+      const user = await AsyncStorage.getItem('@user');
+      if (confirmarSenha != "" && confirmarSenha == senha ) {
+         
+         navigate({saveData}) ;
+      }
+      else {
+          Alert.alert('Senhas Diferentes !')
+      }
+  
+     
+    } */
 
-  useEffect(() => {
-    checkLogin();
-  }, []);
+  /*   useEffect(() => {
+      checkLogin();
+    }, []); */
 
 
   return (
@@ -129,7 +106,7 @@ export default function Cadastrar() {
       <StatusBar translucent hidden />
 
       <Image style={styles.logo} source={require('../../assets/INKonnect.png')} />
-        
+
 
       <View style={styles.form}>
         <Text style={styles.formLabel}>Nome:</Text>
@@ -172,7 +149,7 @@ export default function Cadastrar() {
 
       </View>
 
-    {/*   <TouchableOpacity
+      {/*   <TouchableOpacity
         style={styles.loginSave}
         onPress={login}
       >
@@ -182,11 +159,8 @@ export default function Cadastrar() {
  */}
       <TouchableOpacity
         style={styles.loginSave}
-        onPress={checkLogin}
-      /* onPress={} */
-      >
-
-        <Text style={styles.text}>Cadastrar</Text>
+        onPress={saveCadastro}>
+        <Text style={styles.text}>Kadastrar</Text>
       </TouchableOpacity>
 
       <Image style={styles.logoInk} source={require('../../assets/logo_2.png')} />
