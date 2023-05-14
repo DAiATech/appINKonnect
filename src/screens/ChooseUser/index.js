@@ -30,7 +30,7 @@ export default function ChooseUser() {
                         <TouchableOpacity
                             style={styles.buttonClient}
                             onPress={() => {
-                                alert('Os dois botoes mandam para a mesma tela de login ainda /os caminhos corretos nao foram definidos ass.Diego ');
+                                alert('Os botoes agora mandam para telas diferentes, só falta criar as telas certinho, se quiser rodar o app sem dar erro é so voltar o caminho do botão do tatuador ass.Arthur');
                                 navigation.navigate("Login")
                                 /* Insert the path that client should follow  */
                             }}
@@ -44,7 +44,7 @@ export default function ChooseUser() {
                         <TouchableOpacity
                             style={styles.buttonArtist}
                             onPress={() => {
-                                navigation.navigate("Login")
+                                navigation.navigate("Login") /*  --> Login tatuador */
                                 /* Insert the path that artist should follow  */
                             }}
                         /* onPress={} */
