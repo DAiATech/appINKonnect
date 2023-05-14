@@ -3,7 +3,7 @@ import React from 'react'
 import { Divider } from '@rneui/base'
 import { Ionicons } from '@expo/vector-icons';
 
-const Post = ({ post }) => {
+const FeedPost = ({ post }) => {
   return (
     <View style={{ marginBottom: 30 }}>
       <Divider width={1} orientation='vertical' />
@@ -148,12 +148,12 @@ const styles = StyleSheet.create({
   },
   postImageContainer: {
     width: '100%',
-    height: 350,
+    height: 300,
   },
   postImageImg: {
     height: '100%',
     resizeMode: 'cover',
-    borderRadius:50,
+    borderRadius:15,
   },
   postFooterContainer: {
     flexDirection: 'row',
@@ -199,4 +199,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Post;
+export default FeedPost;
