@@ -88,13 +88,13 @@ export default function Home() {
         */}
             <SearchBar />
 
-            <ScrollView style={styles.feedContainer}>
+            {/* <ScrollView style={styles.feedContainer}>
                 {
                     POSTS.map((post, index) => (
                         <Post post={post} key={index} />
                     ))
                 }
-            </ScrollView>
+            </ScrollView> */}
 
             <View style={styles.containerBox}>
             </View>
