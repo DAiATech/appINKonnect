@@ -3,12 +3,11 @@ import React from 'react'
 import { Divider } from '@rneui/base'
 import { Ionicons } from '@expo/vector-icons';
 
-const DiscoverPost = ({ post }) => {
+const DiscoverPost = ({ user }) => {
   return (
-    <View style={{ marginBottom: 30 }}>
-      <Divider width={1} orientation='vertical' />
-      <PostHeader post={post} />
-      <PostImages post={post} />
+    <View style={{ marginBottom: 0 }}>
+      <PostHeader user={user} />
+      <PostImages user={user} />
       {/*<View style={{ marginHorizontal: 15, marginTop: 10 }}>
           <PostFooter post={post} />
           <PostLikes post={post} />
@@ -16,16 +15,17 @@ const DiscoverPost = ({ post }) => {
           <PostCommentSection post={post} />
           <PostComment post={post} />
         </View> */}
+      <Divider style={{ marginTop: 30 }} width={1} orientation='vertical' />
     </View>
   );
 };
 
-const PostHeader = ({ post }) => (
+const PostHeader = ({ user }) => (
   <View style={styles.containerPost}>
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 4, }}>
-      <Image style={styles.story} source={{ uri: post.profile_picture }} />
+      <Image style={styles.story} source={{ uri: user.profile_picture }} />
       <Text style={styles.storyText}>
-        {post.user}
+        {user.user}
       </Text>
       <TouchableOpacity style={styles.followIcon}>
         <Ionicons name='add' size={20} color={'#fff'} />
@@ -34,18 +34,18 @@ const PostHeader = ({ post }) => (
   </View>
 );
 
-const PostImages = ({ post }) => (
-  <ScrollView horizontal={true} style={styles.postImagesContainer}>
-    <View style={{gap:20, flexDirection:'row'}}>
-    <View style={styles.containerImg}>
-        <Image style={styles.postImageImg} source={{ uri: post.imageUrl }} />
+const PostImages = ({ user }) => (
+  <ScrollView overScrollMode='always' horizontal={true} style={styles.postImagesContainer}>
+    <View style={{ gap: 20, flexDirection: 'row', }}>
+      <View style={styles.containerImg}>
+        <Image style={styles.postImageImg} source={{ uri: user.imgs.img1 }} />
       </View>
       <View style={styles.containerImg}>
-        <Image style={styles.postImageImg} source={{ uri: post.imageUrl }} />
+        <Image style={styles.postImageImg} source={{ uri: user.imgs.img2 }} />
       </View>
       <View style={styles.containerImg}>
-        <Image style={styles.postImageImg} source={{ uri: post.imageUrl }} />
-      </View>  
+        <Image style={styles.postImageImg} source={{ uri: user.imgs.img3 }} />
+      </View>
     </View>
   </ScrollView>
 );
@@ -57,6 +57,8 @@ const styles = StyleSheet.create({
     margin: 5,
     marginTop: 15,
     alignItems: 'center',
+    marginLeft: 15,
+    
   },
 
   story: {
@@ -88,11 +90,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#121212',
     padding: 10,
-    marginLeft:-100,
+    marginLeft: -100,
+    overflow: 'visible',
+    
   },
   containerImg: {
     width: 200,
-    height: 300,
+    height: 280,
 
   },
   postImageImg: {

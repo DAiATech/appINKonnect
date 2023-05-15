@@ -5,6 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Header from '../../components/PagePreSet/Header';
 import DiscoverPost from '../../components/DiscoverPost/DiscoverPost';
 import { POSTS } from '../../assets/data/posts';
+import { USERS } from '../../assets/data/users';
 import {
     SafeAreaView,
     Text,
@@ -65,8 +66,8 @@ export default function Discover() {
 
             <ScrollView style={styles.feedContainer}>
                 {
-                    POSTS.map((post, index) => (
-                        <DiscoverPost post={post} key={index} />
+                    USERS.map((user, index) => (
+                        <DiscoverPost user={user} key={index} />
                     ))
                 }
             </ScrollView>

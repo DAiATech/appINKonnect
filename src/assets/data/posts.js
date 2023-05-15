@@ -1,11 +1,11 @@
 import { USERS } from './users';
-import {IMAGES} from './Images';
+import { IMAGES } from './Images';
 export const POSTS = [{
     imageUrl: "https://i.pinimg.com/564x/04/93/4e/04934e82da0587df982bac1976cd93ad.jpg",
     user: USERS[0].user,
     likes: 7870,
     caption: "se liga na tattoo de hj fml!!!🔥🔥🔥#tatuageméarte",
-    profile_picture: USERS[0].postImage,
+    profile_picture: USERS[0].profile_picture,
     comments: [
     ]
 },
@@ -14,7 +14,7 @@ export const POSTS = [{
     user: USERS[1].user,
     likes: 7870,
     caption: "Aquarela",
-    profile_picture: USERS[1].postImage,
+    profile_picture: USERS[1].profile_picture,
     comments: []
 },
 {
@@ -22,7 +22,7 @@ export const POSTS = [{
     user: USERS[2].user,
     likes: 7870,
     caption: "Tattoo nova galera!!",
-    profile_picture: USERS[2].postImage,
+    profile_picture: USERS[2].profile_picture,
     comments: [
     ]
 },
@@ -31,7 +31,7 @@ export const POSTS = [{
     user: USERS[3].user,
     likes: 7870,
     caption: "Curtiram?",
-    profile_picture: USERS[3].postImage,
+    profile_picture: USERS[3].profile_picture,
     comments: [
     ]
 },

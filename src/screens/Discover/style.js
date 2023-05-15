@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'flex-end',
         gap:15,
-        padding:10,
+        padding:15,
     },
     btnSearchProfile: {
         justifyContent: 'center',
