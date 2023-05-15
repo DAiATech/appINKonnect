@@ -10,9 +10,6 @@ import api from '../../services/api';
 
 export default function Cadastrar() {
   const navigation = useNavigation();
-
-  const [logged, setLogged] = useState(0);
-  const [id, setId] = useState('');
   const [email, setEmail] = useState('');
   const [nome, setNome] = useState('');
   const [senha, setSenha] = useState('');
@@ -77,7 +74,7 @@ export default function Cadastrar() {
           duration: 800,
         }); */
         console.log("chegou!!!!");
-        navigation.push("Usuario")
+        navigation.push("Login")
 
         /* } catch (error) {
            Alert.alert("Ops", "Alguma coisa deu errado, tente novamente.");
@@ -163,7 +160,7 @@ export default function Cadastrar() {
       <TouchableOpacity
         style={styles.loginSave}
         onPress={saveCadastro}>
-        <Text style={styles.text}>Cadastrar</Text>
+        <Text style={styles.text}>Kadastrar</Text>
       </TouchableOpacity>
 
       <Image style={styles.logoInk} source={require('../../assets/logo_2.png')} />

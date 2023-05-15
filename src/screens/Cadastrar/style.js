@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 49,
     paddingTop: 20,
     justifyContent: 'space-around',
-    backgroundColor: "#f0f",
+    backgroundColor: "#121212",
   },
 
   form: {

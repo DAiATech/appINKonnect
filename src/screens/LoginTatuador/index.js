@@ -18,16 +18,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 //import { Splash } from '../../lotties/Splash'; 
 import api from '../../services/api';
 
-export default function Login() {
+export default function LoginTatuador() {
   const navigation = useNavigation();
 
   const [logged, setLogged] = useState(0);
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
-  async function login() {
+  async function loginTatuador() {
     const obj = { email, senha };
-    const res = await api.post('pam3etim/BD/login/login.php', obj);
+    const res = await api.post('pam3etim/BD/login/logintatuador.php', obj);
 
     if (res.data.result === 'Dados Incorretos!') {
       Alert.alert('Ops!', 'Dados Incorretos!');
@@ -92,33 +92,26 @@ export default function Login() {
         />
 
       </View>
-      <View style={styles.buttons}>
+
       <TouchableOpacity
         style={styles.loginSave}
-        onPress={login}
+        onPress={loginTatuador}
       >
+
         <Text style={styles.text}>Entrar</Text>
       </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.loginSave}
         onPress={() => {
-          navigation.navigate("Cadastrar")
+          navigation.navigate("CadastrarTatuador")
         }}
+      /* onPress={} */
       >
+
         <Text style={styles.text}>Kadastrar</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.loginVoltar} 
-        onPress={() => {
-          navigation.navigate("ChooseUser")
-        }}
-      >
-        <Text style={styles.text}>Voltar</Text>
-      </TouchableOpacity>
-      </View>
- {/*        achei que um botao de voltar seria legal pra tela de login, mas, acabou que nao gostei muito de como ficou no design, tem que ver com o Igor ass.Arthur */}
       <Image style={styles.logoInk} source={require('../../assets/logo_2.png')} />
 
     </View>

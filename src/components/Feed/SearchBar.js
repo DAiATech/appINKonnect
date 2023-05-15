@@ -57,6 +57,8 @@ const styles = StyleSheet.create({
     },
     inputTexto: {
         fontSize: 15,
+        color: "#EAE0D5",
+
     },
     iconSearch: {
         marginLeft: 1,

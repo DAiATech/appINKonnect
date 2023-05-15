@@ -1,29 +1,33 @@
+import { IMAGES } from "./Images";
+
 export const USERS = [{
     user: 'AndréTatttoo',
-    image: "https://i.pinimg.com/564x/28/4d/b5/284db5c86a8d3ad1b6e83e3a154f0d20.jpg",
+    profile_picture: "https://i.pinimg.com/564x/28/4d/b5/284db5c86a8d3ad1b6e83e3a154f0d20.jpg",
+    imgs: IMAGES[0],
+
 },
 {
     user: 'Lucas',
-    image: 'https://img.freepik.com/vetores-gratis/ilustracao-em-vetor-logotipo-estudio-de-tatuagem-vintage-equipamento-cruzado-monocromatico-para-profissionais_74855-11252.jpg?w=2000'
+    profile_picture: "https://img.freepik.com/vetores-gratis/ilustracao-em-vetor-logotipo-estudio-de-tatuagem-vintage-equipamento-cruzado-monocromatico-para-profissionais_74855-11252.jpg?w=2000",
+    imgs: IMAGES[1],
 },
 {
-    user: 'Roger',
-    image: 'https://i.pinimg.com/564x/07/26/68/0726683291a9b4be59306df24ef57ba2.jpg'
+    user: 'Leila',
+    profile_picture: "https://i.pinimg.com/564x/9a/83/a1/9a83a111c9ba39e926a938059e3c3bc3.jpg",
+    imgs: IMAGES[2],
+
 },
 {
-    user: 'codesolution',
-    image: 'https://i.pinimg.com/564x/ba/8c/46/ba8c466dc832f0caab92ad1a82f0ddfe.jpg'
+    user: 'Mathias',
+    profile_picture: "https://i.pinimg.com/736x/af/ce/42/afce42594225ffc485bc1ae2fa7950f4.jpg",
+    imgs: IMAGES[3],
+
 },
 {
-    user: 'codesolution',
-    image: 'https://i.pinimg.com/564x/76/1f/90/761f9021bfe88c512999e52be0415332.jpg'
+    user: 'Lucão',
+    profile_picture: "https://i.pinimg.com/564x/30/ce/8e/30ce8e1960335b370db6750302209720.jpg",
+    imgs: IMAGES[4],
+
 },
-{
-    user: 'codesolution',
-    image: 'https://i.pinimg.com/564x/13/7c/bb/137cbb3b042004733fe1bdf84d9b55c5.jpg'
-},
-{
-    user: 'codesolution',
-    image: 'https://i.pinimg.com/564x/d6/ba/bc/d6babcc6a0c2cde76f4b055c677011ba.jpg'
-}
+
 ]
