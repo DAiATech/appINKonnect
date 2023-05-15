@@ -15,6 +15,7 @@ import DrawerRoutes from './drawer.routes';
 import Usuario from '../screens/Usuario';
 import Feed from '../screens/Feed';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
+import Discover from '../screens/Discover';
 
 
 const AppTab = createBottomTabNavigator();
@@ -91,7 +92,7 @@ const AuthRoutes = () => {
 
             <AppTab.Screen
                 name="Usuario"
-                component={Usuario}
+                component={Discover}
                 options={{
                     tabBarIcon: (({ size, color }) => (
                         <MaterialIcons
