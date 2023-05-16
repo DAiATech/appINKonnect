@@ -131,8 +131,10 @@ export default function Cadastrar() {
           value={email}
           onChangeText={(email) => setEmail(email)}
         />
+        </View>
 
-        <Text style={styles.formLabel}>Nascimento:</Text>
+        <View style={styles.form2}>
+        <Text style={styles.formLabel2}>Nascimento:</Text>
         <TextInput
           style={styles.login}
           placeholder="01/01/1995"
@@ -141,7 +143,7 @@ export default function Cadastrar() {
           onChangeText={(nascimento) => setNascimento(nascimento)}
         />
 
-        <Text style={styles.formLabel}>CPF:</Text>
+        <Text style={styles.formLabel2}>CPF:</Text>
         <TextInput
           style={styles.login}
           placeholder="12312312312"
@@ -149,7 +151,10 @@ export default function Cadastrar() {
           value={cpf}
           onChangeText={(cpf) => setCpf(cpf)}
         />
+        </View>
 
+
+        <View style={styles.form}>
         <Text style={styles.formLabel}>Senha:</Text>
         <TextInput
           placeholderTextColor='#413B33'
@@ -169,8 +174,8 @@ export default function Cadastrar() {
           value={confirmarSenha}
           onChangeText={(confirmarSenha) => setConfirmarSenha(confirmarSenha)}
         />
-
-      </View>
+        </View>
+      
 
       {/*   <TouchableOpacity
         style={styles.loginSave}
