@@ -44,7 +44,7 @@ export default function ChooseUser() {
                         <TouchableOpacity
                             style={styles.buttonArtist}
                             onPress={() => {
-                                navigation.navigate("Login") /*  --> Login tatuador */
+                                navigation.navigate("LoginTatuador") 
                                 /* Insert the path that artist should follow  */
                             }}
                         /* onPress={} */
