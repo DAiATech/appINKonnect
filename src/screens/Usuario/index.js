@@ -76,7 +76,7 @@ export default function Usuario() {
 
       <Header title="Lista de Usuários"></Header>
 
-      <View style={{ paddingHorizontal: 15, flex: 1, }}>
+      <View style={{ backgroundColor:'#121212', paddingHorizontal: 15, flex: 1, }}>
         <View style={styles.containerSearch}>
           <TextInput
             style={styles.search}

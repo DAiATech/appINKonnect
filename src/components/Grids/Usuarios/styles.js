@@ -3,7 +3,7 @@ import fonts from "../../../styles/fonts";
 
 export const styles = StyleSheet.create({
     box:{
-        backgroundColor: '#fafafa',
+        backgroundColor: '#f0f',
         padding: 5,
         width: '100%',
         height: 50,
