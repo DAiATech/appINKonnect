@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
-import { Image, TextInput, Modal, Alert, Linking, Text, TouchableOpacity, View } from 'react-native';
+import { Image, TextInput, Modal, Alert, Linking, Text, TouchableOpacity, View, ScrollView } from 'react-native';
 import SwipeableRow from '../../Linhas/Usuarios';
 import api from '../../../services/api';
 import url from '../../../services/url';
@@ -92,11 +92,12 @@ CardUsuarios = ({ data } = DadosProps) => {
                         >
                             <View style={styles.header}>
                                 <View style={{ width: 65 }}>
-                                    <Image style={{ width: 50, height: 50, }} source={{ uri: (url + 'apiModelo/imagem.jpg') }} />
+                                    <Image style={{ width: 50, height: 50, borderRadius:25, }} source={{ uri: 'https://i.pinimg.com/236x/93/72/36/937236177965925c5a7acdd086afed11.jpg' }} />
                                 </View>
-                                <View style={{flexDirection: 'row', backgroundColor: '#f0f', width: '100%', marginTop: 3
+                                <View style={{
+                                    flexDirection: 'row', width: '100%', marginTop: 3
                                 }}>
-                                    <Text style={{ color: '#fff', fontSize: 15, fontWeight:'600' }}>{data.nome} - {data.id}</Text>
+                                    <Text style={{ color: '#fff', fontSize: 15, fontWeight: '600' }}>{data.nome} - {data.id}</Text>
                                     <View style={styles.containerButtonFollow}>
                                         <TouchableOpacity
                                             style={styles.buttonFollow}
@@ -107,15 +108,26 @@ CardUsuarios = ({ data } = DadosProps) => {
                                     </View>
                                 </View>
                             </View>
-                            <View>
-                                
-                            </View>
+                            <ScrollView overScrollMode='always' horizontal={true} 
+                            style={styles.postImagesContainer}>
+                                <View style={{ gap: 20, flexDirection: 'row', }}>
+                                    <View style={styles.containerImg}>
+                                        <Image style={styles.postImageImg} source={{ uri: 'https://i.pinimg.com/236x/93/72/36/937236177965925c5a7acdd086afed11.jpg' }} />
+                                    </View>
+                                    <View style={styles.containerImg}>
+                                        <Image style={styles.postImageImg} source={{ uri: 'https://i.pinimg.com/236x/93/72/36/937236177965925c5a7acdd086afed11.jpg' }} />
+                                    </View>
+                                    <View style={styles.containerImg}>
+                                        <Image style={styles.postImageImg} source={{ uri: 'https://i.pinimg.com/236x/93/72/36/937236177965925c5a7acdd086afed11.jpg' }} />
+                                    </View>
+                                </View>
+                            </ScrollView>
 
 
                         </TouchableOpacity>
                     </SwipeableRow>
 
-                </View>
+                </View >
             }
 
 
