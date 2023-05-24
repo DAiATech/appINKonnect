@@ -140,7 +140,7 @@ const AuthRoutes = () => {
 
             <AppTab.Screen
                 name="Aba 3"
-                component={Feed}
+                component={Usuario}
                 options={{
                     tabBarIcon: (({ size, color }) => (
                         <MaterialCommunityIcons

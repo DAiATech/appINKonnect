@@ -12,7 +12,23 @@ export const styles = StyleSheet.create({
         zIndex: 11,
         borderRadius: 10,
     },
-
+    header:{
+        /* backgroundColor:'#f0f' ,flex: 1, flexDirection: 'row', justifyContent: 'space-between', marginTop: -5  */
+        flex:1,
+        flexDirection:'row',
+    },
+    containerButtonFollow:{
+        backgroundColor: '#413B33',
+        borderRadius: 25,
+        width: 20,
+        height: 20,
+        justifyContent: "center",
+        marginLeft:20,
+    },
+    buttonFollow:{
+        justifyContent: "center",
+        alignItems: "center",
+    },
     centralizarModal:{    
         flex: 1,
         justifyContent: "center",    
@@ -27,7 +43,7 @@ export const styles = StyleSheet.create({
       },
     
       CardContainerModal:{
-        backgroundColor: '#FAFAFA',
+        backgroundColor: '#000fff',
         marginBottom: 10,
         paddingHorizontal: 15,
         marginHorizontal: 15,

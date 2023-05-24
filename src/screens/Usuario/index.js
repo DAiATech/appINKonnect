@@ -8,7 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 import api from '../../services/api';
 import Grid from '../../components/Grids/Usuarios';
 
-import AsyncStorage from "@react-native-async-storage/async-storage"; 
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Usuario() {
 
@@ -76,7 +76,7 @@ export default function Usuario() {
 
       <Header title="Lista de Usuários"></Header>
 
-      <View style={{ backgroundColor:'#121212', paddingHorizontal: 15, flex: 1, }}>
+      <View style={{ backgroundColor: '#121212', paddingHorizontal: 15, flex: 1, }}>
         <View style={styles.containerSearch}>
           <TextInput
             style={styles.search}
@@ -116,7 +116,7 @@ export default function Usuario() {
               if (!onEndReachedCalledDuringMomentum) {
                 return <Footer load={loading} />
               } else {
-                return <View></View>
+                return <View ></View>
               }
             }}
             onMomentumScrollBegin={() => setMT(false)}

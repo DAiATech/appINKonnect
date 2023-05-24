@@ -69,8 +69,9 @@ CardUsuarios = ({ data } = DadosProps) => {
 
                 :
 
-                <View>
+                <View style={{ backgroundColor: '#f0ff' }}>
                     <SwipeableRow
+                        style={{}}
                         onPressWhatsapp={async () => {
                             await Linking.openURL(`http://api.whatsapp.com/send?1=pt_BR&phone=55${data.nome}`)
                         }}
@@ -89,14 +90,25 @@ CardUsuarios = ({ data } = DadosProps) => {
                             style={styles.box}
                             onPress={() => setAbrirModal(true)}
                         >
-                            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', marginTop: -5 }}>
+                            <View style={styles.header}>
                                 <View style={{ width: 65 }}>
                                     <Image style={{ width: 50, height: 50, }} source={{ uri: (url + 'apiModelo/imagem.jpg') }} />
                                 </View>
-                                <View style={{ width: '100%', marginTop: 3 }}>
-                                    <Text style={{ color: '#000', fontSize: 12 }}>{data.nome} - {data.id}</Text>
-                                    <Text style={{ color: '#000', fontSize: 12 }}>{data.email} - Especialidade: {data.especialidade}</Text>
+                                <View style={{flexDirection: 'row', backgroundColor: '#f0f', width: '100%', marginTop: 3
+                                }}>
+                                    <Text style={{ color: '#fff', fontSize: 15, fontWeight:'600' }}>{data.nome} - {data.id}</Text>
+                                    <View style={styles.containerButtonFollow}>
+                                        <TouchableOpacity
+                                            style={styles.buttonFollow}
+                                            onPress={'...'}
+                                        >
+                                            <Ionicons name="add-outline" size={20} color="#fff" />
+                                        </TouchableOpacity>
+                                    </View>
                                 </View>
+                            </View>
+                            <View>
+                                
                             </View>
 
 
