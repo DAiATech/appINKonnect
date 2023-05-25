@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { styles } from './style';
 import { ScrollView, ActivityIndicator, FlatList, Image, TextInput, TouchableOpacity, View, Dimensions, Alert } from 'react-native';
 
+
+
 import Header from '../../components/Header';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../services/api';
@@ -106,18 +108,18 @@ export default function Usuario() {
             onEndReachedThreshold={0.1}
             removeClippedSubviews
             initialNumToRender={10}
-            onEndReached={(distanceFromEnd) => {
-              if (!onEndReachedCalledDuringMomentum) {
-                loadData().then(() => setLoading(false));
-                setMT(true);
-              }
-            }}
+            // onEndReached={(distanceFromEnd) => {
+            //   if (!onEndReachedCalledDuringMomentum) {
+            //    loadData().then(() => setLoading(false));
+            //    setMT(true);
+            //   }
+        //    }}
             ListFooterComponent={(distanceFromEnd) => {
-              if (!onEndReachedCalledDuringMomentum) {
-                return <Footer load={loading} />
-              } else {
-                return <View ></View>
-              }
+            //  if (!onEndReachedCalledDuringMomentum) {
+               // return <Footer load={loading} />
+          //    } else {
+            //    return <View ></View>
+            //  }
             }}
             onMomentumScrollBegin={() => setMT(false)}
             windowSize={10}
