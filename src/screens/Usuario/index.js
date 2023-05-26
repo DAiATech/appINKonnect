@@ -104,30 +104,29 @@ export default function Usuario() {
           <FlatList
             data={lista}
             renderItem={renderItem}
-            keyExtractor={item => String(item.id)}
-            onEndReachedThreshold={0.1}
-            removeClippedSubviews
-            initialNumToRender={10}
-            // onEndReached={(distanceFromEnd) => {
-            //   if (!onEndReachedCalledDuringMomentum) {
-            //    loadData().then(() => setLoading(false));
-            //    setMT(true);
-            //   }
-        //    }}
-            ListFooterComponent={(distanceFromEnd) => {
-            //  if (!onEndReachedCalledDuringMomentum) {
-               // return <Footer load={loading} />
+          //   keyExtractor={item => String(item.id)}
+          //  onEndReachedThreshold={0.1}
+          //removeClippedSubviews
+          //  initialNumToRender={10}
+          // onEndReached={(distanceFromEnd) => {
+          //   if (!onEndReachedCalledDuringMomentum) {
+          //    loadData().then(() => setLoading(false));
+          //    setMT(true);
+          //   }
+          //    }}
+          // ListFooterComponent={(distanceFromEnd) => {
+          //  if (!onEndReachedCalledDuringMomentum) {
+          // return <Footer load={loading} />
           //    } else {
-            //    return <View ></View>
-            //  }
-            }}
-            onMomentumScrollBegin={() => setMT(false)}
-            windowSize={10}
-            getItemLayout={(data, index) => (
-              { length: 50, offset: 50 * index, index }
-            )}
+          //    return <View ></View>
+          //  }
+          // }}
+          //  onMomentumScrollBegin={() => setMT(false)}
+          //  windowSize={10}
+          // getItemLayout={(data, index) => (
+          //   { length: 50, offset: 50 * index, index }
+          // )}
           />
-
         </View>
 
         <View style={styles.containerFloat}>

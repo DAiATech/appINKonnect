@@ -5,10 +5,10 @@ import { MaterialIcons, Entypo } from '@expo/vector-icons';
 import { styles } from './styles';
 import { DrawerActions, useNavigation } from '@react-navigation/core';
 
-import AsyncStorage from "@react-native-async-storage/async-storage"; 
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const CustomDrawer= FC = () => {
-    const navigation=  any= useNavigation();
+const CustomDrawer = FC = () => {
+    const navigation = any = useNavigation();
 
     async function logout() {
         Alert.alert('Sair', `Você tem certeza que quer sair?`, [
@@ -32,22 +32,18 @@ const CustomDrawer= FC = () => {
     }
 
     return (
-        <View style={{ flex: 1, backgroundColor: '#121212' }}>
-           
-
-            
-
+        <View style={{ flex: 1, }}>
             <ScrollView
                 style={styles.container}
             >
                 <View>
-                <View style={{ width: '100%', backgroundColor: '#c1c1c1', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 20 }}></View>
+                    <View style={{ width: '100%', backgroundColor: '#c1c1c1', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 20 }}></View>
 
-                <Image style={styles.perfil} source={require('../../assets/perfil.png')} />
-                <Text>
+                    <Image style={styles.perfil} source={require('../../assets/perfil.png')} />
+                    <Text>
 
 
-                </Text>
+                    </Text>
 
                     <TouchableOpacity
                         style={styles.Pages}
@@ -62,7 +58,7 @@ const CustomDrawer= FC = () => {
                         <Text style={styles.PagesText}>Perfil</Text>
                     </TouchableOpacity>
 
-                   
+
                 </View>
                 <View>
                     <TouchableOpacity
@@ -77,16 +73,16 @@ const CustomDrawer= FC = () => {
                         <Text style={styles.PagesText}>Perfil</Text>
                     </TouchableOpacity>
 
-                   
+
                 </View>
 
 
 
-       
+
             </ScrollView>
 
             <View style={styles.footer}>
-            <View style={{ width: '90%', backgroundColor: '#c1c1c1', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 5 }}></View>
+                <View style={{ width: '90%', backgroundColor: '#c1c1c1', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 5 }}></View>
                 <TouchableOpacity
                     onPress={() => logout()}
                     style={styles.Sair}
@@ -97,6 +93,8 @@ const CustomDrawer= FC = () => {
                 <View style={{ width: '90%', backgroundColor: '#c1c1c1', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 5 }}></View>
                 <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
             </View>
+
+
         </View>
     );
 }

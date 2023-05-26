@@ -3,7 +3,6 @@ import fonts from "../../../styles/fonts";
 
 export const styles = StyleSheet.create({
     box: {
-        backgroundColor: '#f0f',
         padding: 5,
         width: '100%',
         justifyContent: "center",
@@ -13,9 +12,9 @@ export const styles = StyleSheet.create({
         flexDirection: 'column',
     },
     header: {
-        /* backgroundColor:'#f0f' ,flex: 1, flexDirection: 'row', justifyContent: 'space-between', marginTop: -5  */
         flex: 1,
         flexDirection: 'row',
+        marginTop:20,
     },
     containerButtonFollow: {
         backgroundColor: '#413B33',
@@ -32,7 +31,6 @@ export const styles = StyleSheet.create({
     containerImg: {
         width: 200,
         height: 280,
-
     },
     postImageImg: {
         height: '100%',
