@@ -20,5 +20,4 @@ try {
 	echo 'Erro ao conectar com o banco!!' .$e;
 }
 
-
 ?>

@@ -31,5 +31,4 @@ if(count($res) > 0){
 }
 
 echo $result;
-
 ?>

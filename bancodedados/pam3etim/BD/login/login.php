@@ -31,5 +31,4 @@ if(@count($dados_buscar) > 0){
     $result = json_encode(array('result'=>'Dados Incorretos!'));
  	echo $result;
 }
-
 ?>
