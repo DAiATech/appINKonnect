@@ -26,7 +26,7 @@ export default function Usuario() {
 
   async function loadData() {
     try {
-      const response = await api.get(`pam3etim/bd/usuarios/listar.php?pagina=${page}&limite=10`);
+      const response = await api.get(`tccBackupTeste/bd/usuarios/listar.php?pagina=${page}&limite=10`);
 
       if (lista.length >= response.data.totalItems) return;
 
@@ -65,7 +65,7 @@ export default function Usuario() {
 
 
   async function Search() {
-    const response = await api.get(`pam3etim/bd/usuarios/buscar.php?buscar=${busca}`);
+    const response = await api.get(`tccBackupTeste/bd/usuarios/buscar.php?buscar=${busca}`);
     setLista(response.data.resultado);
   }
 

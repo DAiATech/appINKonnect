@@ -44,7 +44,7 @@ export default function Home() {
 
         try {
             const user = await AsyncStorage.getItem('@user');
-            const res = await api.get(`pam3etim/bd/dashboard/listar-cards.php?user=${user}`);
+            const res = await api.get(`tccBackupTeste/bd/dashboard/listar-cards.php?user=${user}`);
             setDados(res.data);
 
         } catch (error) {

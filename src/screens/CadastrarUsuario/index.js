@@ -2,29 +2,33 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { styles } from './style';
 import { TouchableOpacity, View, Text, TextInput, Image, StatusBar, Alert, } from 'react-native';
-
+import Constants from "expo-constants";
+import * as Permissions from "expo-permissions";
+import * as ImagePicker from "expo-image-picker";
+import * as ImageCameraCall from "expo-image-picker";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //import { Splash } from '../../lotties/Splash'; 
 import api from '../../services/api';
 
-export default function Cadastrar() {
+export default function CadastrarUsuario() {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [nome, setNome] = useState('');
   const [senha, setSenha] = useState('');
+  const [img, setImg] = useState();
   const [confirmarSenha, setConfirmarSenha] = useState('');
   const [success, setSuccess] = useState(false);
 
   async function login() {
     const obj = { email, senha };
-    const res = await api.post('pam3etim/BD/login/login.php', obj);
+    const res = await api.post('tccBackupTeste/BD/login/login.php', obj);
 
-    if (res.data.result === 'Dados Incorretos!') {
+    if (res.formData.result === 'Dados Incorretos!') {
       Alert.alert('Ops!', 'Dados Incorretos!');
     } else {
-      await AsyncStorage.setItem('@user', JSON.stringify(res.data.result[0].id));
-      await AsyncStorage.setItem('@nivel', JSON.stringify(res.data.result[0].nivel));
+      await AsyncStorage.setItem('@user', JSON.stringify(res.formData.result[0].id));
+      await AsyncStorage.setItem('@nivel', JSON.stringify(res.formData.result[0].nivel));
 
       navigation.reset({
         index: 0,
@@ -34,10 +38,33 @@ export default function Cadastrar() {
 
   }
 
+  async function imageCameraCall() {
+    if (Constants.platform.ios) {
+      const { status } = await Permissions.askAsync(Permissions.CAMERA);
+
+      if (status !== "granted") {
+        alert("Nós precisamos dessa permissão.");
+        return;
+      }
+    }
+
+    const formData = await ImageCameraCall.launchCameraAsync({
+      mediaTypes: ImageCameraCall.MediaTypeOptions.All
+    });
+
+    if (formData.canceled) {
+      return;
+    }
+
+    if (!formData.uri) {
+      return;
+    }
+
+    setImg(formData);
+  }
 
   async function saveCadastro() {
     if (nome == "" || senha == "" || email == "")/* || confirmarSenha != "" && confirmarSenha == senha )*/ {
-      console.log("diego");
       Alert({
         message: "Erro ao Salvar",
         description: 'Preencha os Campos Obrigatórios!',
@@ -47,24 +74,65 @@ export default function Cadastrar() {
     }
     else {
       {
-        const obj = {
-          nome: nome,
-          email: email,
-          senha: senha,
-        }
+        /*  const obj = {
+           nome: nome,
+           email: email,
+           senha: senha,
+         } */
+        var formData = new FormData();
 
-        const res = await api.post('pam3etim/bd/login/cadastro.php', obj);
+        /* dados dos inputs */
+        formData.append('nome', nome);
+        formData.append('email', email);
+        formData.append('senha', senha);
 
-        if (res.data.sucesso === false) {
+        //Upload da Imagem        
+        formData.append("photo", {
+          name: img.uri,
+          type: 'image/png',
+          uri: img.uri
+        }, "image.png");
+
+
+        /* fetch('http://26.191.226.215/tccBackupTeste/bd/login/cadastro.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'multipart/form-formData',
+          },
+          body: formData
+        }) */
+
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        console.log(formData);
+        console.log("aoba");
+
+        xhr.addEventListener("readystatechange", function () {
+          if (this.readyState === 4) {
+            console.log(this.responseText);
+            console.log("Imagemmm!!!!");
+          }
+        });
+
+        xhr.open("POST", "http://26.191.226.215/tccBackupTeste/bd/login/cadastro.php");
+        xhr.send(formData);
+        //-----FIM UPLOAD IMAGEM----
+
+        /* IMPORTANTE ESSE(ENVIA OS DADOS DO USUARIO 'NOME','SENHA')*/
+        /*         const res = await api.post('tccBackupTeste/bd/login/cadastro.php', obj); 
+         */
+
+        //if (res.formData.sucesso === false) {
           /* showMessage({
             message: "Erro ao Salvar",
-            description: res.data.mensagem,
+            description: res.formData.  mensagem,
             type: "warning",
             duration: 3000,
           }); */
 
-          return;
-        }
+        //  return;
+       // }
 
         setSuccess(true);
         /* showMessage({
@@ -74,7 +142,7 @@ export default function Cadastrar() {
           duration: 800,
         }); */
         console.log("chegou!!!!");
-        navigation.push("Login")
+        navigation.push("LoginUsuario")
 
         /* } catch (error) {
            Alert.alert("Ops", "Alguma coisa deu errado, tente novamente.");
@@ -87,12 +155,12 @@ export default function Cadastrar() {
       const user = await AsyncStorage.getItem('@user');
       if (confirmarSenha != "" && confirmarSenha == senha ) {
          
-         navigate({saveData}) ;
+         navigate({saveformData}) ;
       }
       else {
           Alert.alert('Senhas Diferentes !')
       }
-  
+   
      
     } */
 
@@ -137,7 +205,9 @@ export default function Cadastrar() {
           onChangeText={(senha) => setSenha(senha)}
         />
 
-        <Text style={styles.formLabel}>Confirme a senha:</Text>
+
+
+        {/* <Text style={styles.formLabel}>Confirme a senha:</Text>
         <TextInput
           placeholderTextColor='#413B33'
           secureTextEntry={true}
@@ -145,7 +215,7 @@ export default function Cadastrar() {
           placeholder="Senha"
           value={confirmarSenha}
           onChangeText={(confirmarSenha) => setConfirmarSenha(confirmarSenha)}
-        />
+        /> */}
 
       </View>
 
@@ -163,6 +233,20 @@ export default function Cadastrar() {
         <Text style={styles.text}>Kadastrar</Text>
       </TouchableOpacity>
 
+      <TouchableOpacity
+        style={styles.button}
+        onPress={imageCameraCall}
+      >
+        <Text styles={styles.buttonText}>Tirar Foto </Text>
+      </TouchableOpacity>
+      <Image
+        source={{
+          uri: img
+            ? img.uri
+            : ""
+        }}
+        style={styles.imgContainer}
+      ></Image>
       <Image style={styles.logoInk} source={require('../../assets/logo_2.png')} />
 
     </View>

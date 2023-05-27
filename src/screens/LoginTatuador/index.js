@@ -27,7 +27,7 @@ export default function LoginTatuador() {
 
   async function loginTatuador() {
     const obj = { email, senha };
-    const res = await api.post('pam3etim/BD/login/logintatuador.php', obj);
+    const res = await api.post('tccBackupTeste/BD/login/logintatuador.php', obj);
 
     if (res.data.result === 'Dados Incorretos!') {
       Alert.alert('Ops!', 'Dados Incorretos!');
@@ -111,7 +111,14 @@ export default function LoginTatuador() {
 
         <Text style={styles.text}>Kadastrar</Text>
       </TouchableOpacity>
-
+      <TouchableOpacity
+        style={styles.loginVoltar}
+        onPress={() => {
+          navigation.navigate("ChooseUser")
+        }}
+      >
+        <Text style={styles.text}>Voltar</Text>
+      </TouchableOpacity>
       <Image style={styles.logoInk} source={require('../../assets/logo_2.png')} />
 
     </View>

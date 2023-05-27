@@ -2,13 +2,14 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-import Login from '../screens/Login';
+import LoginTatuador from '../screens/LoginTatuador';
+import LoginUsuario from '../screens/LoginUsuario';
 import ChooseUser from '../screens/ChooseUser';
 //import { Splash } from '../lotties/Splash';
 import AuthRoutes from './tab.routes';
 import Usuario from '../screens/Usuario';
 import NovoUsuario from '../screens/NovoUsuario';
-import Cadastrar from '../screens/Cadastrar';
+import cadastrarUsuario from '../screens/CadastrarUsuario';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,11 +19,17 @@ function StackNavigator(){
         <Stack.Navigator screenOptions={{headerShown: false}
         }>
             <Stack.Screen name="ChooseUser" component={ChooseUser}  /> 
-            <Stack.Screen name="Login" component={Login}  /> 
+            
+            <Stack.Screen name="LoginUsuario" component={LoginUsuario}  /> 
+            <Stack.Screen name="CadastrarUsuario" component={cadastrarUsuario} /> 
+
+            <Stack.Screen name="LoginTatuador" component={LoginTatuador}  /> 
+            
             <Stack.Screen name="Home" component={AuthRoutes} />      
+           
             <Stack.Screen name="Usuario" component={Usuario} /> 
             <Stack.Screen name="NovoUsuario" component={NovoUsuario} /> 
-            <Stack.Screen name="Cadastrar" component={Cadastrar} /> 
+           
         </Stack.Navigator>
     )
 }

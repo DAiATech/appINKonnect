@@ -128,6 +128,20 @@ export const styles = StyleSheet.create({
   signupQ: {
     color: 'black',
   },
+  button: {
+    width: 150,
+    height: 50,
+    borderRadius: 3,
+    backgroundColor: '#f0f',/* 123ab4 */
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  imgContainer: {
+    width: 150,
+    height: 150,
+    borderRadius: 100,
+  },
 
 })
 

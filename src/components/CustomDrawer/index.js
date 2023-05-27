@@ -22,7 +22,7 @@ const CustomDrawer = FC = () => {
                 onPress: async () => {
                     try {
                         await AsyncStorage.clear();
-                        navigation.navigate('Login');
+                        navigation.navigate('LoginUsuario');
                     } catch (error) {
                         Alert.alert('Não foi possivel sair, tente novamente!')
                     }

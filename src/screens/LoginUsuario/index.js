@@ -18,7 +18,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 //import { Splash } from '../../lotties/Splash'; 
 import api from '../../services/api';
 
-export default function Login() {
+export default function LoginUsuario() {
   const navigation = useNavigation();
 
   const [logged, setLogged] = useState(0);
@@ -27,7 +27,7 @@ export default function Login() {
 
   async function login() {
     const obj = { email, senha };
-    const res = await api.post('pam3etim/BD/login/login.php', obj);
+    const res = await api.post('tccBackupTeste/BD/login/login.php', obj);
 
     if (res.data.result === 'Dados Incorretos!') {
       Alert.alert('Ops!', 'Dados Incorretos!');
@@ -103,7 +103,7 @@ export default function Login() {
       <TouchableOpacity
         style={styles.loginSave}
         onPress={() => {
-          navigation.navigate("Cadastrar")
+          navigation.navigate("CadastrarUsuario")
         }}
       >
         <Text style={styles.text}>Kadastrar</Text>
