@@ -28,7 +28,7 @@ const PostHeader = ({ post }) => (
       <Text style={styles.storyText}>
         {post.user}
       </Text>
-    </View>    
+    </View>
   </View>
 );
 
@@ -39,8 +39,8 @@ const PostImage = ({ post }) => (
 );
 
 const PostFooter = ({ post }) => (
-  <View /* style={styles.postFooterContainer} */>    
-    
+  <View /* style={styles.postFooterContainer} */>
+
   </View>
 );
 /* const PostFooter = ({ post }) => (
@@ -79,7 +79,7 @@ const PostCaption = ({ post }) => (
   <View style={styles.postCaptionContainer}>
     <Text style={styles.captionText}>
       <Text style={styles.captionUserText} >
-        {post.user}:...  
+        {post.user}:...
       </Text>
       {post.caption}
     </Text>
@@ -138,10 +138,10 @@ const styles = StyleSheet.create({
     borderRadius: 70,
   },
   storyText: {
-    color:'#EAE0D5',
+    color: '#EAE0D5',
     marginLeft: 5,
     fontWeight: '500',
-    fontSize:20,
+    fontSize: 20,
   },
   icone: {
     marginLeft: 10,
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
   postImageImg: {
     height: '100%',
     resizeMode: 'cover',
-    borderRadius:15,
+    borderRadius: 15,
   },
   postFooterContainer: {
     flexDirection: 'row',

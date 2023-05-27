@@ -98,13 +98,6 @@ export const styles = StyleSheet.create({
         zIndex: 9,
     },
 
-    card : {
-        width: 300,
-        height: 180,
-        backgroundColor: '#32B76C',
-        borderRadius: 8,
-        marginVertical: 6
-    },
 
     containerFloat:{
         bottom: 20,
