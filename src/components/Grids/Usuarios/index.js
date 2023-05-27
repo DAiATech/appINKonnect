@@ -97,7 +97,7 @@ CardUsuarios = ({ data } = DadosProps) => {
                         <View style={{
                             flexDirection: 'row', width: '100%', marginTop: 3
                         }}>
-                            <Text style={{ color: '#fff', fontSize: 15, fontWeight: '600' }}>{data.nome} - {data.id}</Text>
+                            <Text style={{ color: '#fff', fontSize: 15, fontWeight: '600' }}>{data.nome}</Text>
                             <View style={styles.containerButtonFollow}>
                                 <TouchableOpacity
                                     style={styles.buttonFollow}
@@ -108,7 +108,7 @@ CardUsuarios = ({ data } = DadosProps) => {
                             </View>
                         </View>
                     </View>
-                    <ScrollView overScrollMode='always' horizontal={true}
+                    {/* <ScrollView overScrollMode='always' horizontal={true}
                         style={styles.postImagesContainer}>
                         <View style={{ gap: 20, flexDirection: 'row', }}>
                             <View style={styles.containerImg}>
@@ -121,10 +121,20 @@ CardUsuarios = ({ data } = DadosProps) => {
                                 <Image style={styles.postImageImg} source={{ uri: 'https://i.pinimg.com/236x/93/72/36/937236177965925c5a7acdd086afed11.jpg' }} />
                             </View>
                         </View>
-                    </ScrollView>
+                    </ScrollView> */}
                     {/*  </TouchableOpacity>/*/}
                     {/* </SwipeableRow> */}
-
+                    <View style={styles.postImageContainer}>
+                        <Image style={styles.postImageImg} source={{ uri: 'https://i.pinimg.com/236x/93/72/36/937236177965925c5a7acdd086afed11.jpg' }} />
+                    </View>
+                    <View style={styles.postCaptionContainer}>
+                        <Text style={styles.captionText}>
+                            <Text style={styles.captionUserText} >
+                                {data.nome}:...
+                            </Text>
+                            {data.nome}
+                        </Text>
+                    </View>
                     <Divider style={{ marginTop: 30 }} width={1} orientation='vertical' />
 
 

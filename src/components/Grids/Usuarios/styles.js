@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     header: {
         flex: 1,
         flexDirection: 'row',
-        marginTop:20,
+        marginTop: 20,
     },
     containerButtonFollow: {
         backgroundColor: '#413B33',
@@ -32,10 +32,15 @@ export const styles = StyleSheet.create({
         width: 200,
         height: 280,
     },
+    postImageContainer: {
+        width: '100%',
+        height: 300,
+    },
     postImageImg: {
         height: '100%',
         resizeMode: 'cover',
         borderRadius: 15,
+        marginTop:5,
     },
     postFooterContainer: {
         flexDirection: 'row',
@@ -46,7 +51,6 @@ export const styles = StyleSheet.create({
         padding: 10,
         marginLeft: -100,
         overflow: 'visible',
-
     },
     centralizarModal: {
         flex: 1,
@@ -196,7 +200,24 @@ export const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
     },
-
+    postCaptionContainer: {
+        flexDirection: 'row',
+        marginTop: 5,
+        marginStart:10, 
+    },
+    captionText: {
+        color: '#fff',
+        flexWrap: 'wrap',
+        flex: 1,
+        fontWeight: 'normal',
+    },
+    captionUserText: {
+        fontWeight: '800'
+    },
+    postCommentSectionContainer: {
+        flexDirection: 'row',
+        marginTop: 5,
+    },
     ButtonText: {
         fontSize: 20,
         color: '#fff',
