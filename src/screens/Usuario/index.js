@@ -26,7 +26,7 @@ export default function Usuario() {
 
   async function loadData() {
     try {
-      const response = await api.get(`tccBackupTeste/bd/usuarios/listar.php?pagina=${page}&limite=10`);
+      const response = await api.get(`tccBackupTeste/bd/usuarios/listarTatuadores.php?pagina=${page}&limite=10`);
 
       if (lista.length >= response.data.totalItems) return;
 

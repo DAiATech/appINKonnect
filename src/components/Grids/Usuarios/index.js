@@ -9,7 +9,6 @@ import { Divider } from '@rneui/base'
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-
 import { showMessage, hideMessage } from "react-native-flash-message";
 import { EvilIcons, MaterialIcons, AntDesign, Ionicons } from '@expo/vector-icons';
 /* import * as ImagePicker from 'expo-image-picker';
@@ -18,12 +17,11 @@ const DadosProps = {
     data: {
         id: string,
         nome: string,
-        telefone: string,
-        endereco: string,
         especialidade: string,
+        imgProfile: string,
     }
-}
 
+}
 
 CardUsuarios = ({ data } = DadosProps) => {
 
@@ -70,6 +68,7 @@ CardUsuarios = ({ data } = DadosProps) => {
 
                 <View style={{ marginBottom: 20, }}>
 
+
                     {/*  <SwipeableRow
                         style={{}}
                         onPressWhatsapp={async () => {
@@ -92,7 +91,10 @@ CardUsuarios = ({ data } = DadosProps) => {
                         > */}
                     <View style={styles.header}>
                         <View style={{ width: 65, }}>
-                            <Image style={{ width: 50, height: 50, borderRadius: 25, }} source={{ uri: 'https://i.pinimg.com/236x/93/72/36/937236177965925c5a7acdd086afed11.jpg' }} />
+                            <Image style={{ width: 50, height: 50, borderRadius: 25, }} source={{ 
+                                uri: data
+                                ? data.imgProfile
+                                : "" }} />
                         </View>
                         <View style={{
                             flexDirection: 'row', width: '100%', marginTop: 3
@@ -159,7 +161,7 @@ CardUsuarios = ({ data } = DadosProps) => {
                         >
                             <EvilIcons name="close" size={25} color="black" />
                         </TouchableOpacity>
-                        <Text style={styles.Cliente}>{data.nome} - {data.nivel}</Text>
+                        <Text style={styles.Cliente}>{data.nome}</Text>
 
 
                         <View style={styles.Section}>
@@ -172,7 +174,6 @@ CardUsuarios = ({ data } = DadosProps) => {
                         <View style={styles.Section}>
                             <MaterialIcons style={styles.Icon} name="mail" size={22} color="#c1c1c1" />
                             <Text style={styles.Entrada}>Especialidade: {data.especialidade}</Text>
-                            <Text style={styles.Entrada}>Telefone: {data.telefone}</Text>
                         </View>
 
 

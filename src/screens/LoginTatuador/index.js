@@ -27,14 +27,14 @@ export default function LoginTatuador() {
 
   async function loginTatuador() {
     const obj = { email, senha };
-    const res = await api.post('tccBackupTeste/BD/login/logintatuador.php', obj);
+    const res = await api.post('tccBackupTeste/BD/login/loginTatuador.php', obj);
 
     if (res.data.result === 'Dados Incorretos!') {
       Alert.alert('Ops!', 'Dados Incorretos!');
     } else {
       await AsyncStorage.setItem('@user', JSON.stringify(res.data.result[0].id));
-      await AsyncStorage.setItem('@nivel', JSON.stringify(res.data.result[0].nivel));
-
+      /*       await AsyncStorage.setItem('@nivel', JSON.stringify(res.data.result[0].nivel));
+       */
       navigation.reset({
         index: 0,
         routes: [{ name: 'Home' }]
@@ -67,11 +67,10 @@ export default function LoginTatuador() {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent hidden />
-
       <Image style={styles.logo} source={require('../../assets/INKonnect.png')} />
 
       <View style={styles.form}>
+        <Text style={{ fontSize: 20, color: '#f0f' }}>LoginTatuador</Text>
         <Text style={styles.formLabel}>Email:</Text>
         <TextInput
           style={styles.login}

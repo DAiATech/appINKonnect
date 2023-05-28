@@ -10,6 +10,7 @@ import AuthRoutes from './tab.routes';
 import Usuario from '../screens/Usuario';
 import NovoUsuario from '../screens/NovoUsuario';
 import cadastrarUsuario from '../screens/CadastrarUsuario';
+import cadastrarTatuador from '../screens/CadastrarTatuador';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,7 +25,9 @@ function StackNavigator(){
             <Stack.Screen name="CadastrarUsuario" component={cadastrarUsuario} /> 
 
             <Stack.Screen name="LoginTatuador" component={LoginTatuador}  /> 
+            <Stack.Screen name="CadastrarTatuador" component={cadastrarTatuador}  /> 
             
+
             <Stack.Screen name="Home" component={AuthRoutes} />      
            
             <Stack.Screen name="Usuario" component={Usuario} /> 
