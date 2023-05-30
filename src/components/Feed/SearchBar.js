@@ -36,7 +36,7 @@ const SearchBar = () => {
                 </TextInput>
             </View>
 
-            {/* <SearchFIlter data={POSTS} input={input} setInput={setInput} /> */}
+            <SearchFIlter data={POSTS} input={input} setInput={setInput} />
 
         </View>
     );

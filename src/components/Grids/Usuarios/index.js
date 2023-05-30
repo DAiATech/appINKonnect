@@ -1,10 +1,11 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
-import { Image, TextInput, Modal, Alert, Linking, Text, TouchableOpacity, View } from 'react-native';
+import { Image, TextInput, Modal, Alert, Linking, Text, TouchableOpacity, View, ScrollView } from 'react-native';
 import SwipeableRow from '../../Linhas/Usuarios';
 import api from '../../../services/api';
 import url from '../../../services/url';
 import { styles } from './styles';
+import { Divider } from '@rneui/base'
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -64,13 +65,13 @@ CardUsuarios = ({ data } = DadosProps) => {
     return (
         <>
             {data.id === undefined && data.nome === undefined ?
-
                 <Text style={{ color: '#595858', fontSize: 14, marginTop: 10, alignContent: "center", textAlign: "center" }}>Nenhum Registro Encontrado!</Text>
-
                 :
 
-                <View>
-                    <SwipeableRow
+                <View style={{ marginBottom: 20, }}>
+
+                    {/*  <SwipeableRow
+                        style={{}}
                         onPressWhatsapp={async () => {
                             await Linking.openURL(`http://api.whatsapp.com/send?1=pt_BR&phone=55${data.nome}`)
                         }}
@@ -84,26 +85,60 @@ CardUsuarios = ({ data } = DadosProps) => {
                         }}
 
 
-                    >
-                        <TouchableOpacity
+                    > */}
+                    {/*   <TouchableOpacity
                             style={styles.box}
                             onPress={() => setAbrirModal(true)}
-                        >
-                            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', marginTop: -5 }}>
-                                <View style={{ width: 65 }}>
-                                    <Image style={{ width: 50, height: 50, }} source={{ uri: (url + 'apiModelo/imagem.jpg') }} />
-                                </View>
-                                <View style={{ width: '100%', marginTop: 3 }}>
-                                    <Text style={{ color: '#000', fontSize: 12 }}>{data.nome} - {data.id}</Text>
-                                    <Text style={{ color: '#000', fontSize: 12 }}>{data.email} - Especialidade: {data.especialidade}</Text>
-                                </View>
+                        > */}
+                    <View style={styles.header}>
+                        <View style={{ width: 65, }}>
+                            <Image style={{ width: 50, height: 50, borderRadius: 25, }} source={{ uri: 'https://i.pinimg.com/236x/93/72/36/937236177965925c5a7acdd086afed11.jpg' }} />
+                        </View>
+                        <View style={{
+                            flexDirection: 'row', width: '100%', marginTop: 3
+                        }}>
+                            <Text style={{ color: '#fff', fontSize: 15, fontWeight: '600' }}>{data.nome}</Text>
+                            <View style={styles.containerButtonFollow}>
+                                <TouchableOpacity
+                                    style={styles.buttonFollow}
+                                    onPress={'...'}
+                                >
+                                    <Ionicons name="add-outline" size={20} color="#fff" />
+                                </TouchableOpacity>
                             </View>
+                        </View>
+                    </View>
+                    {/* <ScrollView overScrollMode='always' horizontal={true}
+                        style={styles.postImagesContainer}>
+                        <View style={{ gap: 20, flexDirection: 'row', }}>
+                            <View style={styles.containerImg}>
+                                <Image style={styles.postImageImg} source={{ uri: 'https://i.pinimg.com/236x/93/72/36/937236177965925c5a7acdd086afed11.jpg' }} />
+                            </View>
+                            <View style={styles.containerImg}>
+                                <Image style={styles.postImageImg} source={{ uri: 'https://i.pinimg.com/236x/93/72/36/937236177965925c5a7acdd086afed11.jpg' }} />
+                            </View>
+                            <View style={styles.containerImg}>
+                                <Image style={styles.postImageImg} source={{ uri: 'https://i.pinimg.com/236x/93/72/36/937236177965925c5a7acdd086afed11.jpg' }} />
+                            </View>
+                        </View>
+                    </ScrollView> */}
+                    {/*  </TouchableOpacity>/*/}
+                    {/* </SwipeableRow> */}
+                    <View style={styles.postImageContainer}>
+                        <Image style={styles.postImageImg} source={{ uri: 'https://i.pinimg.com/236x/93/72/36/937236177965925c5a7acdd086afed11.jpg' }} />
+                    </View>
+                    <View style={styles.postCaptionContainer}>
+                        <Text style={styles.captionText}>
+                            <Text style={styles.captionUserText} >
+                                {data.nome}:...
+                            </Text>
+                            {data.nome}
+                        </Text>
+                    </View>
+                    <Divider style={{ marginTop: 30 }} width={1} orientation='vertical' />
 
 
-                        </TouchableOpacity>
-                    </SwipeableRow>
-
-                </View>
+                </View >
             }
 
 
