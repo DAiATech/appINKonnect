@@ -92,9 +92,7 @@ CardUsuarios = ({ data } = DadosProps) => {
                     <View style={styles.header}>
                         <View style={{ width: 65, }}>
                             <Image style={{ width: 50, height: 50, borderRadius: 25, }} source={{ 
-                                uri: data
-                                ? data.imgProfile
-                                : "" }} />
+                                uri: "http://26.191.226.215/tccBackupTeste/imagem/img"+"/"+data.imgProfile}} />
                         </View>
                         <View style={{
                             flexDirection: 'row', width: '100%', marginTop: 3
