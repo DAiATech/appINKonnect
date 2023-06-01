@@ -7,6 +7,7 @@ import * as Permissions from "expo-permissions";
 import * as ImagePicker from "expo-image-picker";
 import * as ImageCameraCall from "expo-image-picker";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import url from "../../services/url";
 
 //import { Splash } from '../../lotties/Splash'; 
 import api from '../../services/api';
@@ -118,7 +119,7 @@ export default function CadastrarTatuador() {
                     }
                 });
 
-                xhr.open("POST", "http://26.191.226.215/tccBackupTeste/bd/login/cadastroTatuador.php");
+                xhr.open("POST", url + "/tccBackupTeste/bd/login/cadastroTatuador.php");
                 xhr.send(formData);
                 //-----FIM UPLOAD IMAGEM----
 
@@ -180,8 +181,8 @@ export default function CadastrarTatuador() {
 
             <View style={styles.form}>
                 <Text style={{ fontSize: 20, color: '#f0f' }}>CadastroTatuador</Text>
-                <View style={{ width: '50%', flexDirection: 'row', marginTop:50, }}>
-                    <View style={{alignContent:'flex-end'}}>
+                <View style={{ width: '50%', flexDirection: 'row', marginTop: 50, }}>
+                    <View style={{ alignContent: 'flex-end' }}>
                         <Text style={styles.formLabel}>Nome:</Text>
                         <TextInput
                             style={styles.login}

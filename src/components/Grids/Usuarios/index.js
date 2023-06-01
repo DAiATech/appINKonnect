@@ -18,7 +18,8 @@ const DadosProps = {
         id: string,
         nome: string,
         especialidade: string,
-        imgProfile: string,
+        profileImgId: string,
+        imgRandomName: string,
     }
 
 }
@@ -91,8 +92,9 @@ CardUsuarios = ({ data } = DadosProps) => {
                         > */}
                     <View style={styles.header}>
                         <View style={{ width: 65, }}>
-                            <Image style={{ width: 50, height: 50, borderRadius: 25, }} source={{ 
-                                uri: "http://26.191.226.215/tccBackupTeste/imagem/img"+"/"+data.imgProfile}} />
+                            <Image style={{ width: 50, height: 50, borderRadius: 25, }} source={{
+                                uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + data.imgProfile
+                            }} />
                         </View>
                         <View style={{
                             flexDirection: 'row', width: '100%', marginTop: 3
@@ -132,7 +134,7 @@ CardUsuarios = ({ data } = DadosProps) => {
                             <Text style={styles.captionUserText} >
                                 {data.nome}:...
                             </Text>
-                            {data.nome}
+                            {data.profileImgId}
                         </Text>
                     </View>
                     <Divider style={{ marginTop: 30 }} width={1} orientation='vertical' />
