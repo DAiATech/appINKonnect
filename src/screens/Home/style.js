@@ -6,6 +6,8 @@ export const styles = StyleSheet.create({
     container: {
         backgroundColor: '#121212',
         flex: 1,
+        marginTop:20,
+
     },
     feedContainer: {
         width: '90%',

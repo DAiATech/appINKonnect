@@ -21,7 +21,7 @@ for ($i=0; $i < count($dados_buscar); $i++) {
         'email' => $dados_buscar[$i]['email'],  
         'cpf' => $dados_buscar[$i]['cpf'],  
         'especialidade' => $dados_buscar[$i]['especialidade'],  
-        'imgProfile' => $dados_buscar[$i]['imgProfile'],  
+        'profileImgId' => $dados_buscar[$i]['profileImgId'],  
     );
 }
 

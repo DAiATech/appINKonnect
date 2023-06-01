@@ -48,25 +48,30 @@ if ($_FILES['photo'])
 
     //MOVE FILE TO SERVER
     $random_name = rand(1000, 1000000) . "-" . $photo_name;
-    $upload_name = "http://26.191.226.215/tccBackupTeste/BD/tatuadores/imgsTatuadores" . $random_name;
+    $upload_name = "http://10.68.36.112/tccBackupTeste/BD/tatuadores/imgsTatuadores" . $random_name;
 
     (move_uploaded_file($_FILES["photo"]["tmp_name"], "../tatuadores/imgsTatuadores/" . $_FILES["photo"]["name"]));
 
+    $stmt = $pdo->prepare("INSERT INTO profileimg SET imgName = :imgName, imgRandomName =:imgRandomName");
     /* if ($id == "" || $id == "0") { */
-    $res = $pdo->prepare("INSERT INTO $tabela SET nome = :nome, senha = :senha, email = :email, cpf = :cpf, especialidade = :especialidade,  imgProfile = :imgProfile");
+    $res = $pdo->prepare("INSERT INTO $tabela SET nome = :nome, senha = :senha, email = :email, cpf = :cpf, especialidade = :especialidade,  profileImgId = :profileImgId");
     /*}  else {
               $res = $pdo->prepare("UPDATE $tabela SET nome = :nome, email = :email, senha = :senha, imagemProfile = :imagemProfile where id = '$id'");
           } */
 
 }
 
+$stmt->bindValue(":imgName","$photo_name");
+$stmt->bindValue(":imgRandomName","$random_name");
+$stmt->execute();
+$IdImagem = $pdo->lastInsertId();
 
 $res->bindValue(":nome", "$nome");
 $res->bindValue(":senha", "$senha");
 $res->bindValue(":email", "$email");
 $res->bindValue(":cpf", "$cpf");
 $res->bindValue(":especialidade", "$especialidade");
-$res->bindValue(":imgProfile", "$upload_name");
+$res->bindValue(":profileImgId", "$IdImagem");
 
 
 /* $res->bindValue(":especialidade", "$especialidade");*/

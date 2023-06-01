@@ -93,13 +93,13 @@ CardUsuarios = ({ data } = DadosProps) => {
                     <View style={styles.header}>
                         <View style={{ width: 65, }}>
                             <Image style={{ width: 50, height: 50, borderRadius: 25, }} source={{
-                                uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + data.imgProfile
+                                uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + data.imgRandomName
                             }} />
                         </View>
                         <View style={{
                             flexDirection: 'row', width: '100%', marginTop: 3
                         }}>
-                            <Text style={{ color: '#fff', fontSize: 15, fontWeight: '600' }}>{data.nome}</Text>
+                            <Text style={{ color: '#fff', fontSize: 15, fontWeight: '600' }}>{data.imgRandomName}</Text>
                             <View style={styles.containerButtonFollow}>
                                 <TouchableOpacity
                                     style={styles.buttonFollow}
