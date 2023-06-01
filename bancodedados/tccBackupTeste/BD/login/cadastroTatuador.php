@@ -50,7 +50,7 @@ if ($_FILES['photo'])
     $random_name = rand(1000, 1000000) . "-" . $photo_name;
     $upload_name = "http://10.68.36.112/tccBackupTeste/BD/tatuadores/imgsTatuadores" . $random_name;
 
-    (move_uploaded_file($_FILES["photo"]["tmp_name"], "../tatuadores/imgsTatuadores/" . $_FILES["photo"]["name"]));
+    (move_uploaded_file($_FILES["photo"]["tmp_name"], "../tatuadores/imgsTatuadores/" . $random_name));
 
     $stmt = $pdo->prepare("INSERT INTO profileimg SET imgName = :imgName, imgRandomName =:imgRandomName");
     /* if ($id == "" || $id == "0") { */

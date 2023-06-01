@@ -8,6 +8,7 @@ $query_buscar->bindValue(":email", "$postjson[email]");
 $query_buscar->bindValue(":senha", "$senha");
 $query_buscar->execute();
 
+
 $dados_buscar = $query_buscar->fetchAll(PDO::FETCH_ASSOC);
 
 for ($i=0; $i < count($dados_buscar); $i++) { 

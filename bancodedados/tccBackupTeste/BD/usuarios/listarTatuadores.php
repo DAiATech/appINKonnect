@@ -9,7 +9,8 @@ $pagina = (isset($_GET['pagina'])) ? $_GET['pagina'] : 1;
 
 $inicio = ($limite * $pagina) - $limite; 
 
-$query = $pdo->prepare("SELECT * FROM tatuador ORDER BY id DESC LIMIT $inicio, $limite");
+$query = $pdo->prepare("SELECT * FROM tatuador inner join profileimg on  profileImgId = profileimg.id ORDER BY tatuador.id DESC LIMIT $inicio, $limite");
+/* $query = $pdo->prepare("SELECT * FROM tatuador ORDER BY id DESC LIMIT $inicio, $limite"); */
 
 $query->execute();
 
@@ -22,7 +23,8 @@ for ($i=0; $i < count($res); $i++) {
         'id' => $res[$i]['id'],
         'nome' => $res[$i]['nome'],  
         'especialidade'=> $res[$i]['especialidade'],      
-        'imgProfile'=> $res[$i]['imgProfile'],      
+        'profileImgId'=> $res[$i]['profileImgId'],  
+        'imgRandomName'=>$res[$i]['imgRandomName'],    
     );
 
 }
