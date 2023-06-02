@@ -99,7 +99,7 @@ CardUsuarios = ({ data } = DadosProps) => {
                         <View style={{
                             flexDirection: 'row', width: '100%', marginTop: 3
                         }}>
-                            <Text style={{ color: '#fff', fontSize: 15, fontWeight: '600' }}>{data.imgRandomName}</Text>
+                            <Text style={{ color: '#fff', fontSize: 15, fontWeight: '600' }}>{data.nome}</Text>
                             <View style={styles.containerButtonFollow}>
                                 <TouchableOpacity
                                     style={styles.buttonFollow}

@@ -33,8 +33,9 @@ export default function LoginTatuador() {
       Alert.alert('Ops!', 'Dados Incorretos!');
     } else {
       await AsyncStorage.setItem('@user', JSON.stringify(res.data.result[0].id));
-      /*       await AsyncStorage.setItem('@nivel', JSON.stringify(res.data.result[0].nivel));
-       */
+      await AsyncStorage.setItem('@nome', JSON.stringify(res.data.result[0].nome));
+      await AsyncStorage.setItem('@email', JSON.stringify(res.data.result[0].email));
+      
       navigation.reset({
         index: 0,
         routes: [{ name: 'Home' }]
