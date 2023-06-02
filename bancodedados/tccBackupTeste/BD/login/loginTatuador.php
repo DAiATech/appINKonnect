@@ -3,7 +3,7 @@ include_once('../conexao.php');
 
 $postjson = json_decode(file_get_contents("php://input"), true);
 $senha = $postjson['senha'];
-$query_buscar = $pdo->prepare("SELECT * from tatuador where email = :email and senha = :senha ");
+$query_buscar = $pdo->prepare("SELECT * from tatuador INNER JOIN profileimg on  profileImgId = profileimg.id where email = :email and senha = :senha ");
 $query_buscar->bindValue(":email", "$postjson[email]");
 $query_buscar->bindValue(":senha", "$senha");
 $query_buscar->execute();
@@ -23,6 +23,7 @@ for ($i=0; $i < count($dados_buscar); $i++) {
         'cpf' => $dados_buscar[$i]['cpf'],  
         'especialidade' => $dados_buscar[$i]['especialidade'],  
         'profileImgId' => $dados_buscar[$i]['profileImgId'],  
+        'imgRandomName' => $dados_buscar[$i]['imgRandomName'],  
     );
 }
 
