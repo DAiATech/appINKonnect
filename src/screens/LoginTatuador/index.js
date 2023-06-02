@@ -35,6 +35,7 @@ export default function LoginTatuador() {
       await AsyncStorage.setItem('@user', JSON.stringify(res.data.result[0].id));
       await AsyncStorage.setItem('@nome', JSON.stringify(res.data.result[0].nome));
       await AsyncStorage.setItem('@email', JSON.stringify(res.data.result[0].email));
+      await AsyncStorage.setItem('@imgProfileNome', JSON.stringify(res.data.result[0].imgRandomName));
       
       navigation.reset({
         index: 0,
