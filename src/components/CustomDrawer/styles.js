@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     container:{
         flex: 1,
         padding: 10,
-        
+        backgroundColor:'#121212',
     },
 
     Pages:{
@@ -43,10 +43,13 @@ export const styles = StyleSheet.create({
 
     footer:{
         padding: 10,
+        backgroundColor:'#121212',
+
     },
 
     logo:{
-        width: 120,
+        
+        width: 100,
         height: 35,
         alignSelf: "center",
         resizeMode: 'contain',

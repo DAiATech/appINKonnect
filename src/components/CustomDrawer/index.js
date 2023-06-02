@@ -1,7 +1,6 @@
 import React from 'react';
 import { Alert, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { MaterialIcons, Entypo } from '@expo/vector-icons';
-
 import { styles } from './styles';
 import { DrawerActions, useNavigation } from '@react-navigation/core';
 
@@ -46,7 +45,7 @@ const CustomDrawer = FC = () => {
                 style={styles.container}
             >
                 <View>
-                    <View style={{ width: '100%', backgroundColor: '#c1c1c1', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 20 }}></View>
+                    <View style={{ width: '100%',  height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 20 }}></View>
 
                     <Image style={styles.perfil} source={require('../../assets/perfil.png')} />
 
@@ -65,7 +64,7 @@ const CustomDrawer = FC = () => {
 
 
                 </View>
-                <View>
+                <View> 
                     <TouchableOpacity
                         style={styles.Pages}
                         onPress={() => {
@@ -92,7 +91,7 @@ const CustomDrawer = FC = () => {
                     Nome
                 </Text>
 
-                <View style={{ width: '90%', backgroundColor: '#c1c1c1', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 5 }}></View>
+                <View style={{ width: '90%',  height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 5 }}></View>
                 <TouchableOpacity
                     onPress={() => logout()}
                     style={styles.Sair}
@@ -100,7 +99,7 @@ const CustomDrawer = FC = () => {
                     <MaterialIcons name="subdirectory-arrow-left" size={25} color="gray" />
                     <Text style={styles.SairText}>Sair da conta</Text>
                 </TouchableOpacity>
-                <View style={{ width: '90%', backgroundColor: '#c1c1c1', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 5 }}></View>
+                <View style={{ width: '90%', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 5, borderTopColor:'#413B33', borderTopWidth:1, }}></View>
                 <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
             </View>
 
