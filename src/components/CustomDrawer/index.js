@@ -30,6 +30,15 @@ const CustomDrawer = FC = () => {
             }
         ])
     }
+    async function getUsuarioDados() {
+        try {
+            const user = await AsyncStorage.getItem('@user');
+            const res = await api.get('tccBackupTeste/BD/login/loginTatuador.php', user);
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <View style={{ flex: 1, }}>
@@ -40,10 +49,6 @@ const CustomDrawer = FC = () => {
                     <View style={{ width: '100%', backgroundColor: '#c1c1c1', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 20 }}></View>
 
                     <Image style={styles.perfil} source={require('../../assets/perfil.png')} />
-                    <Text>
-
-
-                    </Text>
 
                     <TouchableOpacity
                         style={styles.Pages}
@@ -79,9 +84,14 @@ const CustomDrawer = FC = () => {
 
 
 
+
             </ScrollView>
 
             <View style={styles.footer}>
+                <Text style={{ color: "#f0f", fontSize: 20 }}>
+                    Nome
+                </Text>
+
                 <View style={{ width: '90%', backgroundColor: '#c1c1c1', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 5 }}></View>
                 <TouchableOpacity
                     onPress={() => logout()}

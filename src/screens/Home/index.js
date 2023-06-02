@@ -37,14 +37,18 @@ export default function Home() {
     const [dados, setDados] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [refreshing, setRefreshing] = useState(false);
-    const [usu, setUsu] = useState('');
+    const [nome, setNome] = useState(null);
 
-
+    async function setarDados() {
+        const valorNome = await AsyncStorage.getItem('@nome');
+        setNome(valorNome);
+    }
+    setarDados();
     async function listarDados() {
-
         try {
             const user = await AsyncStorage.getItem('@user');
-            const res = await api.get(`tccBackupTeste/bd/dashboard/listar-cards.php?user=${user}`);
+            /* const res = await api.get(`tccBackupTeste/bd/dashboard/listar-cards.php?user=${user}`); */
+            const res = await api.get(`tccBackupTeste/bd/listarDadosUserLogado.php?user=${user}`);
             setDados(res.data);
 
         } catch (error) {
@@ -83,9 +87,10 @@ export default function Home() {
                     <Image style={styles.profilePicture} source={require('../../assets/images/profilePicture.png')} />
                 </View>
             </View>
-
-            {/* Caso queira colocar o feed sem repetir, apagaga a <SearchBar /> e descomenta a ScrollView 
-        */}
+            <View style={{ height: 50, }}>
+                <Text style={{ color: '#f0f', fontSize: 20, }}>Ele é {nome}</Text>
+            </View>
+            {/* Caso queira colocar o feed sem repetir, apagaga a <SearchBar /> e descomenta a ScrollView */}
             <SearchBar />
 
             {/* <ScrollView style={styles.feedContainer}>
