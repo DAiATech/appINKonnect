@@ -16,8 +16,6 @@ $query->execute();
 
 $res = $query->fetchAll(PDO::FETCH_ASSOC);
 
-
-
 for ($i=0; $i < count($res); $i++) { 
       $dados[] = array(
         'id' => $res[$i]['id'],
@@ -28,7 +26,6 @@ for ($i=0; $i < count($res); $i++) {
     );
 
 }
-
 
 if(count($res) > 0){
     $result = json_encode(array('success'=>true, 'resultado'=>@$dados, 'totalItems'=>@count($dados) + ($inicio)));
