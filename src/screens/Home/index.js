@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { styles } from './style';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-
 import url from '../../services/url';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -35,26 +34,28 @@ export default function Home() {
     const navigation = useNavigation();
     const isFocused = useIsFocused();
 
+
     const [dados, setDados] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [refreshing, setRefreshing] = useState(false);
+   
     const [nome, setNome] = useState(null);
     const [email, setEmail] = useState(null);
     const [imgProfile, setImgProfile] = useState(null);
 
-    async function setarDados() {
+    async function setarDados() {        
         const valorNome = await AsyncStorage.getItem('@nome');
         setNome(valorNome);
 
         const nomeUrl = await AsyncStorage.getItem('@email');
         setEmail(nomeUrl.substring(1, nomeUrl.length - 1));
+
         const valorImg = await AsyncStorage.getItem('@imgProfileNome');
         setImgProfile(JSON.parse(valorImg));
 
         console.log({ imgProfile })
     }
     setarDados();
-
 
     async function listarDados() {
         try {
@@ -103,7 +104,7 @@ export default function Home() {
                 <Text style={{ color: '#f0f', fontSize: 20, }}>Email {email}</Text>
                 <Text style={{ color: '#f0f', fontSize: 20, }}>Nome {nome}</Text>
                 <Text style={{ color: '#f0f', fontSize: 20, }}>Imagem{imgProfile}Teste</Text>
-                
+
             </View>
             {/* Caso queira colocar o feed sem repetir, apagaga a <SearchBar /> e descomenta a ScrollView */}
             <SearchBar />

@@ -27,6 +27,7 @@ export default function LoginTatuador() {
 
   async function loginTatuador() {
     const obj = { email, senha };
+    
     const res = await api.post('tccBackupTeste/BD/login/loginTatuador.php', obj);
 
     if (res.data.result === 'Dados Incorretos!') {
@@ -44,8 +45,6 @@ export default function LoginTatuador() {
     }
 
   }
-
-
 
   const checkLogin = async () => {
     const user = await AsyncStorage.getItem('@user');

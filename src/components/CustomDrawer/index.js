@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Alert, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { MaterialIcons, Entypo } from '@expo/vector-icons';
 import { styles } from './styles';
 import { DrawerActions, useNavigation } from '@react-navigation/core';
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import url from '../../services/url';
 const CustomDrawer = FC = () => {
     const navigation = any = useNavigation();
+
+    const [nome, setNome] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [imgProfile, setImgProfile] = useState(null);
+
+    async function setarDados() {
+        const valorNome = await AsyncStorage.getItem('@nome');
+        setNome(valorNome);
+
+        const nomeUrl = await AsyncStorage.getItem('@email');
+        setEmail(nomeUrl.substring(1, nomeUrl.length - 1));
+
+        const valorImg = await AsyncStorage.getItem('@imgProfileNome');
+        setImgProfile(JSON.parse(valorImg));
+
+        console.log({ imgProfile })
+    }
+    setarDados();
 
     async function logout() {
         Alert.alert('Sair', `Você tem certeza que quer sair?`, [
@@ -44,27 +62,18 @@ const CustomDrawer = FC = () => {
             <ScrollView
                 style={styles.container}
             >
-                <View>
-                    <View style={{ width: '100%',  height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 20 }}></View>
+                <View style={{ paddingBottom: 20, borderBottomColor: '#413B33', borderBottomWidth: 3, }}>
+                    <View style={{ width: '100%', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 20, }}></View>
 
-                    <Image style={styles.perfil} source={require('../../assets/perfil.png')} />
-
-                    <TouchableOpacity
-                        style={styles.Pages}
-                        onPress={() => {
-                            navigation.navigate("Usuario")
-                            navigation.navigate("")
-                            navigation.dispatch(DrawerActions.closeDrawer())
-                        }}
-                    >
-                        <MaterialIcons style={styles.iconRegistered} name="people-alt" size={30} color="gray" />
-
-                        <Text style={styles.PagesText}>Perfil</Text>
-                    </TouchableOpacity>
-
+                    <Image style={styles.perfil} source={{
+                        uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + imgProfile
+                    }} />
+                    <Text style={{ color: "#f0f", fontSize: 20 }}>
+                        {nome}
+                    </Text>
 
                 </View>
-                <View> 
+                <View>
                     <TouchableOpacity
                         style={styles.Pages}
                         onPress={() => {
@@ -87,11 +96,9 @@ const CustomDrawer = FC = () => {
             </ScrollView>
 
             <View style={styles.footer}>
-                <Text style={{ color: "#f0f", fontSize: 20 }}>
-                    Nome
-                </Text>
 
-                <View style={{ width: '90%',  height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 5 }}></View>
+
+                <View style={{ width: '90%', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 5 }}></View>
                 <TouchableOpacity
                     onPress={() => logout()}
                     style={styles.Sair}
@@ -99,7 +106,7 @@ const CustomDrawer = FC = () => {
                     <MaterialIcons name="subdirectory-arrow-left" size={25} color="gray" />
                     <Text style={styles.SairText}>Sair da conta</Text>
                 </TouchableOpacity>
-                <View style={{ width: '90%', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 5, borderTopColor:'#413B33', borderTopWidth:1, }}></View>
+                <View style={{ width: '90%', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 5, borderTopColor: '#413B33', borderTopWidth: 1, }}></View>
                 <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
             </View>
 

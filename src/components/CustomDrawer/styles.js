@@ -4,7 +4,6 @@ import fonts from "../../styles/fonts";
 export const styles = StyleSheet.create({
     container:{
         flex: 1,
-        padding: 10,
         backgroundColor:'#121212',
     },
 
@@ -58,10 +57,12 @@ export const styles = StyleSheet.create({
         marginBottom: 10
     },
     perfil:{
-        height: 50,
+        width: 60,
+        height: 60,
+        borderRadius: 50,
         resizeMode: 'contain',
         marginTop: 15,
         marginBottom: 10,
-        marginLeft: 10
+        marginLeft: 10,
     },
 })

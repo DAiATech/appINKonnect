@@ -2,6 +2,7 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
+
 import LoginTatuador from '../screens/LoginTatuador';
 import LoginUsuario from '../screens/LoginUsuario';
 import ChooseUser from '../screens/ChooseUser';
@@ -11,37 +12,42 @@ import Usuario from '../screens/Usuario';
 import NovoUsuario from '../screens/NovoUsuario';
 import cadastrarUsuario from '../screens/CadastrarUsuario';
 import cadastrarTatuador from '../screens/CadastrarTatuador';
+import DrawerRoutes from './drawer.routes';
 
 const Stack = createNativeStackNavigator();
 
 
-function StackNavigator(){
+function StackNavigator() {
+
     return (
-        <Stack.Navigator screenOptions={{headerShown: false}
+        <Stack.Navigator screenOptions={{ headerShown: false }
         }>
-            <Stack.Screen name="ChooseUser" component={ChooseUser}  /> 
-            
-            <Stack.Screen name="LoginUsuario" component={LoginUsuario}  /> 
-            <Stack.Screen name="CadastrarUsuario" component={cadastrarUsuario} /> 
+            <Stack.Screen name="ChooseUser" component={ChooseUser} />
+            <Stack.Screen name="DrawerRoutes" component={DrawerRoutes} />
 
-            <Stack.Screen name="LoginTatuador" component={LoginTatuador}  /> 
-            <Stack.Screen name="CadastrarTatuador" component={cadastrarTatuador}  /> 
-            
+            <Stack.Screen name="LoginUsuario" component={LoginUsuario} />
+            <Stack.Screen name="CadastrarUsuario" component={cadastrarUsuario} />
 
-            <Stack.Screen name="Home" component={AuthRoutes} />      
-           
-            <Stack.Screen name="Usuario" component={Usuario} /> 
-            <Stack.Screen name="NovoUsuario" component={NovoUsuario} /> 
-           
+            <Stack.Screen name="LoginTatuador" component={LoginTatuador} />
+            <Stack.Screen name="CadastrarTatuador" component={cadastrarTatuador} />
+
+
+            <Stack.Screen name="Home" component={AuthRoutes} />
+
+            <Stack.Screen name="Usuario" component={Usuario} />
+            <Stack.Screen name="NovoUsuario" component={NovoUsuario} />
         </Stack.Navigator>
     )
 }
 
-function AppRoutes(){
-    return(
+function AppRoutes() {
+
+    
+    return (
         <NavigationContainer>
-            <StackNavigator />
+                <StackNavigator />
         </NavigationContainer>
+        
     )
 }
 export default AppRoutes;
