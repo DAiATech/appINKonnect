@@ -56,19 +56,16 @@ const CustomDrawer = FC = () => {
             console.log(error)
         }
     }
-
     return (
         <View style={{ flex: 1, }}>
             <ScrollView
                 style={styles.container}
             >
-                <View style={{ paddingBottom: 20, borderBottomColor: '#413B33', borderBottomWidth: 3, }}>
-                    <View style={{ width: '100%', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 20, }}></View>
-
-                    <Image style={styles.perfil} source={{
+                <View style={styles.header}>
+                    <Image style={styles.perfilImg} source={{
                         uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + imgProfile
                     }} />
-                    <Text style={{ color: "#f0f", fontSize: 20 }}>
+                    <Text style={styles.perfilName}>
                         {nome}
                     </Text>
 
@@ -77,7 +74,7 @@ const CustomDrawer = FC = () => {
                     <TouchableOpacity
                         style={styles.Pages}
                         onPress={() => {
-                            navigation.navigate("Usuario")
+                            navigation.navigate("UserProfile")
                             navigation.dispatch(DrawerActions.closeDrawer())
                         }}
                     >
@@ -88,29 +85,19 @@ const CustomDrawer = FC = () => {
 
 
                 </View>
-
-
-
-
-
             </ScrollView>
-
             <View style={styles.footer}>
-
-
-                <View style={{ width: '90%', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 5 }}></View>
                 <TouchableOpacity
                     onPress={() => logout()}
-                    style={styles.Sair}
+                    style={styles.btnSair}
                 >
                     <MaterialIcons name="subdirectory-arrow-left" size={25} color="gray" />
                     <Text style={styles.SairText}>Sair da conta</Text>
                 </TouchableOpacity>
-                <View style={{ width: '90%', height: 0.5, alignSelf: 'center', marginBottom: 5, marginTop: 5, borderTopColor: '#413B33', borderTopWidth: 1, }}></View>
-                <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
+                <View style={styles.footerImgDiv}>
+                    <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
+                </View>
             </View>
-
-
         </View>
     );
 }

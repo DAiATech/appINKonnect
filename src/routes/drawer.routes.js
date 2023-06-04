@@ -17,12 +17,10 @@ const DrawerRoutes = () => {
         screenOptions={{
             headerShown:false,
             drawerStyle:{
-            width: 250,
+            width: 300,
             height: '100%',
-            justifyContent: 'center',
             backgroundColor: '#f2f2f2',
-            zIndex: 11,
-            
+            zIndex: 11,        
             }
         }}
         drawerContent={props => <CustomDrawer />}

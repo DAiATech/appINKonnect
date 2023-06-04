@@ -13,6 +13,7 @@ import NovoUsuario from '../screens/NovoUsuario';
 import cadastrarUsuario from '../screens/CadastrarUsuario';
 import cadastrarTatuador from '../screens/CadastrarTatuador';
 import DrawerRoutes from './drawer.routes';
+import UserProfile from '../screens/UserProfile';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,8 @@ function StackNavigator() {
         }>
             <Stack.Screen name="ChooseUser" component={ChooseUser} />
             <Stack.Screen name="DrawerRoutes" component={DrawerRoutes} />
+
+            <Stack.Screen name="UserProfile" component={UserProfile} />
 
             <Stack.Screen name="LoginUsuario" component={LoginUsuario} />
             <Stack.Screen name="CadastrarUsuario" component={cadastrarUsuario} />
@@ -42,12 +45,12 @@ function StackNavigator() {
 
 function AppRoutes() {
 
-    
+
     return (
         <NavigationContainer>
-                <StackNavigator />
+            <StackNavigator />
         </NavigationContainer>
-        
+
     )
 }
 export default AppRoutes;
