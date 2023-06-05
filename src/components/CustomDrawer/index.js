@@ -3,29 +3,41 @@ import { Alert, Image, ScrollView, Text, TouchableOpacity, View } from 'react-na
 import { MaterialIcons, Entypo } from '@expo/vector-icons';
 import { styles } from './styles';
 import { DrawerActions, useNavigation } from '@react-navigation/core';
-
+import { getUserData } from '../userData';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import url from '../../services/url';
+import { useEffect } from 'react';
+
 const CustomDrawer = FC = () => {
     const navigation = any = useNavigation();
 
     const [nome, setNome] = useState(null);
     const [email, setEmail] = useState(null);
     const [imgProfile, setImgProfile] = useState(null);
+    /*  async function setarDados() {
+         const valorNome = await AsyncStorage.getItem('@nome');
+         setNome(valorNome);
+ 
+         const nomeUrl = await AsyncStorage.getItem('@email');
+         setEmail(nomeUrl.substring(1, nomeUrl.length - 1));
+ 
+         const valorImg = await AsyncStorage.getItem('@imgProfileNome');
+         setImgProfile(JSON.parse(valorImg));
+ 
+         console.log({ imgProfile })
+     }
+     setarDados();
+  */
 
-    async function setarDados() {
-        const valorNome = await AsyncStorage.getItem('@nome');
-        setNome(valorNome);
-
-        const nomeUrl = await AsyncStorage.getItem('@email');
-        setEmail(nomeUrl.substring(1, nomeUrl.length - 1));
-
-        const valorImg = await AsyncStorage.getItem('@imgProfileNome');
-        setImgProfile(JSON.parse(valorImg));
-
-        console.log({ imgProfile })
-    }
-    setarDados();
+     
+     const [userData, setUserData] = useState(null);
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const data = await getUserData();
+            setUserData(data);
+        };
+        fetchUserData();
+    }, []);
 
     async function logout() {
         Alert.alert('Sair', `Você tem certeza que quer sair?`, [
@@ -63,10 +75,10 @@ const CustomDrawer = FC = () => {
             >
                 <View style={styles.header}>
                     <Image style={styles.perfilImg} source={{
-                        uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + imgProfile
+                        uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + userData?.imagem
                     }} />
                     <Text style={styles.perfilName}>
-                        {nome}
+                        {userData?.name}
                     </Text>
 
                 </View>

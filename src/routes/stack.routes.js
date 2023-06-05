@@ -2,7 +2,6 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-
 import LoginTatuador from '../screens/LoginTatuador';
 import LoginUsuario from '../screens/LoginUsuario';
 import ChooseUser from '../screens/ChooseUser';

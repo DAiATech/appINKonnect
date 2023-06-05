@@ -7,27 +7,63 @@ export const styles = StyleSheet.create({
     container: {
         backgroundColor: '#121212',
         flex: 1,
-        padding:10,
     },
+
+    /* Header */
+    containerHeader: {
+        backgroundColor: '#121212',
+        height: 180,
+        paddingTop: 10,
+        marginBottom: 30,
+    },
+    headerBackground: {
+        backgroundColor: '#413B33',
+        width: '100%',
+        height: '80%',
+    },
+    headerFooter: {
+        height: 100,
+        flexDirection: 'row',
+    },
+    headerUserName: {
+        fontSize: 30,
+        fontWeight: '400',
+        color: '#fff',
+        marginLeft: 25,
+        marginTop: 10,
+    },
+    userDataContainer:{
+        flexDirection:'column',        
+    },
+
+    /* Main content */
+    mainConatiner:{
+        width:"100%",
+        height:500,
+        padding:20,
+    },
+    userDataText:{
+        fontSize:22,
+        fontWeight:'400',
+        color:'#fff'
+    },
+
+
     feedContainer: {
         width: '90%',
         alignSelf: 'center',
     },
-    header: {
-        backgroundColor: '#121212',
-        borderBottomWidth: 3,
-        borderBottomColor: "#413B33",
-        height: 60,
-        paddingTop: 10,
-        paddingBottom: 30,
-        marginBottom: 5,
+
+    returnBtn:{
+
     },
 
     menu: {
-        left: 20,
-        height: 40,
+        left: 10,
+        width:100,
+        height: 100,
         alignSelf: "center",
-        left: 20
+        position:'absolute'
     },
 
     logo: {
@@ -39,17 +75,12 @@ export const styles = StyleSheet.create({
     },
 
     profilePicture: {
-        width: 40,
-        height: 40,
+        width: 90,
+        height: 90,
         borderRadius: 50,
         resizeMode: 'contain',
-        right: 20,
-    },
-
-    containerHeader: {
-        flexDirection: 'row',
-        justifyContent: "space-between",
-        alignItems: "center",
+        left: 16,
+        marginTop: -30,
     },
 
     titleTasks: {

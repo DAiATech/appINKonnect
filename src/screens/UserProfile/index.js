@@ -3,11 +3,7 @@ import { styles } from './style';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import url from '../../services/url';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-import Header from '../../components/PagePreSet/Header';
-import SearchBar from '../../components/Feed/SearchBar';
-import Post from '../../components/Feed/Post';
-import { POSTS } from '../../assets/data/posts';
+import { AntDesign, MaterialIcons, MaterialCommunityIcons, Ionicons, FontAwesome, Entypo } from '@expo/vector-icons';
 import {
     SafeAreaView,
     Text,
@@ -22,7 +18,7 @@ import {
 
 } from 'react-native';
 
-import { MaterialIcons } from '@expo/vector-icons';
+import { getUserData } from '../../components/userData';
 import Load from '../../components/Load';
 import { DrawerActions, useNavigation } from '@react-navigation/core';
 import api from '../../services/api';
@@ -32,80 +28,73 @@ import { useIsFocused } from '@react-navigation/native';
 
 export default function UserProfile() {
     const navigation = useNavigation();
-    const isFocused = useIsFocused();
 
-
-    const [dados, setDados] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [refreshing, setRefreshing] = useState(false);
-
-    const [nome, setNome] = useState(null);
-    const [email, setEmail] = useState(null);
-    const [imgProfile, setImgProfile] = useState(null);
-
-    async function setarDados() {
-        const valorNome = await AsyncStorage.getItem('@nome');
-        setNome(valorNome);
-
-        const nomeUrl = await AsyncStorage.getItem('@email');
-        setEmail(nomeUrl.substring(1, nomeUrl.length - 1));
-
-        const valorImg = await AsyncStorage.getItem('@imgProfileNome');
-        setImgProfile(JSON.parse(valorImg));
-
-        console.log({ imgProfile })
-    }
-    setarDados();
-
-    async function listarDados() {
-        try {
-            const user = await AsyncStorage.getItem('@user');
-            /* const res = await api.get(`tccBackupTeste/bd/dashboard/listar-cards.php?user=${user}`); */
-            const res = await api.get(`tccBackupTeste/bd/listarDadosUserLogado.php?user=${user}`);
-            setDados(res.data);
-
-        } catch (error) {
-            console.log("Erro ao Listar " + error);
-        } finally {
-            setIsLoading(false);
-            setRefreshing(false);
-        }
-    }
-
+    /*  const [nome, setNome] = useState(null);
+     const [email, setEmail] = useState(null);
+     const [imgProfile, setImgProfile] = useState(null); 
+ 
+      async function setarDados() {
+         const valorNome = await AsyncStorage.getItem('@nome');
+         setNome(valorNome);
+ 
+         const nomeUrl = await AsyncStorage.getItem('@email');
+         setEmail(nomeUrl.substring(1, nomeUrl.length - 1));
+ 
+         const valorImg = await AsyncStorage.getItem('@imgProfileNome');
+         setImgProfile(JSON.parse(valorImg));
+ 
+         console.log({ imgProfile })
+     }
+     setarDados(); */
+    const [userData, setUserData] = useState(null);
     useEffect(() => {
-        listarDados();
-    }, [isFocused]);
-
-    const onRefresh = () => {
-        setRefreshing(true);
-        listarDados();
-    };
+        const fetchUserData = async () => {
+            const data = await getUserData();
+            setUserData(data);
+        };
+        fetchUserData();
+    }, []);
     return (
         <SafeAreaProvider style={styles.container}>
-
-            {/* Tutorial para FEED DE POSTS do instagram: https://www.youtube.com/watch?v=pQmixUIdLN4*/}
-            <View style={styles.header}>
-                <View style={styles.containerHeader}>
+            <View style={styles.containerHeader}>
+                <View style={styles.headerBackground}>
                     <TouchableOpacity
                         style={styles.menu}
-                        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                        onPress={() => navigation.push("Home")}
                     >
-                        <MaterialIcons name="menu" size={35} color="#EAE0D5" />
+                        <Ionicons name="md-arrow-back-circle-outline" size={35} color="#000" style={styles.returnBtn}/>
                     </TouchableOpacity>
-
-                    <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
-
+                </View>
+                <View style={styles.headerFooter}>
                     <Image style={styles.profilePicture} source={{
-                        uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + imgProfile
+                        uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + userData?.imagem
                     }} />
+                    <Text style={styles.headerUserName}>
+                        {userData?.name}
+                    </Text>
                 </View>
             </View>
-            <View style={{ height: 100, }}>
-                <Text style={{ color: '#f0f', fontSize: 20, }}>Email {email}</Text>
-                <Text style={{ color: '#f0f', fontSize: 20, }}>Nome {nome}</Text>
-                <Text style={{ color: '#f0f', fontSize: 20, }}>Imagem{imgProfile}Teste</Text>
+            <View style={styles.mainConatiner}>
+                <View style={styles.userDataContainer}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
+                        <FontAwesome name="map-marker" size={24} color="white" />
+                        <Text style={styles.userDataText}>Cidade: Registro</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
+                        <Entypo name="drop" size={24} color="white" style={{ marginLeft: -5, }} />
+                        <Text style={styles.userDataText}>Nome: {userData?.name}</Text>
+                    </View>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
+                        <AntDesign name="hearto" size={25} color="white" style={{ marginLeft: -5, }} />
+                        <Text style={styles.userDataText}>Preferências: fineline, Tribal</Text>
+                    </View>
 
-            </View>                         
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
+                        <MaterialCommunityIcons name="cake" size={24} color="white" style={{ marginLeft: -5, }} />
+                        <Text style={styles.userDataText}> Nasceu: 30/02/2005 </Text>
+                    </View>
+                </View>
+            </View>
         </SafeAreaProvider>
     );
 };
