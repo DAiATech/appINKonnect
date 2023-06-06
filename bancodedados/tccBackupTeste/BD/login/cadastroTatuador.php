@@ -7,6 +7,8 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 header('Content-Type: application/json; charset=utf-8');
 
 require_once("../conexao.php");
+include('../url.php');
+
 $tabela = 'tatuador';
 
 /* $postjson = json_decode(file_get_contents('php://input'), true);
@@ -48,7 +50,7 @@ if ($_FILES['photo'])
 
     //MOVE FILE TO SERVER
     $random_name = rand(1000, 1000000) . "-" . $photo_name;
-    $upload_name = "http://10.68.36.112/tccBackupTeste/BD/tatuadores/imgsTatuadores" . $random_name;
+    $upload_name = $url."/tccBackupTeste/BD/tatuadores/imgsTatuadores" . $random_name;
 
     (move_uploaded_file($_FILES["photo"]["tmp_name"], "../tatuadores/imgsTatuadores/" . $random_name));
 

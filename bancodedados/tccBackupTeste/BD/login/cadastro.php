@@ -7,6 +7,7 @@ header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-W
 header('Content-Type: application/json; charset=utf-8');
 
 require_once("../conexao.php");
+include('../url.php');
 $tabela = 'usuarios';
 
 /* $postjson = json_decode(file_get_contents('php://input'), true);
@@ -45,7 +46,7 @@ if ($_FILES['photo'])
 
 	//MOVE FILE TO SERVER
 	$random_name = rand(1000, 1000000) . "-" . $photo_name;
-	$upload_name = "http://26.191.226.215/tccBackupTeste/imagem/" . $random_name;
+	$upload_name = $url . "/tccBackupTeste/imagem/" . $random_name;
 	$upload_name = preg_replace('/s+/', '-', $upload_name);
 
 
