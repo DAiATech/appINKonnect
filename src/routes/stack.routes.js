@@ -13,7 +13,7 @@ import cadastrarUsuario from '../screens/CadastrarUsuario';
 import cadastrarTatuador from '../screens/CadastrarTatuador';
 import DrawerRoutes from './drawer.routes';
 import UserProfile from '../screens/UserProfile';
-
+import CriacaoPost from '../screens/CriacaoPost';
 const Stack = createNativeStackNavigator();
 
 
@@ -25,16 +25,16 @@ function StackNavigator() {
             <Stack.Screen name="ChooseUser" component={ChooseUser} />
             <Stack.Screen name="DrawerRoutes" component={DrawerRoutes} />
 
-            <Stack.Screen name="UserProfile" component={UserProfile} />
-
             <Stack.Screen name="LoginUsuario" component={LoginUsuario} />
             <Stack.Screen name="CadastrarUsuario" component={cadastrarUsuario} />
 
             <Stack.Screen name="LoginTatuador" component={LoginTatuador} />
             <Stack.Screen name="CadastrarTatuador" component={cadastrarTatuador} />
 
-
             <Stack.Screen name="Home" component={AuthRoutes} />
+
+            <Stack.Screen name="UserProfile" component={UserProfile} />
+            <Stack.Screen name="CriacaoPost" component={CriacaoPost} />
 
             <Stack.Screen name="Usuario" component={Usuario} />
             <Stack.Screen name="NovoUsuario" component={NovoUsuario} />

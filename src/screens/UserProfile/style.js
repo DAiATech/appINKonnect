@@ -6,14 +6,12 @@ import colors from "../../styles/colors";
 export const styles = StyleSheet.create({
     container: {
         backgroundColor: '#121212',
-        flex: 1,
     },
 
     /* Header */
     containerHeader: {
         backgroundColor: '#121212',
         height: 180,
-        paddingTop: 10,
         marginBottom: 30,
     },
     headerBackground: {
@@ -26,26 +24,29 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     headerUserName: {
-        fontSize: 30,
-        fontWeight: '400',
+        fontSize: 25,
+        fontWeight: '600',
         color: '#fff',
-        marginLeft: 25,
+        marginLeft: 30,
         marginTop: 10,
     },
-    userDataContainer:{
-        flexDirection:'column',        
-    },
+
 
     /* Main content */
-    mainConatiner:{
-        width:"100%",
-        height:500,
-        padding:20,
+    mainConatiner: {
+        width: "100%",
+        height: 500,
+        padding: 20,
     },
-    userDataText:{
-        fontSize:22,
-        fontWeight:'400',
-        color:'#fff'
+    userDataText: {
+        fontSize: 15,
+        fontWeight: '400',
+        color: '#fff',
+        margin: 10,
+    },
+    userDataContainer: {
+        flexDirection: 'column',
+        paddingLeft: 10,
     },
 
 
@@ -54,16 +55,17 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
     },
 
-    returnBtn:{
+    returnBtn: {
 
     },
 
     menu: {
-        left: 10,
-        width:100,
+        left: 25,
+        top: 25,
+        width: 100,
         height: 100,
         alignSelf: "center",
-        position:'absolute'
+        position: 'absolute',
     },
 
     logo: {

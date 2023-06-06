@@ -26,8 +26,9 @@ export const styles = StyleSheet.create({
 
     },
     perfilName: {
-        color: "#f0f",
+        color: "#EAE0D5",
         fontSize: 20,
+        fontWeight:'600',
     },
 
     /* ..... */

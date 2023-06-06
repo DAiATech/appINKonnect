@@ -3,6 +3,7 @@ import { styles } from './style';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import url from '../../services/url';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AntDesign, MaterialIcons, MaterialCommunityIcons, Ionicons, FontAwesome, Entypo } from '@expo/vector-icons';
 
 import Header from '../../components/PagePreSet/Header';
 import SearchBar from '../../components/Feed/SearchBar';
@@ -21,8 +22,7 @@ import {
     Alert,
 
 } from 'react-native';
-
-import { MaterialIcons } from '@expo/vector-icons';
+import { getUserData } from '../../components/userData';
 import Load from '../../components/Load';
 import { DrawerActions, useNavigation } from '@react-navigation/core';
 import api from '../../services/api';
@@ -38,24 +38,20 @@ export default function Home() {
     const [dados, setDados] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [refreshing, setRefreshing] = useState(false);
-   
-    const [nome, setNome] = useState(null);
-    const [email, setEmail] = useState(null);
-    const [imgProfile, setImgProfile] = useState(null);
 
-    async function setarDados() {        
-        const valorNome = await AsyncStorage.getItem('@nome');
-        setNome(valorNome);
-
-        const nomeUrl = await AsyncStorage.getItem('@email');
-        setEmail(nomeUrl.substring(1, nomeUrl.length - 1));
-
-        const valorImg = await AsyncStorage.getItem('@imgProfileNome');
-        setImgProfile(JSON.parse(valorImg));
-
-        console.log({ imgProfile })
-    }
-    setarDados();
+    /*   async function setarDados() {
+          const valorNome = await AsyncStorage.getItem('@nome');
+          setNome(valorNome);
+  
+          const nomeUrl = await AsyncStorage.getItem('@email');
+          setEmail(nomeUrl.substring(1, nomeUrl.length - 1));
+  
+          const valorImg = await AsyncStorage.getItem('@imgProfileNome');
+          setImgProfile(JSON.parse(valorImg));
+  
+          console.log({ imgProfile })
+      }
+      setarDados(); */
 
     async function listarDados() {
         try {
@@ -71,6 +67,15 @@ export default function Home() {
             setRefreshing(false);
         }
     }
+
+    const [userData, setUserData] = useState(null);
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const data = await getUserData();
+            setUserData(data);
+        };
+        fetchUserData();
+    }, []);
 
     useEffect(() => {
         listarDados();
@@ -96,16 +101,21 @@ export default function Home() {
                     <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
 
                     <Image style={styles.profilePicture} source={{
-                        uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + imgProfile
+                        uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + userData?.imagem
                     }} />
                 </View>
             </View>
             <View style={{ height: 100, }}>
-                <Text style={{ color: '#f0f', fontSize: 20, }}>Email {email}</Text>
-                <Text style={{ color: '#f0f', fontSize: 20, }}>Nome {nome}</Text>
-                <Text style={{ color: '#f0f', fontSize: 20, }}>Imagem{imgProfile}Teste</Text>
+                <Text style={{ color: '#f0f', fontSize: 20, }}>Email {userData?.email}</Text>
+                <Text style={{ color: '#f0f', fontSize: 20, }}>Nome {userData?.name}</Text>
+                <Text style={{ color: '#f0f', fontSize: 20, }}>Imagem{userData?.imagem}Teste</Text>
 
             </View>
+            <TouchableOpacity style={styles.btnCreatePost}
+            onPress={() => navigation.push("CriacaoPost")}
+            >
+                <Ionicons name="add" size={35} color="#C6AC8F"  />
+            </TouchableOpacity>
             {/* Caso queira colocar o feed sem repetir, apagaga a <SearchBar /> e descomenta a ScrollView */}
             <SearchBar />
 

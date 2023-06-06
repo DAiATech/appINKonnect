@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
         flex: 1,
     },
 
+
     header: {
         backgroundColor: '#121212',
         borderBottomWidth: 3,
@@ -14,6 +15,14 @@ export const styles = StyleSheet.create({
         height: 60,
         paddingTop: 10,
         paddingBottom: 30,
+        marginBottom: 5,
+    },
+
+    menu: {
+        left: 20,
+        height: 40,
+        alignSelf: "center",
+        left: 20
     },
 
     logo: {
@@ -21,7 +30,7 @@ export const styles = StyleSheet.create({
         height: 40,
         resizeMode: 'contain',
         alignSelf: "center",
-        marginLeft:'28%',
+
     },
 
     profilePicture: {
@@ -29,13 +38,14 @@ export const styles = StyleSheet.create({
         height: 40,
         borderRadius: 50,
         resizeMode: 'contain',
-        left: 20,
+        right: 20,
     },
 
     containerHeader: {
         flexDirection: 'row',
-        justifyContent: "flex-start",
+        justifyContent: "space-between",
         alignItems: "center",
     },
+
 
 });

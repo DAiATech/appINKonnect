@@ -86,4 +86,4 @@ INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `nivel`, `imagemProfile`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
 
-SELECT * FROM tatuador inner join profileimg ond  profileImgId = profileimg.id;
+SELECT * FROM tatuador inner join profileimg on  profileImgId = profileimg.id;

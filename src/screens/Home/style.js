@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     container: {
         backgroundColor: '#121212',
         flex: 1,
-        padding:10,
+        padding: 10,
     },
     feedContainer: {
         width: '90%',
@@ -193,5 +193,19 @@ export const styles = StyleSheet.create({
         marginRight: 20,
         width: 200,
         marginLeft: 10,
+    },
+    btnCreatePost: {
+        right: 25,
+        bottom: 25,
+        zIndex: 100,
+        width: 70,
+        height: 70,
+        position: 'absolute',
+        justifyContent: "center",
+        alignItems: 'center',
+        backgroundColor: '#1B292F',
+        borderRadius: 50,
+    },
+    btnIcon: {
     }
 })
