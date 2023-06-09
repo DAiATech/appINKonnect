@@ -58,10 +58,6 @@ export default function Usuario() {
     )
   }
 
-
-
-
-
   async function Search() {
     const response = await api.get(`tccBackupTeste/bd/usuarios/buscar.php?buscar=${busca}`);
     setLista(response.data.resultado);

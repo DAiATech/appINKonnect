@@ -20,6 +20,9 @@ import {
     RefreshControl,
     StatusBar,
     Alert,
+    TextInput,
+    Dimensions,
+    FlatList,
 
 } from 'react-native';
 import { getUserData } from '../../components/userData';
@@ -27,13 +30,18 @@ import Load from '../../components/Load';
 import { DrawerActions, useNavigation } from '@react-navigation/core';
 import api from '../../services/api';
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
-
+import Grid from '../../components/Grids/Usuarios'
 import { useIsFocused } from '@react-navigation/native';
 
 export default function Home() {
     const navigation = useNavigation();
     const isFocused = useIsFocused();
 
+    const [busca, setBusca] = useState("");
+    const [lista, setLista] = useState([]);
+    const [page, setPage] = useState(1);
+    const [totalItems, setTotalItems] = useState(0);
+    const [loading, setLoading] = useState(false);
 
     const [dados, setDados] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -52,12 +60,37 @@ export default function Home() {
           console.log({ imgProfile })
       }
       setarDados(); */
+    
+    
+      /* async function loadData() {
+        try {
+            const response = await api.get(`tccBackupTeste/bd/tatuadores/listarPostagens.php?pagina=${page}&limite=10`);
 
+            if (lista.length >= response.data.totalItems) return;
+
+            if (loading === true) return;
+
+            setLoading(true);
+
+            setLista([...lista, ...response.data.resultado]);
+            setPage(page + 1);
+        } catch (error) {
+            console.log(error)
+        }
+    } */
+
+    /* const renderItem = function ({ item }) {
+        return (
+            <Grid
+                data={item}
+            />
+        )
+    }
     async function listarDados() {
         try {
-            const user = await AsyncStorage.getItem('@user');
+            const user = await AsyncStorage.getItem('@user'); */
             /* const res = await api.get(`tccBackupTeste/bd/dashboard/listar-cards.php?user=${user}`); */
-            const res = await api.get(`tccBackupTeste/bd/listarDadosUserLogado.php?user=${user}`);
+           /*  const res = await api.get(`tccBackupTeste/bd/listarDadosUserLogado.php?user=${user}`);
             setDados(res.data);
 
         } catch (error) {
@@ -66,9 +99,9 @@ export default function Home() {
             setIsLoading(false);
             setRefreshing(false);
         }
-    }
+    } */
 
-    const [userData, setUserData] = useState(null);
+   /*  const [userData, setUserData] = useState(null);
     useEffect(() => {
         const fetchUserData = async () => {
             const data = await getUserData();
@@ -84,7 +117,16 @@ export default function Home() {
     const onRefresh = () => {
         setRefreshing(true);
         listarDados();
-    };
+    }; */
+
+   /*  useEffect(() => {
+        loadData();
+    }, [page, totalItems, lista]);
+    async function Search() {
+        const response = await api.get(`tccBackupTeste/bd/usuarios/buscar.php?buscar=${busca}`);
+        setLista(response.data.resultado);
+    } */
+
     return (
         <SafeAreaProvider style={styles.container}>
 
@@ -105,20 +147,49 @@ export default function Home() {
                     }} />
                 </View>
             </View>
-            <View style={{ height: 100, }}>
+            {/* <View style={{ height: 100, }}>
                 <Text style={{ color: '#f0f', fontSize: 20, }}>Email {userData?.email}</Text>
                 <Text style={{ color: '#f0f', fontSize: 20, }}>Nome {userData?.name}</Text>
-                <Text style={{ color: '#f0f', fontSize: 20, }}>Imagem{userData?.imagem}Teste</Text>
+                <Text style={{ color: '#f0f', fontSize: 20, }}>id: {userData?.id}</Text>
 
-            </View>
+            </View> */}
             <TouchableOpacity style={styles.btnCreatePost}
-            onPress={() => navigation.push("CriacaoPost")}
+                onPress={() => navigation.push("CriacaoPost")}
             >
-                <Ionicons name="add" size={35} color="#C6AC8F"  />
+                <Ionicons name="add" size={35} color="#C6AC8F" />
             </TouchableOpacity>
-            {/* Caso queira colocar o feed sem repetir, apagaga a <SearchBar /> e descomenta a ScrollView */}
-            <SearchBar />
 
+            {/* <View style={styles.containerSearch}>
+                <TextInput
+                    style={styles.search}
+                    placeholder="Buscar..."
+                    placeholderTextColor="#C6AC8F"
+                    keyboardType="default"
+                    onChangeText={(busca) => setBusca(busca)}
+                    returnKeyType="search"
+                    onTextInput={() => Search()}
+                />
+
+                <TouchableOpacity
+                    style={styles.iconSearch}
+                    onPress={() => Search()}
+                >
+                    <Ionicons name="search-outline" size={28} color="#C6AC8F" />
+                </TouchableOpacity>
+            </View> */}
+            {/* <View style={{ flex: 1, height: Dimensions.get('window').height + 30, }}> */}
+
+               {/*  <FlatList
+                    data={lista}
+                    renderItem={renderItem}
+                
+                />
+            </View> */}
+
+
+            {/* Caso queira colocar o feed sem repetir, apagaga a <SearchBar /> e descomenta a ScrollView */}
+            {/*             <SearchBar />
+ */}
             {/* <ScrollView style={styles.feedContainer}>
                 {
                     POSTS.map((post, index) => (
@@ -127,8 +198,7 @@ export default function Home() {
                 }
             </ScrollView> */}
 
-            <View style={styles.containerBox}>
-            </View>
+
         </SafeAreaProvider>
 
         /* <View style={{ flex: 1, backgroundColor: "#121212" }}>

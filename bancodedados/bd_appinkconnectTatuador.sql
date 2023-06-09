@@ -87,3 +87,21 @@ INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`, `nivel`, `imagemProfile`
 /*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
 
 SELECT * FROM tatuador inner join profileimg on  profileImgId = profileimg.id;
+
+CREATE TABLE IF NOT EXISTS `PostagensImg` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `imgName` varchar(200) DEFAULT NULL,
+  `imgRandomName` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE postagensTatuadores (
+	id INT(11) PRIMARY KEY AUTO_INCREMENT,
+	descricao VARCHAR(200) NOT NULL,
+	estilo VARCHAR(200) NOT NULL,
+	imgPostId INT(11) NOT null,
+	CONSTRAINT FK_imgPostId FOREIGN KEY (imgPostId) REFERENCES PostagensImg(id)
+);
+
+ALTER TABLE postagenstatuadores ADD
+	CONSTRAINT FK_tatuadorId
+	FOREIGN KEY(tatuadorId) REFERENCES tatuador (id);

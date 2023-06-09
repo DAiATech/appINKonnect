@@ -28,24 +28,6 @@ import { useIsFocused } from '@react-navigation/native';
 
 export default function UserProfile() {
     const navigation = useNavigation();
-
-    /*  const [nome, setNome] = useState(null);
-     const [email, setEmail] = useState(null);
-     const [imgProfile, setImgProfile] = useState(null); 
- 
-      async function setarDados() {
-         const valorNome = await AsyncStorage.getItem('@nome');
-         setNome(valorNome);
- 
-         const nomeUrl = await AsyncStorage.getItem('@email');
-         setEmail(nomeUrl.substring(1, nomeUrl.length - 1));
- 
-         const valorImg = await AsyncStorage.getItem('@imgProfileNome');
-         setImgProfile(JSON.parse(valorImg));
- 
-         console.log({ imgProfile })
-     }
-     setarDados(); */
     const [userData, setUserData] = useState(null);
     useEffect(() => {
         const fetchUserData = async () => {
@@ -62,7 +44,7 @@ export default function UserProfile() {
                         style={styles.menu}
                         onPress={() => navigation.push("Home")}
                     >
-                        <Ionicons name="md-arrow-back-circle-outline" size={35} color="#000" style={styles.returnBtn}/>
+                        <Ionicons name="md-arrow-back-circle-outline" size={35} color="#000" style={styles.returnBtn} />
                     </TouchableOpacity>
                 </View>
                 <View style={styles.headerFooter}>
@@ -70,7 +52,7 @@ export default function UserProfile() {
                         uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + userData?.imagem
                     }} />
                     <Text style={styles.headerUserName}>
-                        {userData?.name}
+                        {userData?.nome}
                     </Text>
                 </View>
             </View>

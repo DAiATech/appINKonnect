@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, } from "react";
 import Routes from './src/routes';
 import FlashMessage from "react-native-flash-message";
 

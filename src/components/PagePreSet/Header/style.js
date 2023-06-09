@@ -30,7 +30,6 @@ export const styles = StyleSheet.create({
         height: 40,
         resizeMode: 'contain',
         alignSelf: "center",
-
     },
 
     profilePicture: {
@@ -38,13 +37,14 @@ export const styles = StyleSheet.create({
         height: 40,
         borderRadius: 50,
         resizeMode: 'contain',
-        right: 20,
+        left: 30,
+        position: 'absolute'
     },
 
     containerHeader: {
         flexDirection: 'row',
-        justifyContent: "space-between",
         alignItems: "center",
+        justifyContent: 'center'
     },
 
 

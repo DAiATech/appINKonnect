@@ -29,8 +29,8 @@ const CustomDrawer = FC = () => {
      setarDados();
   */
 
-     
-     const [userData, setUserData] = useState(null);
+
+    const [userData, setUserData] = useState(null);
     useEffect(() => {
         const fetchUserData = async () => {
             const data = await getUserData();
@@ -78,7 +78,7 @@ const CustomDrawer = FC = () => {
                         uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + userData?.imagem
                     }} />
                     <Text style={styles.perfilName}>
-                        {userData?.name}
+                        {userData?.nome}
                     </Text>
 
                 </View>

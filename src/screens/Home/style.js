@@ -207,5 +207,25 @@ export const styles = StyleSheet.create({
         borderRadius: 50,
     },
     btnIcon: {
-    }
+    },
+    containerSearch: {
+        flexDirection: 'row',
+        marginTop: 10,
+        marginBottom: 25,
+        backgroundColor: '#1B292F',
+        borderRadius: 25,
+    },
+
+
+    search: {
+        padding: 10,
+        width: '90%',
+        color:'#C6AC8F'
+    },
+
+
+
+    iconSearch: {
+        alignSelf: 'center',
+    },
 })

@@ -11,7 +11,7 @@ import Usuario from '../screens/Usuario';
 import NovoUsuario from '../screens/NovoUsuario';
 import cadastrarUsuario from '../screens/CadastrarUsuario';
 import cadastrarTatuador from '../screens/CadastrarTatuador';
-import DrawerRoutes from './drawer.routes';
+import DrawerRoutes from '../components/CustomDrawer';
 import UserProfile from '../screens/UserProfile';
 import CriacaoPost from '../screens/CriacaoPost';
 const Stack = createNativeStackNavigator();

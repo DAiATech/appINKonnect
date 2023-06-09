@@ -31,6 +31,7 @@ export default function LoginTatuador() {
     const obj = { email, senha };
 
     const res = await api.post('tccBackupTeste/BD/login/loginTatuador.php', obj);
+    await AsyncStorage.setItem('@user', JSON.stringify(res.data.result[0].id));
 
     if (res.data.result === 'Dados Incorretos!') {
       Alert.alert('Ops!', 'Dados Incorretos!');
@@ -39,11 +40,9 @@ export default function LoginTatuador() {
       storeUserData(res.data.result[0].id, res.data.result[0].nome, res.data.result[0].email, res.data.result[0].imgRandomName).then(() => {
         console.log('userdatastored');
       })
-         await AsyncStorage.setItem('@user', JSON.stringify(res.data.result[0].id));
-         /* await AsyncStorage.setItem('@nome', JSON.stringify(res.data.result[0].nome));
-         await AsyncStorage.setItem('@email', JSON.stringify(res.data.result[0].email));
-         await AsyncStorage.setItem('@imgProfileNome', JSON.stringify(res.data.result[0].imgRandomName)); */
-
+      /* await AsyncStorage.setItem('@nome', JSON.stringify(res.data.result[0].nome));
+      await AsyncStorage.setItem('@email', JSON.stringify(res.data.result[0].email));
+      await AsyncStorage.setItem('@imgProfileNome', JSON.stringify(res.data.result[0].imgRandomName)); */
       navigation.reset({
         index: 0,
         routes: [{ name: 'Home' }]
