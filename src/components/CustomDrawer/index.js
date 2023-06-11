@@ -94,8 +94,19 @@ const CustomDrawer = FC = () => {
 
                         <Text style={styles.PagesText}>Perfil</Text>
                     </TouchableOpacity>
+                </View>
+                <View>
+                    <TouchableOpacity
+                        style={styles.Pages}
+                        onPress={() => {
+                            navigation.navigate("Usuario")
+                            navigation.dispatch(DrawerActions.closeDrawer())
+                        }}
+                    >
+                        <MaterialIcons style={styles.iconRegistered} name="people-alt" size={30} color="gray" />
 
-
+                        <Text style={styles.PagesText}>Usuario</Text>
+                    </TouchableOpacity>
                 </View>
             </ScrollView>
             <View style={styles.footer}>

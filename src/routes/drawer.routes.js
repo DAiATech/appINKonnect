@@ -8,6 +8,8 @@ import Home from '../screens/Home';
 import Feed from '../screens/Feed';
 import CustomDrawer from '../components/CustomDrawer';
 import CriacaoPost from '../screens/CriacaoPost';
+import UserProfile from '../screens/UserProfile';
+import Usuario from '../screens/Usuario';
 
 const DrawerRoutes = () => {
     
@@ -28,8 +30,15 @@ const DrawerRoutes = () => {
     >
         <Drawer.Screen 
             name="Home"
-            component={Home}
-            
+            component={Home}            
+        />               
+        <Drawer.Screen 
+            name="UserProfile"
+            component={UserProfile}            
+        />               
+        <Drawer.Screen 
+            name="Usuario"
+            component={Usuario}            
         />               
 
     </Drawer.Navigator>

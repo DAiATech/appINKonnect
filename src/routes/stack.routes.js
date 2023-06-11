@@ -14,6 +14,7 @@ import cadastrarTatuador from '../screens/CadastrarTatuador';
 import DrawerRoutes from '../components/CustomDrawer';
 import UserProfile from '../screens/UserProfile';
 import CriacaoPost from '../screens/CriacaoPost';
+import HomeScreen from '../screens/HomeScreen';
 const Stack = createNativeStackNavigator();
 
 
@@ -30,6 +31,7 @@ function StackNavigator() {
 
             <Stack.Screen name="LoginTatuador" component={LoginTatuador} />
             <Stack.Screen name="CadastrarTatuador" component={cadastrarTatuador} />
+            <Stack.Screen name="HomeScreen" component={HomeScreen} />
 
             <Stack.Screen name="Home" component={AuthRoutes} />
 

@@ -17,9 +17,10 @@ const DadosProps = {
     data: {
         id: string,
         nome: string,
-        especialidade: string,
-        profileImgId: string,
-        imgRandomName: string,
+        descricao: string,
+        estilo: string,
+        postagemImgRandomName: string,
+        profileImgRandomName: string,
     }
 
 }
@@ -67,9 +68,7 @@ CardUsuarios = ({ data } = DadosProps) => {
                 <Text style={{ color: '#595858', fontSize: 14, marginTop: 10, alignContent: "center", textAlign: "center" }}>Nenhum Registro Encontrado!</Text>
                 :
 
-                <View style={{ marginBottom: 20, }}>
-
-
+                <View style={{ marginBottom: 20, paddingBottom: 10, borderBottomWidth: 2, borderBottomColor: '#413B33' }}>
                     {/*  <SwipeableRow
                         style={{}}
                         onPressWhatsapp={async () => {
@@ -93,13 +92,13 @@ CardUsuarios = ({ data } = DadosProps) => {
                     <View style={styles.header}>
                         <View style={{ width: 65, }}>
                             <Image style={{ width: 50, height: 50, borderRadius: 25, }} source={{
-                                uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + data.imgRandomName
+                                uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + data.profileImgRandomName
                             }} />
                         </View>
                         <View style={{
-                            flexDirection: 'row', width: '100%', marginTop: 3
+                            flexDirection: 'row', width: '100%', marginTop: 13, marginLeft: -7,
                         }}>
-                            <Text style={{ color: '#fff', fontSize: 15, fontWeight: '600' }}>{data.nome}</Text>
+                            <Text style={{ color: '#fff', fontSize: 18, fontWeight: '600' }}>{data.nome}</Text>
                             <View style={styles.containerButtonFollow}>
                                 <TouchableOpacity
                                     style={styles.buttonFollow}
@@ -127,19 +126,25 @@ CardUsuarios = ({ data } = DadosProps) => {
                     {/*  </TouchableOpacity>/*/}
                     {/* </SwipeableRow> */}
                     <View style={styles.postImageContainer}>
-                        <Image style={styles.postImageImg} source={{ uri: 'https://i.pinimg.com/236x/93/72/36/937236177965925c5a7acdd086afed11.jpg' }} />
+                        <Image style={styles.postImageImg} source={{
+                            uri: url + "/tccBackupTeste/BD/tatuadores/imgsPostagens" + "/" + data.postagemImgRandomName
+                        }} />
                     </View>
                     <View style={styles.postCaptionContainer}>
                         <Text style={styles.captionText}>
                             <Text style={styles.captionUserText} >
-                                {data.nome}:...
+                                {data.nome}:
                             </Text>
-                            {data.profileImgId}
+                            <Text>
+                                {'  '}
+                            </Text>
+                            <Text style={styles.captionUserDescricao}>
+                                {data.descricao}
+                            </Text>
                         </Text>
                     </View>
-                    <Divider style={{ marginTop: 30 }} width={1} orientation='vertical' />
-
-
+                    {/*                     <Divider style={{ marginTop: 30 }} width={1} orientation='vertical' />
+ */}
                 </View >
             }
 
@@ -173,11 +178,11 @@ CardUsuarios = ({ data } = DadosProps) => {
 
                         <View style={styles.Section}>
                             <MaterialIcons style={styles.Icon} name="mail" size={22} color="#c1c1c1" />
-                            <Text style={styles.Entrada}>Especialidade: {data.especialidade}</Text>
+                            <Text style={styles.Entrada}>Especialidade: {data.nome}</Text>
                         </View>
 
 
-                        <TouchableOpacity onPress={() => Linking.openURL(url + 'painel/images/perfil/' + data.foto)}>
+                        <TouchableOpacity onPress={() => Linking.openURL(url + 'painel/images/perfil/' + data.nome)}>
                             {(() => {
                                 if (data.foto != 'sem-foto.jpg' && data.foto != '' && data.foto != null) {
 

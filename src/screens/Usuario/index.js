@@ -1,8 +1,7 @@
-import { useNavigation } from "@react-navigation/core";
+import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { styles } from './style';
 import { ScrollView, ActivityIndicator, FlatList, Image, TextInput, TouchableOpacity, View, Dimensions, Alert } from 'react-native';
-
 import Header from '../../components/Header';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../services/api';
