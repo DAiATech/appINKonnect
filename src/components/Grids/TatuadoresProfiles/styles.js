@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     header: {
         flex: 1,
         flexDirection: 'row',
-        marginTop: 20,
+        marginLeft: 10,
     },
     containerButtonFollow: {
         backgroundColor: '#413B33',
@@ -40,7 +40,7 @@ export const styles = StyleSheet.create({
         height: '100%',
         resizeMode: 'cover',
         borderRadius: 15,
-        marginTop:5,
+        marginTop: 5,
     },
     postFooterContainer: {
         flexDirection: 'row',
@@ -203,7 +203,7 @@ export const styles = StyleSheet.create({
     postCaptionContainer: {
         flexDirection: 'row',
         marginTop: 5,
-        marginStart:10, 
+        marginStart: 10,
     },
     captionText: {
         color: '#fff',
@@ -223,4 +223,8 @@ export const styles = StyleSheet.create({
         color: '#fff',
         fontFamily: fonts.text,
     },
+
+
+    /* s */
+
 })

@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { MaterialIcons } from '@expo/vector-icons';
 import { DrawerActions, useNavigation } from '@react-navigation/core';
 import { styles } from './style';
@@ -20,12 +20,14 @@ const Header = () => {
 
     return (
         <View style={styles.header}>
-            <View style={styles.containerHeader}>               
-                <Image style={styles.logo} source={require('../../../assets/logo_2.png')} />
+            <View style={styles.containerHeader}>
 
                 <Image style={styles.profilePicture} source={{
                     uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + userData?.imagem
                 }} />
+
+                <Image style={styles.logo} source={require('../../../assets/logo_2.png')} />
+
             </View>
         </View>
     );

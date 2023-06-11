@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
-import { Image, TextInput, Modal, Alert, Linking, Text, TouchableOpacity, View, ScrollView } from 'react-native';
+import { Image, TextInput, Modal, FlatList, Alert, Linking, Text, TouchableOpacity, View, ScrollView } from 'react-native';
 import SwipeableRow from '../../Linhas/Usuarios';
 import api from '../../../services/api';
 import url from '../../../services/url';
@@ -25,7 +25,7 @@ const DadosProps = {
 
 }
 
-CardUsuarios = ({ data } = DadosProps) => {
+CardPostagens = ({ data } = DadosProps) => {
 
     const [abrirModal, setAbrirModal] = useState(false);
     const navigation = any = useNavigation();
@@ -108,7 +108,7 @@ CardUsuarios = ({ data } = DadosProps) => {
                                 </TouchableOpacity>
                             </View>
                         </View>
-                    </View>
+                    </View>                    
                     {/* <ScrollView overScrollMode='always' horizontal={true}
                         style={styles.postImagesContainer}>
                         <View style={{ gap: 20, flexDirection: 'row', }}>
@@ -210,4 +210,4 @@ CardUsuarios = ({ data } = DadosProps) => {
     );
 }
 
-export default CardUsuarios;
+export default CardPostagens;

@@ -5,7 +5,7 @@ import { ScrollView, ActivityIndicator, FlatList, Image, Text, TextInput, Toucha
 import Header from '../../components/Header';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import api from '../../services/api';
-import Grid from '../../components/Grids/Tatuadores';
+import Grid from '../../components/Grids/Postagens';
 import url from "../../services/url";
 import { getUserData } from "../../components/userData";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -79,7 +79,6 @@ export default function Home() {
 
     return (
         <View style={styles.container}>
-
             <View style={styles.header}>
                 <View style={styles.containerHeader}>
                     <TouchableOpacity
@@ -127,9 +126,7 @@ export default function Home() {
                     </TouchableOpacity>
                 </View>
 
-
                 <View style={{ flex: 1, height: Dimensions.get('window').height + 30, }}>
-
                     <FlatList
                         data={lista}
                         renderItem={renderItem}
