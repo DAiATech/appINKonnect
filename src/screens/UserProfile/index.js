@@ -64,11 +64,11 @@ export default function UserProfile() {
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
                         <Entypo name="drop" size={24} color="white" style={{ marginLeft: -5, }} />
-                        <Text style={styles.userDataText}>Nome: {userData?.name}</Text>
+                        <Text style={styles.userDataText}>Nome: {userData?.nome}</Text>
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
                         <AntDesign name="hearto" size={25} color="white" style={{ marginLeft: -5, }} />
-                        <Text style={styles.userDataText}>Preferências: fineline, Tribal</Text>
+                        <Text style={styles.userDataText}>Especialidade: {userData?.especialidade}</Text>
                     </View>
 
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
