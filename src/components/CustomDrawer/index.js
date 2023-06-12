@@ -51,7 +51,7 @@ const CustomDrawer = FC = () => {
                 onPress: async () => {
                     try {
                         await AsyncStorage.clear();
-                        navigation.navigate('LoginUsuario');
+                        navigation.navigate('ChooseUser');
                     } catch (error) {
                         Alert.alert('Não foi possivel sair, tente novamente!')
                     }
@@ -92,22 +92,10 @@ const CustomDrawer = FC = () => {
                     >
                         <MaterialIcons style={styles.iconRegistered} name="people-alt" size={30} color="gray" />
 
-                        <Text style={styles.PagesText}>Perfil</Text>
+                        <Text style={styles.PagesText}>Meu Perfil</Text>
                     </TouchableOpacity>
                 </View>
-                <View>
-                    <TouchableOpacity
-                        style={styles.Pages}
-                        onPress={() => {
-                            navigation.navigate("Usuario")
-                            navigation.dispatch(DrawerActions.closeDrawer())
-                        }}
-                    >
-                        <MaterialIcons style={styles.iconRegistered} name="people-alt" size={30} color="gray" />
-
-                        <Text style={styles.PagesText}>Usuario</Text>
-                    </TouchableOpacity>
-                </View>
+                
             </ScrollView>
             <View style={styles.footer}>
                 <TouchableOpacity

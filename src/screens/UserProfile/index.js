@@ -60,7 +60,7 @@ export default function UserProfile() {
                 <View style={styles.userDataContainer}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
                         <FontAwesome name="map-marker" size={24} color="white" />
-                        <Text style={styles.userDataText}>Cidade: Registro</Text>
+                        <Text style={styles.userDataText}>Cidade: ...</Text>
                     </View>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
                         <Entypo name="drop" size={24} color="white" style={{ marginLeft: -5, }} />
@@ -73,7 +73,7 @@ export default function UserProfile() {
 
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
                         <MaterialCommunityIcons name="cake" size={24} color="white" style={{ marginLeft: -5, }} />
-                        <Text style={styles.userDataText}> Nasceu: 30/02/2005 </Text>
+                        <Text style={styles.userDataText}> Nasceu: ... </Text>
                     </View>
                 </View>
             </View>

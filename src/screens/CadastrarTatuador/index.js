@@ -65,6 +65,31 @@ export default function CadastrarTatuador() {
         setImgProfile(formData);
     }
 
+    async function imagePickerCall() {
+        if (Constants.platform.ios) {
+            const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+
+            if (status !== "granted") {
+                alert("Nós precisamos dessa permissão.");
+                return;
+            }
+        }
+
+        const data = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All
+        });
+
+        if (data.canceled) {
+            return;
+        }
+
+        if (!data.uri) {
+            return;
+        }
+
+        setImgProfile(data);
+    }
+
     async function saveCadastro() {
         if (nome == "" || senha == "" || email == "")/* || confirmarSenha != "" && confirmarSenha == senha )*/ {
             Alert({
@@ -196,7 +221,7 @@ export default function CadastrarTatuador() {
                     <View style={{ flexDirection: 'column', marginStart: 60, }}>
                         <TouchableOpacity
                             style={styles.button}
-                            onPress={imageCameraCall}
+                            onPress={imagePickerCall}
                         >
                             <Text styles={styles.buttonText}>Tirar Foto </Text>
                         </TouchableOpacity>
