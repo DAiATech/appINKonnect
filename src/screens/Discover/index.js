@@ -6,7 +6,7 @@ import Header from "../../components/PagePreSet/Header";
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../services/api';
 import Grid from '../../components/Grids/TatuadoresProfiles';
-
+import { getUserData } from "../../components/userData";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Discover() {
@@ -20,10 +20,12 @@ export default function Discover() {
   const [busca, setBusca] = useState("");
   const [onEndReachedCalledDuringMomentum, setMT] = useState(true);
 
-
   async function loadData() {
     try {
-      const response = await api.get(`tccBackupTeste/bd/usuarios/listarTatuadores.php?pagina=${page}&limite=10`);
+      const user = await AsyncStorage.getItem('@user');
+
+      console.log(user);
+      const response = await api.get(`tccBackupTeste/bd/usuarios/listarTatuadores.php?usuarioId=${user}`);
 
       if (lista.length >= response.data.totalItems) return;
 
