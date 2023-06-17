@@ -4,67 +4,7 @@ export const styles = StyleSheet.create({
     container: {
         backgroundColor: '#121212',
         flex: 1,
-        padding: 10,
     },
-
-    /* Header */
-    header: {
-        backgroundColor: '#121212',
-        borderBottomWidth: 3,
-        borderBottomColor: "#413B33",
-        height: 60,
-        paddingTop: 10,
-        paddingBottom: 30,
-        marginBottom: 5,
-    },
-    containerHeader: {
-        flexDirection: 'row',
-        justifyContent: "space-between",
-        alignItems: "center",
-    },
-    menu: {
-        left: 20,
-        height: 40,
-        alignSelf: "center",
-        left: 20
-    },
-    logo: {
-        width: 100,
-        height: 40,
-        resizeMode: 'contain',
-        alignSelf: "center",
-    },
-    profilePicture: {
-        width: 40,
-        height: 40,
-        borderRadius: 50,
-        resizeMode: 'contain',
-        right: 20,
-    },
-
-    /* Main */
-    /* Search: */
-
-
-
-
-    /* Feed */
-
-    btnCreatePost: {
-        right: 25,
-        bottom: 25,
-        zIndex: 100,
-        width: 70,
-        height: 70,
-        position: 'absolute',
-        justifyContent: "center",
-        alignItems: 'center',
-        backgroundColor: '#1B292F',
-        borderRadius: 50,
-    },
-
-
-
 
     box: {
         backgroundColor: '#fafafa',
@@ -82,9 +22,9 @@ export const styles = StyleSheet.create({
         marginBottom: 10,
     },
 
-
-
     search: {
+        borderBottomWidth: 0.6,
+        borderBottomColor: "gray",
         padding: 10,
         width: '90%',
 
@@ -94,17 +34,45 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         marginTop: 10,
         marginBottom: 25,
-        backgroundColor: '#1B292F',
-        borderRadius: 25,
     },
 
     iconSearch: {
         alignSelf: 'center',
+        paddingLeft: 10,
+        top: 10
     },
 
+    header: {
+        backgroundColor: '#fafafa',
+        shadowColor: 'rgba(0, 0, 0, 0.1)',
+        shadowOpacity: 0.1,
+        elevation: 6,
+        shadowRadius: 15,
+        shadowOffset: { width: 1, height: 5 },
+        borderBottomRightRadius: 5,
+        borderBottomLeftRadius: 5,
+        height: 80,
+    },
 
+    menu: {
+        position: 'absolute',
+        left: 20,
+        alignSelf: "center",
+        top: 20,
+    },
 
+    logo: {
+        width: 175,
+        height: 60,
+        alignSelf: "center",
+        marginTop: 5,
+    },
 
+    containerHeader: {
+        flexDirection: 'row',
+        justifyContent: "center",
+        alignItems: "center",
+    },
 
     buttonWhatsapp: {
         width: 100,
@@ -147,5 +115,32 @@ export const styles = StyleSheet.create({
     CartButton: {
         justifyContent: "center",
         alignItems: "center",
+    },
+    containerButtons: {
+        backgroundColor: '#121212',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+        gap: 15,
+        padding: 15,
+        paddingBottom: 20,
+    },
+    btnSearchProfile: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#1B292F',
+        width: 40,
+        height: 40,
+        borderRadius: 50,
+        padding: 10,
+    },
+    btnImage: {
+        width: 40,
+        resizeMode: 'contain',
+    },
+    containerMain: {
+        flex: 1,
+        height: 100,
+        backgroundColor: '#fff',
     },
 })

@@ -14,8 +14,9 @@ import cadastrarTatuador from '../screens/CadastrarTatuador';
 import DrawerRoutes from '../components/CustomDrawer';
 import UserProfile from '../screens/UserProfile';
 import CriacaoPost from '../screens/CriacaoPost';
-/* import HomeScreen from '../screens/HomeScreen';
- */const Stack = createNativeStackNavigator();
+import AuthRoutesCliente from './routesCliente/tab.routes';
+import CalendarioTatuador from '../screens/CalendarioTatuador';
+const Stack = createNativeStackNavigator();
 
 
 function StackNavigator() {
@@ -31,9 +32,11 @@ function StackNavigator() {
 
             <Stack.Screen name="LoginTatuador" component={LoginTatuador} />
             <Stack.Screen name="CadastrarTatuador" component={cadastrarTatuador} />
-{/*             <Stack.Screen name="HomeScreen" component={HomeScreen} />
- */}
+            
+            <Stack.Screen name="CalendarioTatuador" component={CalendarioTatuador} />
+
             <Stack.Screen name="Home" component={AuthRoutes} />
+            <Stack.Screen name="HomeCliente" component={AuthRoutesCliente} />
 
             <Stack.Screen name="UserProfile" component={UserProfile} />
             <Stack.Screen name="CriacaoPost" component={CriacaoPost} />

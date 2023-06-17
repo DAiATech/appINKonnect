@@ -9,18 +9,18 @@ import {
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AntDesign, MaterialIcons, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
-import fonts from '../styles/fonts';
+import fonts from '../../styles/fonts';
 
-import DrawerRoutes from './drawer.routes';
-import Usuario from '../screens/Usuario';
-import Feed from '../screens/Feed';
-import CalendarioTatuador from '../screens/CalendarioTatuador';
-import { DrawerActions, useNavigation } from '@react-navigation/native';
-import Discover from '../screens/Discover';
+import DrawerRoutes from '../drawer.routes';
+import Usuario from '../../screens/Usuario';
+/* import Feed from '../screens/Feed';
+ */import { DrawerActions, useNavigation } from '@react-navigation/native';
+import Discover from '../../screens/Discover';
+import NovoUsuario from '../../screens/NovoUsuario';
 
 const AppTab = createBottomTabNavigator();
 
-const AuthRoutes = () => {
+const AuthRoutesCliente = () => {
     const navigation = useNavigation();
 
     return (
@@ -96,7 +96,7 @@ const AuthRoutes = () => {
                 options={{
                     tabBarIcon: (({ size, color }) => (
                         <MaterialIcons
-                            name="chat"
+                            name="explore"
                             size={size}
                             color={color}
                         />
@@ -140,11 +140,11 @@ const AuthRoutes = () => {
 
             <AppTab.Screen
                 name="Aba 3"
-                component={CalendarioTatuador}
+                component={Usuario}
                 options={{
                     tabBarIcon: (({ size, color }) => (
                         <MaterialCommunityIcons
-                            name="calendar"
+                            name="chat-processing-outline"
                             size={size}
                             color={color}
                         />
@@ -185,9 +185,56 @@ const AuthRoutes = () => {
                 }}
             />
 
-            
+            <AppTab.Screen
+                name="Aba 4"
+                component={Usuario}
+
+                options={{
+                    tabBarIcon: (({ size, color }) => (
+                        <Ionicons
+                            name="camera-outline"
+                            size={size}
+                            color={color}
+                        />
+                    )),
+
+                    tabBarLabel: (({ focused, color }) => (
+                        <View>
+                            <Text
+                                style={focused ? {
+                                    color: color,
+                                    fontFamily: fonts.text,
+                                    fontSize: 12,
+                                    textAlign: 'center',
+
+                                } : {
+                                    color: color,
+                                    fontFamily: fonts.text,
+                                    fontSize: 12
+                                }}
+                            >
+                                Pessoas
+                            </Text>
+                            <View
+                                style={focused ? {
+                                    backgroundColor: color,
+                                    borderColor: color,
+                                    width: 60,
+                                    height: 2,
+                                    borderTopLeftRadius: 5,
+                                    borderTopRightRadius: 5,
+                                    marginTop: 5,
+                                } : {
+                                    height: 2,
+                                }}
+                            >
+                            </View>
+                        </View>
+                    ))
+                }}
+            />
         </AppTab.Navigator>
     )
 }
 
-export default AuthRoutes;
+export default AuthRoutesCliente;

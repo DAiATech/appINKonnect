@@ -27,7 +27,7 @@ export default function LoginUsuario() {
 
   async function login() {
     const obj = { email, senha };
-    const res = await api.post('tccBackupTeste/BD/login/login.php', obj);
+    const res = await api.post('tccBackupTeste/BD/login/loginCliente.php', obj);
 
     if (res.data.result === 'Dados Incorretos!') {
       Alert.alert('Ops!', 'Dados Incorretos!');
@@ -39,13 +39,11 @@ export default function LoginUsuario() {
 
       navigation.reset({
         index: 0,
-        routes: [{ name: 'Home' }]
+        routes: [{ name: 'HomeCliente' }]
       });
     }
 
   }
-
-
 
   const checkLogin = async () => {
     const user = await AsyncStorage.getItem('@user');
