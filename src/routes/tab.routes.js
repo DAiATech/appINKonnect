@@ -16,7 +16,6 @@ import Usuario from '../screens/Usuario';
 import Feed from '../screens/Feed';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import Discover from '../screens/Discover';
-import Grid from '../components/Grids/Usuarios'
 
 const AppTab = createBottomTabNavigator();
 

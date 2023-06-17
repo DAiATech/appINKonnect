@@ -75,8 +75,8 @@ export default function CriacaoPost() {
     }
 
     async function criarPostagem() {
-    
-        var formData = new FormData();        
+
+        var formData = new FormData();
 
         /* dados dos inputs */
         formData.append('descricao', descricao);
@@ -93,7 +93,7 @@ export default function CriacaoPost() {
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
         console.log(formData);
-        
+
         xhr.addEventListener("readystatechange", function () {
             if (this.readyState === 4) {
                 console.log(this.responseText);
@@ -115,62 +115,64 @@ export default function CriacaoPost() {
 
     return (
         <View style={styles.container}>
-            <Header />
+            <ScrollView>
+                <Header />
 
-            <View style={styles.main}>
-                <TouchableOpacity
-                    style={styles.addImageContainer}
-                    onPress={imagePickerCall}
-                >
-                    <Ionicons name="add" size={35} color="#C6AC8F" />
+                <View style={styles.main}>
+                    <TouchableOpacity
+                        style={styles.addImageContainer}
+                        onPress={imagePickerCall}
+                    >
+                        <Ionicons name="add" size={35} color="#C6AC8F" />
 
-                </TouchableOpacity>
-                <View style={styles.imgContainer}>
-                    <Image
-                        source={{
-                            uri: postImg
-                                ? postImg.uri
-                                : ""
-                        }}
-                        style={styles.avatar}
-                    ></Image>
-                </View>
-                <View style={{ width: '50%', flexDirection: 'row', marginBottom: 40, }}>
-                    <View style={{ alignContent: 'flex-end' }}>
-                        <TextInput
-                            style={styles.InputDescricao}
-                            placeholder="Descrição....."
-                            placeholderTextColor='#413B33'
-                            value={descricao}
-                            multiline={true}
-                            onChangeText={(descricao) => setDescricao(descricao)}
-                        />
+                    </TouchableOpacity>
+                    <View style={styles.imgContainer}>
+                        <Image
+                            source={{
+                                uri: postImg
+                                    ? postImg.uri
+                                    : ""
+                            }}
+                            style={styles.avatar}
+                        ></Image>
                     </View>
-                </View>
-
-                <View>
-                    <View style={{ borderRadius: 25, overflow: 'hidden', height: 50, width: 200, }
-                    }>
-                        <Picker
-                            selectedValue={estiloSelecionado}
-                            style={styles.selectEspecialidade}
-                            onValueChange={(itemValue) =>
-                                setEstiloSelecionado(itemValue)
-                            }>
-                            {
-                                estilo.map(esp => {
-                                    return <Picker.Item style={styles.pickerText} label={esp} value={esp} />
-                                })
-                            }
-                        </Picker>
+                    <View style={{ width: '50%', flexDirection: 'row', marginBottom: 40, }}>
+                        <View style={{ alignContent: 'flex-end' }}>
+                            <TextInput
+                                style={styles.InputDescricao}
+                                placeholder="Descrição....."
+                                placeholderTextColor='#413B33'
+                                value={descricao}
+                                multiline={true}
+                                onChangeText={(descricao) => setDescricao(descricao)}
+                            />
+                        </View>
                     </View>
+
+                    <View>
+                        <View style={{ borderRadius: 25, overflow: 'hidden', height: 50, width: 200, }
+                        }>
+                            <Picker
+                                selectedValue={estiloSelecionado}
+                                style={styles.selectEspecialidade}
+                                onValueChange={(itemValue) =>
+                                    setEstiloSelecionado(itemValue)
+                                }>
+                                {
+                                    estilo.map(esp => {
+                                        return <Picker.Item style={styles.pickerText} label={esp} value={esp} />
+                                    })
+                                }
+                            </Picker>
+                        </View>
+                    </View>
+                    <TouchableOpacity
+                        style={styles.btnConfirmar}
+                        onPress={criarPostagem}>
+                        <Text style={styles.btnText}>Postar</Text>
+                    </TouchableOpacity>
                 </View>
-                <TouchableOpacity
-                    style={styles.btnConfirmar}
-                    onPress={criarPostagem}>
-                    <Text style={styles.btnText}>Postar</Text>
-                </TouchableOpacity>
-            </View>
+            </ScrollView>
         </View>
     );
 };
