@@ -10,8 +10,9 @@ import CustomDrawer from '../components/CustomDrawer';
 import CriacaoPost from '../screens/CriacaoPost';
 import UserProfile from '../screens/TatuadorProfile';
 import Usuario from '../screens/Usuario';
+import HomeCliente from '../screens/HomeCliente';
 
-const DrawerRoutes = () => {
+const DrawerRoutesCliente = () => {
     
     const Drawer = createDrawerNavigator();
 
@@ -30,7 +31,7 @@ const DrawerRoutes = () => {
     >
         <Drawer.Screen 
             name="Home"
-            component={Home}            
+            component={HomeCliente}            
         />               
         <Drawer.Screen 
             name="UserProfile"
@@ -45,7 +46,7 @@ const DrawerRoutes = () => {
     )
 }
 
-export default DrawerRoutes;
+export default DrawerRoutesCliente;
 
 const styles = StyleSheet.create({
     container:{

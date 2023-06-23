@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
     Text,
     TouchableOpacity,
@@ -17,12 +16,11 @@ import Feed from '../screens/Feed';
 import CalendarioTatuador from '../screens/CalendarioTatuador';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import Discover from '../screens/Discover';
-
+import ChatTatuador from '../screens/ChatTatuador';
 const AppTab = createBottomTabNavigator();
 
 const AuthRoutes = () => {
     const navigation = useNavigation();
-
     return (
         <AppTab.Navigator
             screenOptions={{
@@ -92,7 +90,7 @@ const AuthRoutes = () => {
 
             <AppTab.Screen
                 name="Discover"
-                component={Discover}
+                component={ChatTatuador}
                 options={{
                     tabBarIcon: (({ size, color }) => (
                         <MaterialIcons

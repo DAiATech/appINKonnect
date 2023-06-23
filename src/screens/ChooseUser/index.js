@@ -29,8 +29,7 @@ export default function ChooseUser() {
                     <View style={styles.containerButtons}>
                         <TouchableOpacity
                             style={styles.buttonClient}
-                            onPress={() => {
-                                alert('Os botoes agora mandam para telas diferentes, só falta criar as telas certinho, se quiser rodar o app sem dar erro é so voltar o caminho do botão do tatuador ass.Arthur');
+                            onPress={() => {                                
                                 navigation.navigate("LoginUsuario")
                                 /* Insert the path that client should follow  */
                             }}

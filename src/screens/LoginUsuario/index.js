@@ -17,7 +17,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //import { Splash } from '../../lotties/Splash'; 
 import api from '../../services/api';
-
+import { storeUserData } from "../../components/userData";
 export default function LoginUsuario() {
   const navigation = useNavigation();
 
@@ -32,10 +32,9 @@ export default function LoginUsuario() {
     if (res.data.result === 'Dados Incorretos!') {
       Alert.alert('Ops!', 'Dados Incorretos!');
     } else {
-      await AsyncStorage.setItem('@user', JSON.stringify(res.data.result[0].id));
-      await AsyncStorage.setItem('@nivel', JSON.stringify(res.data.result[0].nivel));
-      await AsyncStorage.setItem('@nome', JSON.stringify(res.data.result[0].nome));
-      await AsyncStorage.setItem('@email', JSON.stringify(res.data.result[0].email));
+      storeUserData(res.data.result[0].id, res.data.result[0].nome, res.data.result[0].email, res.data.result[0].imagemProfile).then(() => {
+        console.log('userdatastored');
+      })
 
       navigation.reset({
         index: 0,
@@ -93,32 +92,32 @@ export default function LoginUsuario() {
 
       </View>
       <View style={styles.buttons}>
-      <TouchableOpacity
-        style={styles.loginSave}
-        onPress={login}
-      >
-        <Text style={styles.text}>Entrar</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.loginSave}
+          onPress={login}
+        >
+          <Text style={styles.text}>Entrar</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.loginSave}
-        onPress={() => {
-          navigation.navigate("CadastrarUsuario")
-        }}
-      >
-        <Text style={styles.text}>Kadastrar</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.loginSave}
+          onPress={() => {
+            navigation.navigate("CadastrarUsuario")
+          }}
+        >
+          <Text style={styles.text}>Cadastrar</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.loginVoltar} 
-        onPress={() => {
-          navigation.navigate("ChooseUser")
-        }}
-      >
-        <Text style={styles.text}>Voltar</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.loginVoltar}
+          onPress={() => {
+            navigation.navigate("ChooseUser")
+          }}
+        >
+          <Text style={styles.text}>Voltar</Text>
+        </TouchableOpacity>
       </View>
- {/*        achei que um botao de voltar seria legal pra tela de login, mas, acabou que nao gostei muito de como ficou no design, tem que ver com o Igor ass.Arthur */}
+      {/*        achei que um botao de voltar seria legal pra tela de login, mas, acabou que nao gostei muito de como ficou no design, tem que ver com o Igor ass.Arthur */}
       <Image style={styles.logoInk} source={require('../../assets/logo_2.png')} />
 
     </View>

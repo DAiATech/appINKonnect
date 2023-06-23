@@ -11,7 +11,7 @@ import { getUserData } from "../../components/userData";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { DrawerActions } from "@react-navigation/native";
 
-export default function Home() {
+export default function HomeCliente() {
 
     const navigation = useNavigation();
 
@@ -83,28 +83,20 @@ export default function Home() {
                 <View style={styles.containerHeader}>
                     <TouchableOpacity
                         style={styles.menu}
-                        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-                    >
+/*                         onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+ */                    >
                         <MaterialIcons name="menu" size={35} color="#EAE0D5" />
                     </TouchableOpacity>
 
                     <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
 
                     <Image style={styles.profilePicture} source={{
-                        uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + userData?.imagem
+                        uri: url + "/tccBackupTeste/BD/usuarios/imgsUsuarios" + "/" + userData?.imagem
                     }} />
                 </View>
             </View>
-            {/* <View style={{ height: 100, }}>
-                <Text style={{ color: '#f0f', fontSize: 20, }}>Email {userData?.email}</Text>
-                <Text style={{ color: '#f0f', fontSize: 20, }}>Nome {userData?.nome}</Text>
-                <Text style={{ color: '#f0f', fontSize: 20, }}>Imagem{userData?.imagem}Teste</Text>
-            </View> */}
-            <TouchableOpacity style={styles.btnCreatePost}
-                onPress={() => navigation.push("CriacaoPost")}
-            >
-                <Ionicons name="add" size={35} color="#C6AC8F" />
-            </TouchableOpacity>
+            
+            
 
             <View style={{ backgroundColor: '#121212', paddingHorizontal: 15, flex: 1, }}>                
                 <View style={{ flex: 1, height: Dimensions.get('window').height + 30, }}>

@@ -76,7 +76,7 @@ export default function LoginTatuador() {
       <Image style={styles.logo} source={require('../../assets/INKonnect.png')} />
 
       <View style={styles.form}>
-        <Text style={{ fontSize: 20, color: '#f0f' }}>LoginTatuador</Text>
+        
         <Text style={styles.formLabel}>Email:</Text>
         <TextInput
           style={styles.login}
@@ -114,7 +114,7 @@ export default function LoginTatuador() {
       /* onPress={} */
       >
 
-        <Text style={styles.text}>Kadastrar</Text>
+        <Text style={styles.text}>Cadastrar</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.loginVoltar}

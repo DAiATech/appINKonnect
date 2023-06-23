@@ -205,7 +205,7 @@ export default function CadastrarTatuador() {
 
 
             <View style={styles.form}>
-                <Text style={{ fontSize: 20, color: '#f0f' }}>CadastroTatuador</Text>
+                <Text style={{ fontSize: 20, color: '#fff' }}>CadastroTatuador</Text>
                 <View style={{ width: '50%', flexDirection: 'row', marginTop: 50, }}>
                     <View style={{ alignContent: 'flex-end' }}>
                         <Text style={styles.formLabel}>Nome:</Text>
@@ -302,7 +302,7 @@ export default function CadastrarTatuador() {
                 <TouchableOpacity
                     style={styles.loginSave}
                     onPress={saveCadastro}>
-                    <Text style={styles.text}>Kadastrar</Text>
+                    <Text style={styles.text}>Cadastrar</Text>
                 </TouchableOpacity>
 
 

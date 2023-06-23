@@ -61,7 +61,7 @@ export const styles = StyleSheet.create({
 
   },
   logoInk: {
-    width: 200,
+    width: 100,
     resizeMode: 'contain',
     alignSelf: 'center',
   },
@@ -131,7 +131,7 @@ export const styles = StyleSheet.create({
     width: 150,
     height: 50,
     borderRadius: 3,
-    backgroundColor: '#f0f',/* 123ab4 */
+    backgroundColor: '#C6AC8F',/* 123ab4 */
     justifyContent: 'center',
     alignItems: 'center',
   },

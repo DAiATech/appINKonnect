@@ -17,6 +17,9 @@ import Usuario from '../../screens/Usuario';
  */import { DrawerActions, useNavigation } from '@react-navigation/native';
 import Discover from '../../screens/Discover';
 import NovoUsuario from '../../screens/NovoUsuario';
+import ChatCliente from '../../screens/ChatCliente';
+import CameraCliente from '../../screens/CameraCliente';
+import DrawerRoutesCliente from '../drawer.routes.cliente';
 
 const AppTab = createBottomTabNavigator();
 
@@ -43,7 +46,7 @@ const AuthRoutesCliente = () => {
         >
             <AppTab.Screen
                 name="Inicio"
-                component={DrawerRoutes}
+                component={DrawerRoutesCliente}
 
                 options={{
                     tabBarIcon: (({ size, color }) => (
@@ -140,7 +143,7 @@ const AuthRoutesCliente = () => {
 
             <AppTab.Screen
                 name="Aba 3"
-                component={Usuario}
+                component={ChatCliente}
                 options={{
                     tabBarIcon: (({ size, color }) => (
                         <MaterialCommunityIcons
@@ -187,7 +190,7 @@ const AuthRoutesCliente = () => {
 
             <AppTab.Screen
                 name="Aba 4"
-                component={Usuario}
+                component={CameraCliente}
 
                 options={{
                     tabBarIcon: (({ size, color }) => (

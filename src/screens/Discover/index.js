@@ -78,7 +78,8 @@ export default function Discover() {
           <TouchableOpacity
             style={styles.btnSearchProfile}
             onPress={() => {
-              navigation.navigate("...")
+              /* navigation.navigate("...") */
+
               /* Insert the path that client should follow  */
             }}
           /* onPress={} */
@@ -89,7 +90,7 @@ export default function Discover() {
           <TouchableOpacity
             style={styles.btnSearchProfile}
             onPress={() => {
-              navigation.navigate("...")
+              /* navigation.navigate("...") */
               /* Insert the path that client should follow  */
             }}
           /* onPress={} */
@@ -100,7 +101,7 @@ export default function Discover() {
           <TouchableOpacity
             style={styles.btnSearchProfile}
             onPress={() => {
-              navigation.navigate("...")
+              /* navigation.navigate("...") */
               /* Insert the path that client should follow  */
             }}
           /* onPress={} */

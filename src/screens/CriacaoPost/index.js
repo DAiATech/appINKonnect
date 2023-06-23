@@ -140,7 +140,7 @@ export default function CriacaoPost() {
                         <View style={{ alignContent: 'flex-end' }}>
                             <TextInput
                                 style={styles.InputDescricao}
-                                placeholder="Descrição....."
+                                placeholder="....."
                                 placeholderTextColor='#413B33'
                                 value={descricao}
                                 multiline={true}

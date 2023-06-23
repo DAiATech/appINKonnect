@@ -102,7 +102,7 @@ CardPostagens = ({ data } = DadosProps) => {
                             <View style={styles.containerButtonFollow}>
                                 <TouchableOpacity
                                     style={styles.buttonFollow}
-                                    onPress={'...'}
+                                    /* onPress={'...'} */
                                 >
                                     <Ionicons name="add-outline" size={20} color="#fff" />
                                 </TouchableOpacity>

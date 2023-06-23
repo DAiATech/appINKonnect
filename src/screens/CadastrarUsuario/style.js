@@ -13,11 +13,10 @@ export const styles = StyleSheet.create({
 
   form: {
     width: '100%',
-    alignContent: 'space-around',
     borderBottomWidth: 2,
     borderBottomColor: '#413B33',
     paddingBottom: 5,
-    marginTop: 20,
+    marginTop: 50,
   },
 
   formLabel: {
@@ -36,7 +35,7 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: 50,
     paddingLeft: 3,
-    marginBottom: 10,
+    marginBottom: 0,
     marginTop: 8,
   },
 
@@ -62,7 +61,7 @@ export const styles = StyleSheet.create({
 
   },
   logoInk: {
-    width: 200,
+    width: 100,
     resizeMode: 'contain',
     alignSelf: 'center',
   },
@@ -132,15 +131,20 @@ export const styles = StyleSheet.create({
     width: 150,
     height: 50,
     borderRadius: 3,
-    backgroundColor: '#f0f',/* 123ab4 */
+    backgroundColor: '#C6AC8F',/* 123ab4 */
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20,
   },
   imgContainer: {
-    width: 150,
-    height: 150,
+    width: 70,
+    height: 70,
     borderRadius: 100,
+    marginStart:50,
+    marginTop:10,
+  },
+  containerTwoInputs:{
+    flex:1,
+    flexDirection:'row',
   },
 
 })
