@@ -26,7 +26,7 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
 import { useIsFocused } from '@react-navigation/native';
 
-export default function UserProfile() {
+export default function TatuadorProfile() {
     const navigation = useNavigation();
     const [userData, setUserData] = useState(null);
     useEffect(() => {

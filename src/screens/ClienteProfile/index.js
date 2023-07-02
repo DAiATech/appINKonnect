@@ -26,7 +26,7 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 
 import { useIsFocused } from '@react-navigation/native';
 
-export default function UserProfile() {
+export default function ClienteProfile() {
     const navigation = useNavigation();
     const [userData, setUserData] = useState(null);
     useEffect(() => {
@@ -42,14 +42,14 @@ export default function UserProfile() {
                 <View style={styles.headerBackground}>
                     <TouchableOpacity
                         style={styles.menu}
-                        onPress={() => navigation.push("Home")}
+                        onPress={() => navigation.push("HomeCliente")}
                     >
                         <Ionicons name="md-arrow-back-circle-outline" size={35} color="#000" style={styles.returnBtn} />
                     </TouchableOpacity>
                 </View>
                 <View style={styles.headerFooter}>
-                    <Image style={styles.profilePicture} source={{
-                        uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + userData?.imagem
+                    <Image style={styles.profilePicture}source={{
+                        uri: url + "/tccBackupTeste/BD/usuarios/imgsUsuarios" + "/" + userData?.imagem
                     }} />
                     <Text style={styles.headerUserName}>
                         {userData?.nome}
@@ -57,19 +57,11 @@ export default function UserProfile() {
                 </View>
             </View>
             <View style={styles.mainConatiner}>
-                <View style={styles.userDataContainer}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
-                        <FontAwesome name="map-marker" size={24} color="white" />
-                        <Text style={styles.userDataText}>Cidade: Cajati</Text>
-                    </View>
+                <View style={styles.userDataContainer}>                
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
                         <Entypo name="drop" size={24} color="white" style={{ marginLeft: -5, }} />
                         <Text style={styles.userDataText}>Nome: {userData?.nome}</Text>
-                    </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
-                        <AntDesign name="hearto" size={25} color="white" style={{ marginLeft: -5, }} />
-                        <Text style={styles.userDataText}>Especialidade: {userData?.especialidade}</Text>
-                    </View>
+                    </View>                  
 
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
                         <MaterialCommunityIcons name="cake" size={24} color="white" style={{ marginLeft: -5, }} />

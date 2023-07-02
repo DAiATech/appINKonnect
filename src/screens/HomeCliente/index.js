@@ -83,8 +83,8 @@ export default function HomeCliente() {
                 <View style={styles.containerHeader}>
                     <TouchableOpacity
                         style={styles.menu}
-/*                         onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
- */                    >
+                        onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                    >
                         <MaterialIcons name="menu" size={35} color="#EAE0D5" />
                     </TouchableOpacity>
 
@@ -95,10 +95,9 @@ export default function HomeCliente() {
                     }} />
                 </View>
             </View>
-            
-            
 
-            <View style={{ backgroundColor: '#121212', paddingHorizontal: 15, flex: 1, }}>                
+
+            <View style={{ backgroundColor: '#121212', paddingHorizontal: 15, flex: 1, }}>
                 <View style={{ flex: 1, height: Dimensions.get('window').height + 30, }}>
                     <FlatList
                         data={lista}

@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/core';
 
 import Home from '../screens/Home';
 import Feed from '../screens/Feed';
-import CustomDrawer from '../components/CustomDrawer';
+import CustomDrawerCliente from '../components/CustomDrawerCliente';
 import CriacaoPost from '../screens/CriacaoPost';
 import UserProfile from '../screens/TatuadorProfile';
 import Usuario from '../screens/Usuario';
@@ -18,8 +18,10 @@ const DrawerRoutesCliente = () => {
 
     return (
     <Drawer.Navigator 
+    drawerContent={() => <CustomDrawerCliente />}
         screenOptions={{
             headerShown:false,
+            drawerPosition: 'left',
             drawerStyle:{
             width: 300,
             height: '100%',
@@ -27,21 +29,12 @@ const DrawerRoutesCliente = () => {
             zIndex: 11,        
             }
         }}
-        drawerContent={props => <CustomDrawer />}
     >
         <Drawer.Screen 
-            name="Home"
+            name="HomeCliente"
             component={HomeCliente}            
         />               
-        <Drawer.Screen 
-            name="UserProfile"
-            component={UserProfile}            
-        />               
-        <Drawer.Screen 
-            name="Usuario"
-            component={Usuario}            
-        />               
-
+        
     </Drawer.Navigator>
     )
 }

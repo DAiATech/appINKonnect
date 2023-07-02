@@ -26,6 +26,7 @@ export default function CalendarioTatuador() {
                 style={{ borderRadius: 20, borderWidth: 1, height: 350, marginHorizontal: 25, marginTop: 25 }}
                 onDayPress={day => {
                     setSelected(day.dateString);
+                    console.log(selected);
                     setAbrirModal(true);
                 }}
                 markedDates={{

@@ -12,7 +12,9 @@ import NovoUsuario from '../screens/NovoUsuario';
 import cadastrarUsuario from '../screens/CadastrarUsuario';
 import cadastrarTatuador from '../screens/CadastrarTatuador';
 import DrawerRoutes from '../components/CustomDrawer';
-import UserProfile from '../screens/UserProfile';
+import DrawerRoutesCliente from '../components/CustomDrawerCliente';
+import TatuadorProfile from '../screens/TatuadorProfile';
+import ClienteProfile from '../screens/ClienteProfile';
 import CriacaoPost from '../screens/CriacaoPost';
 import AuthRoutesCliente from './routesCliente/tab.routes';
 import CalendarioTatuador from '../screens/CalendarioTatuador';
@@ -26,19 +28,22 @@ function StackNavigator() {
         }>
             <Stack.Screen name="ChooseUser" component={ChooseUser} />
             <Stack.Screen name="DrawerRoutes" component={DrawerRoutes} />
+            <Stack.Screen name="DrawerRoutesCliente" component={DrawerRoutesCliente} />
 
             <Stack.Screen name="LoginUsuario" component={LoginUsuario} />
             <Stack.Screen name="CadastrarUsuario" component={cadastrarUsuario} />
 
             <Stack.Screen name="LoginTatuador" component={LoginTatuador} />
             <Stack.Screen name="CadastrarTatuador" component={cadastrarTatuador} />
-            
+
             <Stack.Screen name="CalendarioTatuador" component={CalendarioTatuador} />
 
             <Stack.Screen name="Home" component={AuthRoutes} />
             <Stack.Screen name="HomeCliente" component={AuthRoutesCliente} />
 
-            <Stack.Screen name="UserProfile" component={UserProfile} />
+            <Stack.Screen name="TatuadorProfile" component={TatuadorProfile} />
+            <Stack.Screen name="ClienteProfile" component={ClienteProfile} />
+
             <Stack.Screen name="CriacaoPost" component={CriacaoPost} />
 
             <Stack.Screen name="Usuario" component={Usuario} />

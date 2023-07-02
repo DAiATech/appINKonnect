@@ -86,7 +86,7 @@ const CustomDrawerCliente = FC = () => {
                     <TouchableOpacity
                         style={styles.Pages}
                         onPress={() => {
-                            navigation.navigate("UserProfile")
+                            navigation.navigate("ClienteProfile")
                             navigation.dispatch(DrawerActions.closeDrawer())
                         }}
                     >
@@ -103,7 +103,7 @@ const CustomDrawerCliente = FC = () => {
                     style={styles.btnSair}
                 >
                     <MaterialIcons name="subdirectory-arrow-left" size={25} color="gray" />
-                    <Text style={styles.SairText}>Sair da cnta</Text>
+                    <Text style={styles.SairText}>Sair da conta</Text>
                 </TouchableOpacity>
                 <View style={styles.footerImgDiv}>
                     <Image style={styles.logo} source={require('../../assets/logo_2.png')} />

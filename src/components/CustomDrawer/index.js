@@ -86,7 +86,7 @@ const CustomDrawer = FC = () => {
                     <TouchableOpacity
                         style={styles.Pages}
                         onPress={() => {
-                            navigation.navigate("UserProfile")
+                            navigation.navigate("TatuadorProfile")
                             navigation.dispatch(DrawerActions.closeDrawer())
                         }}
                     >
