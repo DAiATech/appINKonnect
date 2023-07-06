@@ -45,7 +45,8 @@
     "react-native-svg": "13.4.0",
     "react-native-vector-icons": "^9.2.0",
     "update": "^0.7.4",
-    "upgrade": "^1.1.0"
+    "upgrade": "^1.1.0",
+    "@react-native-community/datetimepicker": "6.7.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

@@ -165,24 +165,21 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 15,
         marginHorizontal: 15,
         paddingBottom: 15,
-        height: 500,
+        height: 600,
         borderRadius: 20,
     },
 
     ImagemModal: {
-
         width: 300,
         height: 300,
-
     },
-
 
     Cliente: {
         fontFamily: fonts.text,
         fontSize: 20,
-        fontWeight:'900',
+        fontWeight: '900',
         marginBottom: 12,
-        alignSelf:'center'
+        alignSelf: 'center'
     },
 
     Valor: {
@@ -203,16 +200,21 @@ export const styles = StyleSheet.create({
     Section: {
         flexDirection: 'row',
         alignItems: "center",
-        marginTop: 5,
+        marginTop: 25,
     },
 
     Entrada: {
         fontFamily: fonts.text,
-        fontSize: 14,
-        marginLeft: 20,
-        color: 'gray',
+        fontSize: 20,
+        fontWeight: '900',
+        marginLeft: 30,
+        color: '#808080 ',
     },
-
+    EntradaValue: {
+        fontFamily: fonts.text,
+        fontSize: 18,
+        color: '#808080 ',
+    },
     Vencimento: {
         fontFamily: fonts.text,
         fontSize: 14,
@@ -248,7 +250,7 @@ export const styles = StyleSheet.create({
 
     Icon: {
         position: 'absolute',
-        left: -5,
+
     },
 
     viewImg: {
@@ -304,21 +306,63 @@ export const styles = StyleSheet.create({
         fontFamily: fonts.text,
     },
 
-    InputDescricao: {
+    InputText: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        color: '#C6AC8F',
+        color: '#000',
         width: 200,
-        height: 120,
         padding: 10,
-        marginBottom: 0,
         borderColor: '#413B33',
-        borderWidth: 3,
+        borderWidth: 1.5,
         fontSize: 20,
-        textAlignVertical: "top",
         borderRadius: 15,
-        marginTop: 50,
 
+    },
+    InputAnotacoes: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        color: '#000',
+        width: 200,
+        height: 80,
+        padding: 10,
+        borderColor: '#413B33',
+        borderWidth: 1.5,
+        fontSize: 20,
+        borderRadius: 15,
+        marginBottom: -45,
+        textAlignVertical: "top",
+    },
+    SectionAnotacao: {
+        flexDirection: 'row',
+        alignItems: "center",
+        marginTop: 25,
+        marginBottom: 35,
+    },
+    profilePicture: {
+        width: 25,
+        height: 25,
+        borderRadius: 50,
+        resizeMode: 'contain',
+        marginRight: -20,
+    },
+    cadastarSessao: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#1B292F',
+        marginTop: 30,
+        width: '100%',
+        height: 50,
+        borderRadius: 10,
+    },
+    btnHoras: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#f0f',
+        marginTop: 30,
+        width: 150,
+        height: 45,
+        borderRadius: 10,
     },
 })
