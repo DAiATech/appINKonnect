@@ -7,7 +7,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import Header from "../../components/PagePreSet/Header";
 import { Ionicons, EvilIcons, MaterialIcons, Octicons, SimpleLineIcons } from '@expo/vector-icons';
 import api from '../../services/api';
-import Grid from '../../components/Grids/TatuadoresProfiles';
+import Grid from '../../components/Grids/Sessoes';
 import { getUserData } from "../../components/userData";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Calendar } from "react-native-calendars";
@@ -15,12 +15,14 @@ import url from "../../services/url";
 export default function CalendarioTatuador() {
 
     const navigation = useNavigation();
-    const [dataSelected, setDataSelected] = useState('');
+    const [dataSelected, setDataSelected] = useState();
+    const [dataSelectedTeste, setDataSelectedTeste] = useState('2023-07-19');
     const [cliente, setCliente] = useState('');
     const [horario, setHorario] = useState('');
     const [valor, setValor] = useState('');
     const [anotacoes, setAnotacoes] = useState();
     const [success, setSuccess] = useState(false);
+
 
     const [showPicker, setShowPicker] = useState(false);
     const [selectedDate, setSelectedDate] = useState(new Date());
@@ -28,9 +30,12 @@ export default function CalendarioTatuador() {
         setShowPicker(true);
     };
 
+
+
     const handlePickerClose = () => {
         setShowPicker(false);
     };
+
 
     const handleDateChange = (event, date) => {
         if (date !== undefined) {
@@ -66,6 +71,8 @@ export default function CalendarioTatuador() {
     }
 
 
+
+
     const [abrirModalHorario, setAbrirModalHorario] = useState(false);
     const [abrirModal, setAbrirModal] = useState(false);
     const [userData, setUserData] = useState(null);
@@ -76,6 +83,14 @@ export default function CalendarioTatuador() {
         };
         fetchUserData();
     }, []);
+
+
+    const datasMarcadas = ['2023-07-27', '2023-07-20'];
+    async function addDataMarcada(d) {
+        const item = d;
+        console.log(item);
+        setDatasMarcadas([...datasMarcadas, item]);
+    }
 
     async function cadastrarSessao() {
         if (cliente == "" || valor == "" || horario == "") {
@@ -110,14 +125,48 @@ export default function CalendarioTatuador() {
                 xhr.send(formData);
                 setSuccess(true);
                 console.log("Acho que deu!");
-                setAbrirModal(!abrirModal)
-
+                setAbrirModal(!abrirModal);
+                navigation.push("Home")
             }
         }
     }
-    return (
-        <View style={styles.container}>
 
+    const [lista, setLista] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [page, setPage] = useState(1);
+    const [totalItems, setTotalItems] = useState(0);
+
+    async function loadData() {
+        try {
+            const response = await api.get(`tccBackupTeste/bd/tatuadores/listarSessoes.php?pagina=${page}&limite=10`);
+
+            if (lista.length >= response.data.totalItems) return;
+
+            if (loading === true) return;
+
+            setLoading(true);
+
+            setLista([...lista, ...response.data.resultado]);
+            setPage(page + 1);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    const renderItem = function ({ item }) {
+        return (
+            <Grid
+                data={item}
+            />
+        )
+    }
+    useEffect(() => {
+        loadData();
+    }, [page, totalItems, lista]);
+
+
+    const getHeader = () => {
+
+        return <>
             <Header />
             <View style={{ paddingBottom: 25, borderBottomWidth: 3, borderBottomColor: '#413B33', }}>
                 <Calendar
@@ -128,7 +177,9 @@ export default function CalendarioTatuador() {
                         setAbrirModal(true);
                     }}
                     markedDates={{
-                        [dataSelected]: { marked: true, selectedDotColor: 'orange' }
+                        [dataSelected]: { marked: true, selectedDotColor: 'orange', selected: true },
+                        [dataSelectedTeste]: { marked: true, selectedDotColor: 'orange', selected: true },
+                        [datasMarcadas]: { marked: true, selectedDotColor: 'orange', selected: true },
                     }}
                     theme={{
                         calendarBackground: '#222',
@@ -138,64 +189,82 @@ export default function CalendarioTatuador() {
                     }}
                 />
             </View>
-            <View>
-                <Modal
-                    visible={abrirModal}
-                    animationType={'fade'}
-                    transparent={true}
-                    onRequestClose={() => {
-                        setAbrirModal(!abrirModal)
-                    }}
-                >
-                    <View style={styles.centralizarModal}>
-                        <View style={styles.CardContainerModal}>
+        </>
+    };
+    const getFooter = () => {
+        return <Text>'Loading...'</Text>;
+    };
+
+
+    return (
+        <View style={styles.container}>
+            <View style={{ backgroundColor: '#121212', paddingHorizontal: 15, flex: 1, }}>
+                <View style={{ flex: 1, }}>
+                    <FlatList
+                        data={lista}
+                        renderItem={renderItem}
+                        ListHeaderComponent={getHeader}/* Usa isso para não precisar colocar flatlist dentro da scrollview */
+                    />
+                </View>
+            </View>
+
+
+
+            <Modal
+                visible={abrirModal}
+                animationType={'fade'}
+                transparent={true}
+                onRequestClose={() => {
+                    setAbrirModal(!abrirModal)
+                }}
+            >
+                <View style={styles.modalCentralizar}>
+                    <View style={styles.modalCard}>
+                        <TouchableOpacity
+                            style={styles.btnModalClose}
+                            onPress={() => setAbrirModal(false)}
+                        >
+                            <EvilIcons name="close" size={25} color="black" />
+                        </TouchableOpacity>
+                        <Text style={styles.ModalTitle}>Nova Sessão</Text>
+
+                        <View style={styles.modalItemSection}>
+                            <Image style={styles.imgProfilePicture} source={{
+                                uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + userData?.imagem
+                            }} />
+                            <Text style={styles.textTatuadorName}>{userData?.nome} </Text>
+                        </View>
+
+                        <View style={styles.modalItemSection}>
+                            <MaterialIcons style={styles.Icon} name="person-search" size={23} color="#000" />
+                            <Text style={styles.textItem}>Cliente: </Text>
+                            <TextInput
+                                style={styles.InputText}
+                                placeholder="..."
+                                placeholderTextColor='#413B33'
+                                value={cliente}
+                                multiline={false}
+                                onChangeText={(cliente) => setCliente(cliente)}
+                            />
+                        </View>
+
+                        <View style={styles.modalItemSection}>
+                            <MaterialIcons style={styles.Icon} name="calendar-today" size={23} color="#000" />
+                            <Text style={styles.textItem}>Data: </Text>
+                            <Text style={styles.textDataValue}>{dataSelected}</Text>
+                        </View>
+
+                        <View style={styles.modalItemSection}>
+                            <MaterialIcons style={styles.Icon} name="lock-clock" size={23} color="#000" />
+                            <Text style={styles.textItem}>Horário: </Text>
                             <TouchableOpacity
-                                style={styles.removeItem}
-                                onPress={() => setAbrirModal(false)}
-                            >
-                                <EvilIcons name="close" size={25} color="black" />
+                                style={styles.btnHoras}
+                                onPress={() => showMode('time')}>
+                                <Text style={styles.textBtnHoras}>{date.getHours()} : {date.getMinutes()}</Text>
+
                             </TouchableOpacity>
-                            <Text style={styles.Cliente}>Nova Sessão</Text>
 
-                            <View style={styles.Section}>
-                                <Image style={styles.profilePicture} source={{
-                                    uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + userData?.imagem
-                                }} />
-                                <Text style={{
-                                    fontSize: 20, fontWeight: '900', marginLeft: 30,
-                                }}>{userData?.nome} </Text>
-                            </View>
-
-                            <View style={styles.Section}>
-                                <MaterialIcons style={styles.Icon} name="person-search" size={23} color="#000" />
-                                <Text style={styles.Entrada}>Cliente: </Text>
-                                <TextInput
-                                    style={styles.InputText}
-                                    placeholder="..."
-                                    placeholderTextColor='#413B33'
-                                    value={cliente}
-                                    multiline={false}
-                                    onChangeText={(cliente) => setCliente(cliente)}
-                                />
-                            </View>
-
-                            <View style={styles.Section}>
-                                <MaterialIcons style={styles.Icon} name="calendar-today" size={23} color="#000" />
-                                <Text style={styles.Entrada}>Data: </Text>
-                                <Text style={styles.EntradaValue}>{dataSelected}</Text>
-                            </View>
-
-                            <View style={styles.Section}>
-                                <MaterialIcons style={styles.Icon} name="lock-clock" size={23} color="#000" />
-                                <Text style={styles.Entrada}>Horário: </Text>
-                                <TouchableOpacity
-                                    style={styles.btnHoras}
-                                    onPress={() => showMode('time')}>
-                                    <Text style={styles.text}>Selecionar</Text>
-
-                                </TouchableOpacity>
-
-                                {/* <TextInput
+                            {/* <TextInput
                                     style={styles.InputText}
                                     placeholder="..."
                                     placeholderTextColor='#413B33'
@@ -203,54 +272,50 @@ export default function CalendarioTatuador() {
                                     multiline={false}
                                     onChangeText={(horario) => setHorario(horario)}
                                 /> */}
-                            </View>
-
-                            {show && (
-                                <DateTimePicker
-                                    testeID='dateTimePicker'
-                                    value={date}
-                                    mode={mode}
-                                    is24Hour={true}
-                                    display='default'
-                                    onChange={onChangeTime}
-                                />)}
-
-                            <View style={styles.Section}>
-                                <MaterialIcons style={styles.Icon} name="attach-money" size={23} color="#000" />
-                                <Text style={styles.Entrada}>Valor: </Text>
-                                <TextInput
-                                    style={styles.InputText}
-                                    placeholder="R$200.50"
-                                    placeholderTextColor='#413B33'
-                                    value={valor}
-                                    multiline={false}
-                                    onChangeText={(valor) => setValor(valor)}
-                                />
-                            </View>
-                            <View style={styles.SectionAnotacao} >
-                                <SimpleLineIcons style={styles.Icon} name="note" size={23} color="#000" />
-                                <Text style={styles.Entrada}>Anotações: </Text>
-                                <TextInput
-                                    style={styles.InputAnotacoes}
-                                    placeholder="Anotações..."
-                                    placeholderTextColor='#413B33'
-                                    value={anotacoes}
-                                    multiline={true}
-                                    onChangeText={(anotacoes) => setAnotacoes(anotacoes)}
-                                />
-                            </View>
-
-                            <TouchableOpacity
-                                style={styles.cadastarSessao}
-                                onPress={cadastrarSessao}>
-                                <Text style={styles.text}>Cadastrar</Text>
-                            </TouchableOpacity>
-
                         </View>
-                    </View>
-                </Modal>
 
-            </View >
+                        {show && (
+                            <DateTimePicker
+                                testeID='dateTimePicker'
+                                value={date}
+                                mode={mode}
+                                is24Hour={true}
+                                display='default'
+                                onChange={onChangeTime}
+                            />)}
+
+                        <View style={styles.modalItemSection}>
+                            <MaterialIcons style={styles.Icon} name="attach-money" size={23} color="#000" />
+                            <Text style={styles.textItem}>Valor: </Text>
+                            <TextInput
+                                style={styles.InputText}
+                                placeholder="R$200.50"
+                                placeholderTextColor='#413B33'
+                                value={valor}
+                                multiline={false}
+                                onChangeText={(valor) => setValor(valor)}
+                            />
+                        </View>
+                        <View style={styles.modalItemSectionAnotacao} >
+                            <SimpleLineIcons style={styles.Icon} name="note" size={23} color="#000" />
+                            <Text style={styles.textItem}>Anotações: </Text>
+                            <TextInput
+                                style={styles.InputAnotacoes}
+                                placeholder="Anotações..."
+                                placeholderTextColor='#413B33'
+                                value={anotacoes}
+                                multiline={true}
+                                onChangeText={(anotacoes) => setAnotacoes(anotacoes)}
+                            />
+                        </View>
+                        <TouchableOpacity
+                            style={styles.btnCadastrar}
+                            onPress={cadastrarSessao}>
+                            <Text style={styles.textBtnCadastrar}>Cadastrar</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
         </View >
     )
 }

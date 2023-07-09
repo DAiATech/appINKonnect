@@ -22,7 +22,6 @@ const DadosProps = {
         postagemImgRandomName: string,
         profileImgRandomName: string,
     }
-
 }
 
 CardPostagens = ({ data } = DadosProps) => {
@@ -102,13 +101,13 @@ CardPostagens = ({ data } = DadosProps) => {
                             <View style={styles.containerButtonFollow}>
                                 <TouchableOpacity
                                     style={styles.buttonFollow}
-                                    /* onPress={'...'} */
+                                /* onPress={'...'} */
                                 >
                                     <Ionicons name="add-outline" size={20} color="#fff" />
                                 </TouchableOpacity>
                             </View>
                         </View>
-                    </View>                    
+                    </View>
                     {/* <ScrollView overScrollMode='always' horizontal={true}
                         style={styles.postImagesContainer}>
                         <View style={{ gap: 20, flexDirection: 'row', }}>
@@ -143,13 +142,9 @@ CardPostagens = ({ data } = DadosProps) => {
                             </Text>
                         </Text>
                     </View>
-                    {/*                     <Divider style={{ marginTop: 30 }} width={1} orientation='vertical' />
- */}
+                    {/*<Divider style={{ marginTop: 30 }} width={1} orientation='vertical' />*/}
                 </View >
             }
-
-
-
             <Modal
                 visible={abrirModal}
                 animationType={'fade'}

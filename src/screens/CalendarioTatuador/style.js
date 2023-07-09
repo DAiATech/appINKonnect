@@ -2,179 +2,15 @@ import { StyleSheet } from "react-native";
 import fonts from "../../styles/fonts";
 
 export const styles = StyleSheet.create({
+    /* Container */
     container: {
         backgroundColor: '#121212',
         flex: 1,
     },
 
-    box: {
-        backgroundColor: '#fafafa',
-        padding: 5,
-        width: '100%',
-        height: 50,
-        justifyContent: "center",
-        marginBottom: 10,
-        zIndex: 11,
-        borderRadius: 10,
-    },
 
-    loading: {
-        marginTop: 10,
-        marginBottom: 10,
-    },
-
-    search: {
-        borderBottomWidth: 0.6,
-        borderBottomColor: "gray",
-        padding: 10,
-        width: '90%',
-
-    },
-
-    containerSearch: {
-        flexDirection: 'row',
-        marginTop: 10,
-        marginBottom: 25,
-    },
-
-    iconSearch: {
-        alignSelf: 'center',
-        paddingLeft: 10,
-        top: 10
-    },
-
-    header: {
-        backgroundColor: '#fafafa',
-        shadowColor: 'rgba(0, 0, 0, 0.1)',
-        shadowOpacity: 0.1,
-        elevation: 6,
-        shadowRadius: 15,
-        shadowOffset: { width: 1, height: 5 },
-        borderBottomRightRadius: 5,
-        borderBottomLeftRadius: 5,
-        height: 80,
-    },
-
-    menu: {
-        position: 'absolute',
-        left: 20,
-        alignSelf: "center",
-        top: 20,
-    },
-
-    logo: {
-        width: 175,
-        height: 60,
-        alignSelf: "center",
-        marginTop: 5,
-    },
-
-    containerHeader: {
-        flexDirection: 'row',
-        justifyContent: "center",
-        alignItems: "center",
-    },
-
-    buttonWhatsapp: {
-        width: 100,
-        height: 42,
-        backgroundColor: "green",
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'relative',
-        left: -3,
-        zIndex: 0,
-        borderTopRightRadius: 10,
-        borderBottomRightRadius: 10,
-    },
-
-    buttonEdit: {
-        width: 100,
-        height: 42,
-        backgroundColor: "#c1c1c1",
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'relative',
-        left: 3,
-        borderRadius: 10,
-        zIndex: 9,
-    },
-
-
-    containerFloat: {
-        bottom: 20,
-        right: 20,
-        position: 'absolute',
-        backgroundColor: 'green',
-        borderRadius: 10,
-        zIndex: 9,
-        width: 50,
-        height: 50,
-        justifyContent: "center",
-    },
-
-    CartButton: {
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    containerButtons: {
-        backgroundColor: '#121212',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        gap: 15,
-        padding: 15,
-        paddingBottom: 20,
-    },
-    btnSearchProfile: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#1B292F',
-        width: 40,
-        height: 40,
-        borderRadius: 50,
-        padding: 10,
-    },
-    btnImage: {
-        width: 40,
-        resizeMode: 'contain',
-    },
-    containerMain: {
-        flex: 1,
-        height: 100,
-        backgroundColor: '#fff',
-    },
-
-
-    centralizarModal: {
-        flex: 1,
-        justifyContent: "center",
-        backgroundColor: 'rgba(0, 0, 0, 0.37)'
-    },
-
-    removeItem: {
-        justifyContent: "flex-end",
-        alignItems: "flex-end",
-        marginRight: 10,
-        marginTop: 15,
-    },
-
-    CardContainerModal: {
-        backgroundColor: '#FAFAFA',
-        marginBottom: 10,
-        paddingHorizontal: 15,
-        marginHorizontal: 15,
-        paddingBottom: 15,
-        height: 600,
-        borderRadius: 20,
-    },
-
-    ImagemModal: {
-        width: 300,
-        height: 300,
-    },
-
-    Cliente: {
+    /* Modal */
+    ModalTitle: {
         fontFamily: fonts.text,
         fontSize: 20,
         fontWeight: '900',
@@ -182,143 +18,113 @@ export const styles = StyleSheet.create({
         alignSelf: 'center'
     },
 
-    Valor: {
-        fontFamily: fonts.text,
-        fontSize: 15,
-        marginBottom: 5,
-        color: '#3d3d3d',
+    modalCentralizar: {
+        flex: 1,
+        justifyContent: "center",
+        backgroundColor: 'rgba(0, 0, 0, 0.37)'
     },
 
-
-    ValorRes: {
-        fontFamily: fonts.text,
-        fontSize: 13,
-        color: '#ff3333',
-        marginBottom: 5,
+    modalCard: {
+        backgroundColor: '#FAFAFA',
+        marginBottom: 10,
+        paddingHorizontal: 15,
+        marginHorizontal: 15,
+        paddingBottom: 15,
+        height: 650,
+        borderRadius: 20,
     },
 
-    Section: {
+    modalItemSection: {
         flexDirection: 'row',
         alignItems: "center",
         marginTop: 25,
     },
 
-    Entrada: {
+    modalItemSectionAnotacao: {
+        flexDirection: 'row',
+        alignItems: "center",
+        marginTop: 25,
+        marginBottom: 35,
+    },
+
+    imgProfilePicture: {
+        width: 25,
+        height: 25,
+        borderRadius: 50,
+        resizeMode: 'contain',
+        marginRight: -20,
+    },
+
+
+    /* Modal Buttons */
+    btnModalClose: {
+        justifyContent: "flex-end",
+        alignItems: "flex-end",
+        marginRight: 10,
+        marginTop: 15,
+    },
+
+    btnCadastrar: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#1B292F',
+        marginTop: 30,
+        width: '100%',
+        height: 50,
+        borderRadius: 10,
+    },
+
+    btnHoras: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#1B292F',
+        marginTop: 30,
+        width: 150,
+        height: 45,
+        borderRadius: 5,
+    },
+
+
+    /* Modal Text */
+    textItem: {
         fontFamily: fonts.text,
         fontSize: 20,
         fontWeight: '900',
         marginLeft: 30,
         color: '#808080 ',
     },
-    EntradaValue: {
+
+    textTatuadorName: {
+        fontSize: 20,
+        fontWeight: '900',
+        marginLeft: 30,
+    },
+
+    textDataValue: {
         fontFamily: fonts.text,
         fontSize: 18,
         color: '#808080 ',
     },
-    Vencimento: {
+
+    textBtnHoras: {
         fontFamily: fonts.text,
-        fontSize: 14,
-        position: 'absolute',
-        right: 0,
-        color: 'gray',
+        fontSize: 18,
+        fontWeight: '900',
+        color: '#C6AC8F',
     },
-
-    Vencimento2: {
-        position: 'absolute',
-        right: 0,
-        height: 35,
-        width: 35,
-        top: -50,
-    },
-
-
-    Footer: {
-        alignItems: "center",
-        justifyContent: "center",
-        borderTopWidth: 0.5,
-        borderTopColor: '#c1c1c1',
-        padding: 7,
-        marginTop: 12,
-        width: '95%',
-        alignSelf: "center",
-    },
-
-    FooterText: {
+    textBtnCadastrar: {
         fontFamily: fonts.text,
-        fontSize: 16,
+        fontSize: 18,
+        fontWeight: '900',
+        color: '#C6AC8F',
     },
 
     Icon: {
         position: 'absolute',
-
     },
 
-    viewImg: {
 
-        justifyContent: "center",
-        alignItems: "center",
-        margin: 10,
-    },
-
-    textoAbrir: {
-        fontFamily: fonts.text,
-        fontSize: 13,
-        color: 'gray',
-    },
-
-    TextInput: {
-        borderWidth: 0.5,
-        borderColor: '#000',
-        width: '100%',
-        borderRadius: 5,
-        padding: 10,
-        marginBottom: 5,
-        justifyContent: "center",
-        marginHorizontal: 5,
-        alignSelf: "center",
-        backgroundColor: '#fff',
-        height: 45,
-    },
-
-    TitleInputs: {
-        fontFamily: fonts.text,
-        fontSize: 18,
-        color: "#000",
-        marginLeft: 35,
-        marginTop: 15,
-    },
-
-    Button: {
-        backgroundColor: '#328fad',
-        width: '60%',
-        alignSelf: "center",
-        height: 50,
-        justifyContent: "center",
-        alignItems: "center",
-        borderRadius: 10,
-        marginTop: 20,
-        marginBottom: 20,
-    },
-
-    ButtonText: {
-        fontSize: 20,
-        color: '#fff',
-        fontFamily: fonts.text,
-    },
-
-    InputText: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        color: '#000',
-        width: 200,
-        padding: 10,
-        borderColor: '#413B33',
-        borderWidth: 1.5,
-        fontSize: 20,
-        borderRadius: 15,
-
-    },
+    /* Modal Inputs */
     InputAnotacoes: {
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -334,35 +140,18 @@ export const styles = StyleSheet.create({
         marginBottom: -45,
         textAlignVertical: "top",
     },
-    SectionAnotacao: {
+
+    InputText: {
         flexDirection: 'row',
-        alignItems: "center",
-        marginTop: 25,
-        marginBottom: 35,
-    },
-    profilePicture: {
-        width: 25,
-        height: 25,
-        borderRadius: 50,
-        resizeMode: 'contain',
-        marginRight: -20,
-    },
-    cadastarSessao: {
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: '#1B292F',
-        marginTop: 30,
-        width: '100%',
-        height: 50,
-        borderRadius: 10,
-    },
-    btnHoras: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#f0f',
-        marginTop: 30,
-        width: 150,
-        height: 45,
-        borderRadius: 10,
+        color: '#000',
+        width: 200,
+        padding: 10,
+        borderColor: '#413B33',
+        borderWidth: 1.5,
+        fontSize: 20,
+        borderRadius: 15,
+
     },
 })
