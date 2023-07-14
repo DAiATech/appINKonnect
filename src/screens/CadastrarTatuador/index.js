@@ -206,8 +206,8 @@ export default function CadastrarTatuador() {
 
             <View style={styles.form}>
                 <Text style={{ fontSize: 20, color: '#fff' }}>CadastroTatuador</Text>
-                <View style={{ width: '50%', flexDirection: 'row', marginTop: 50, }}>
-                    <View style={{ alignContent: 'flex-end' }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 50, /* backgroundColor: '#0fff' */ }}>
+                    <View style={{ alignContent: 'flex-end',  width: '50%'  }}>
                         <Text style={styles.formLabel}>Nome:</Text>
                         <TextInput
                             style={styles.login}
@@ -218,7 +218,7 @@ export default function CadastrarTatuador() {
                         />
                     </View>
 
-                    <View style={{ flexDirection: 'column', marginStart: 60, }}>
+                    <View style={{ flexDirection: 'column',   width: '50%' }}>
                         <TouchableOpacity
                             style={styles.button}
                             onPress={imagePickerCall}
@@ -255,7 +255,7 @@ export default function CadastrarTatuador() {
                     onChangeText={(senha) => setSenha(senha)}
                 />
 
-                <View style={{ width: '100%', flexDirection: 'row' }}>
+                <View style={{ width: '100%', flexDirection: 'row', }}>
                     <View style={{ width: '50%' }}>
                         <Text style={styles.formLabel}>CPF:</Text>
                         <TextInput

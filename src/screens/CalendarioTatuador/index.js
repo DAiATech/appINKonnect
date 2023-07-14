@@ -138,7 +138,10 @@ export default function CalendarioTatuador() {
 
     async function loadData() {
         try {
-            const response = await api.get(`tccBackupTeste/bd/tatuadores/listarSessoes.php?pagina=${page}&limite=10`);
+            const user = await AsyncStorage.getItem('@user');
+            console.log(user);
+
+            const response = await api.get(`tccBackupTeste/bd/tatuadores/listarSessoes.php?pagina=${page}&limite=10&tatuador=${user}`);
 
             if (lista.length >= response.data.totalItems) return;
 

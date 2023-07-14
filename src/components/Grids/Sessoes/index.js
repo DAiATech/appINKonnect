@@ -31,7 +31,7 @@ CardSessoes = ({ data } = DadosProps) => {
     return (
         <>
             {data.id === undefined && data.nome === undefined ?
-                <Text style={{ color: '#595858', fontSize: 14, marginTop: 10, alignContent: "center", textAlign: "center" }}>Nenhum Registro Encontrado!</Text>
+                <Text style={{ color: '#595858', fontSize: 14, marginTop: 10, alignContent: "center", textAlign: "center" }}>Nenhuma sessão marcada!</Text>
                 :
 
                 <View style={{ marginBottom: 20, paddingBottom: 10, paddingTop: 10, borderBottomWidth: 2, borderBottomColor: '#413B33',  }}>

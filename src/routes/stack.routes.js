@@ -18,6 +18,7 @@ import ClienteProfile from '../screens/ClienteProfile';
 import CriacaoPost from '../screens/CriacaoPost';
 import AuthRoutesCliente from './routesCliente/tab.routes';
 import CalendarioTatuador from '../screens/CalendarioTatuador';
+import MapaScreen from '../screens/MapaUsuario';
 const Stack = createNativeStackNavigator();
 
 
@@ -45,6 +46,7 @@ function StackNavigator() {
             <Stack.Screen name="ClienteProfile" component={ClienteProfile} />
 
             <Stack.Screen name="CriacaoPost" component={CriacaoPost} />
+            <Stack.Screen name="MapaScreen" component={MapaScreen} />
 
             <Stack.Screen name="Usuario" component={Usuario} />
             <Stack.Screen name="NovoUsuario" component={NovoUsuario} />

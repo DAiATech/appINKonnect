@@ -2,7 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { styles } from './style';
 import { ScrollView, ActivityIndicator, FlatList, Image, TextInput, TouchableOpacity, View, Dimensions, Alert } from 'react-native';
-import Header from "../../components/PagePreSet/Header";
+import HeaderUsuario from "../../components/PagePreSet/HeaderUsuario";
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../services/api';
 import Grid from '../../components/Grids/TatuadoresProfiles';
@@ -69,7 +69,7 @@ export default function CameraCliente() {
   return (
     <View style={styles.container}>
 
-      <Header />
+      <HeaderUsuario />
 
       
 

@@ -2,7 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { styles } from './style';
 import { ScrollView, ActivityIndicator, FlatList, Image, TextInput, TouchableOpacity, View, Dimensions, Alert } from 'react-native';
-import Header from "../../components/PagePreSet/Header";
+import HeaderUsuario from "../../components/PagePreSet/HeaderUsuario";
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../services/api';
 import Grid from '../../components/Grids/TatuadoresProfiles';
@@ -71,12 +71,12 @@ export default function Discover() {
   return (
     <View style={styles.container}>
 
-      <Header />
+      <HeaderUsuario />
 
       <View style={{ backgroundColor: '#121212', flex: 1, }}>
         <View style={styles.containerButtons}>
           <TouchableOpacity
-            style={styles.btnSearchProfile}
+            style={styles.btnItens}
             onPress={() => {
               /* navigation.navigate("...") */
 
@@ -88,9 +88,9 @@ export default function Discover() {
 
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.btnSearchProfile}
+            style={styles.btnItens}
             onPress={() => {
-              /* navigation.navigate("...") */
+              navigation.navigate("MapaScreen")
               /* Insert the path that client should follow  */
             }}
           /* onPress={} */
@@ -99,7 +99,7 @@ export default function Discover() {
 
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.btnSearchProfile}
+            style={styles.btnItens}
             onPress={() => {
               /* navigation.navigate("...") */
               /* Insert the path that client should follow  */
