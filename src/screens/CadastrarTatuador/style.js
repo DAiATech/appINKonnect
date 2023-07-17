@@ -10,18 +10,46 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-around',
     backgroundColor: "#121212",
   },
+  btnData: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#1B292F',
+    marginTop: 30,
+    width: 150,
+    height: 45,
+    borderRadius: 5,
+},
+textBtnData: {
+  fontFamily: fonts.text,
+  fontSize: 18,
+  fontWeight: '900',
+  color: '#C6AC8F',
+},
 
   form: {
     width: '100%',
     borderBottomWidth: 2,
     borderBottomColor: '#413B33',
     paddingBottom: 5,
-    marginTop: 50,
+    marginTop: 20,
   },
 
   formLabel: {
     color: '#EAE0D5',
     marginTop: 20,
+    fontWeight: '600',
+    fontSize: 20,
+  },
+
+  formLabelEmail:{
+    color: '#EAE0D5',
+    marginTop: 0,
+    fontWeight: '600',
+    fontSize: 20,
+  },
+  formLabelData:{
+    color: '#EAE0D5',
+    marginTop: 0,
     fontWeight: '600',
     fontSize: 20,
   },

@@ -65,7 +65,7 @@ export default function ClienteProfile() {
 
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
                         <MaterialCommunityIcons name="cake" size={24} color="white" style={{ marginLeft: -5, }} />
-                        <Text style={styles.userDataText}> Nasceu: 06/10/1998 </Text>
+                        <Text style={styles.userDataText}> Nasceu: dd/mm/yyyy </Text>
                     </View>
                 </View>
             </View>

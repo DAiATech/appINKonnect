@@ -37,8 +37,9 @@ export default function LoginTatuador() {
       Alert.alert('Ops!', 'Dados Incorretos!');
     } else {
 
-      storeUserData(res.data.result[0].id, res.data.result[0].nome, res.data.result[0].email, res.data.result[0].imgRandomName, res.data.result[0].especialidade).then(() => {
+      storeUserData(res.data.result[0].id, res.data.result[0].nome, res.data.result[0].email, res.data.result[0].imgRandomName, res.data.result[0].especialidade, res.data.result[0].dataNascimento,res.data.result[0].estudio, ).then(() => {
         console.log('userdatastored');
+        console.log(res.data.result[0].estudio)
       })
       /* await AsyncStorage.setItem('@nome', JSON.stringify(res.data.result[0].nome));
       await AsyncStorage.setItem('@email', JSON.stringify(res.data.result[0].email));

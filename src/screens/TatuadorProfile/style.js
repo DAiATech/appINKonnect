@@ -23,20 +23,37 @@ export const styles = StyleSheet.create({
         height: 100,
         flexDirection: 'row',
     },
+    headerContainerNameBtn: {
+        flexDirection: 'column',
+        gap: 15,
+        left: 50,
+        top: 10,
+    },
     headerUserName: {
-        fontSize: 25,
+        fontSize: 27,
         fontWeight: '600',
         color: '#fff',
-        marginLeft: 30,
-        marginTop: 10,
     },
-
+    HeaderBtnEstudio: {
+        width: 150,
+        height: 50,
+        borderRadius: 20,
+        backgroundColor: '#1B292F',
+        justifyContent: 'center'
+    },
+    HeaderBtnEstudioText: {
+        alignSelf: 'center',
+        color: '#C6AC8F',
+        fontSize: 15,
+        fontWeight: '600',
+    },
 
     /* Main content */
     mainConatiner: {
         width: "100%",
         height: 500,
         padding: 20,
+        top: 25,
     },
     userDataText: {
         fontSize: 15,
@@ -81,7 +98,7 @@ export const styles = StyleSheet.create({
         height: 90,
         borderRadius: 50,
         resizeMode: 'contain',
-        left: 16,
+        left: 20,
         marginTop: -30,
     },
 
@@ -227,5 +244,86 @@ export const styles = StyleSheet.create({
         marginRight: 20,
         width: 200,
         marginLeft: 10,
-    }
+    },
+
+    /* Modal: */
+    modalCentralizar: {
+        flex: 1,
+        justifyContent: "center",
+        backgroundColor: 'rgba(0, 0, 0, 0.37)'
+    },
+    modalCard: {
+        backgroundColor: '#FAFAFA',
+        marginBottom: 10,
+        paddingHorizontal: 15,
+        marginHorizontal: 15,
+        paddingBottom: 15,
+        height: 450,
+        borderRadius: 20,
+    },
+    btnModalClose: {
+        justifyContent: "flex-end",
+        alignItems: "flex-end",
+        marginRight: 10,
+        marginTop: 15,
+    },
+    ModalTitle: {
+        fontFamily: fonts.text,
+        fontSize: 20,
+        fontWeight: '900',
+        marginBottom: 12,
+        alignSelf: 'center'
+    },
+    modalItemSection: {
+        flexDirection: 'row',
+        alignItems: "center",
+        marginTop: 25,
+    },
+    modalItemSectionSearch: {
+        flexDirection: 'row',
+        alignItems: "flex-start",
+        marginTop: 25,
+    },
+    InputText: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        color: '#000',
+        width: 100,
+        padding: 10,
+        borderColor: '#413B33',
+        borderWidth: 1.5,
+        fontSize: 20,
+        borderRadius: 15,
+
+    },
+    textItem: {
+        fontFamily: fonts.text,
+        fontSize: 20,
+        fontWeight: '900',
+        marginLeft: 30,
+        color: '#808080',
+    },
+    Icon: {
+        position: 'absolute',
+    },
+    search:{
+        width:200,
+        height:200
+    },  
+    btnCadastrar: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#1B292F',
+        width: '100%',
+        height: 50,
+        borderRadius: 10,
+        marginTop:10,
+    },
+    textBtnCadastrar: {
+        fontFamily: fonts.text,
+        fontSize: 18,
+        fontWeight: '900',
+        color: '#C6AC8F',
+    },
 })

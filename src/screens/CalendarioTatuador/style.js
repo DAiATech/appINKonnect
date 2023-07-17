@@ -91,7 +91,7 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '900',
         marginLeft: 30,
-        color: '#808080 ',
+        color: '#808080',
     },
 
     textTatuadorName: {
@@ -103,7 +103,7 @@ export const styles = StyleSheet.create({
     textDataValue: {
         fontFamily: fonts.text,
         fontSize: 18,
-        color: '#808080 ',
+        color: '#808080',
     },
 
     textBtnHoras: {
