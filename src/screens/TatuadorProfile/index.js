@@ -40,34 +40,14 @@ export default function TatuadorProfile() {
     const [nomeEndereco, setNomeEndereco] = useState(null);
     const [success, setSuccess] = useState(false);
 
-
-    const [userData, setUserData] = useState(null);
-    useEffect(() => {
-        const fetchUserData = async () => {
-            const data = await getUserData();
-            setUserData(data);
-        };
-        fetchUserData();
-    }, []);
-
-
     const [showBtn, setShowBtn] = useState(false);
 
-    async function checkPerfil() {
-        if (userData?.estudio == null) {
-            console.log('Perfil não conectou a um estudio');
-            console.log(userData?.estudio);
-            setShowBtn(true)
-        }
-        else {
-            setShowBtn(false)
-        }
-    }
+
 
     const [abrirModal, setAbrirModal] = useState(false);
 
 
-    /* Cadastrar estudio: */
+    /* Cadastrar etudio: */
     async function cadastrarEstudio() {
         if (nome = "") {
             Alert({
@@ -105,16 +85,36 @@ export default function TatuadorProfile() {
                 xhr.open("POST", url + "/tccBackupTeste/bd/tatuadores/cadastrarEstudio.php");
                 xhr.send(formData);
                 setSuccess(true);
+                setShowBtn(false)
                 console.log("Acho que deu!");
                 setAbrirModal(!abrirModal);
             }
         }
     }
 
-    useEffect(() => {
-        checkPerfil();
-    }, []);
+    const [userData, setUserData] = useState(null);
 
+    async function checkPerfil() {
+        if (userData?.estudio == null) {
+            console.log('Perfil não conectou a um estudio');
+            console.log('o estudio é ' + (userData?.estudio));
+            setShowBtn(true)
+        }
+        else {
+            console.log('O perfil já conectou-se a um estúdio ' + (userData?.estudio));
+            setShowBtn(false)
+        }
+    }
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const data = await getUserData();
+            if (userData == null) {
+                setUserData(data);
+            }
+        };
+        fetchUserData();
+        checkPerfil();
+    }, [userData]);
 
 
     return (

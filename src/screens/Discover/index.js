@@ -5,7 +5,7 @@ import { ScrollView, ActivityIndicator, FlatList, Image, TextInput, TouchableOpa
 import HeaderUsuario from "../../components/PagePreSet/HeaderUsuario";
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../services/api';
-import Grid from '../../components/Grids/TatuadoresProfiles';
+import Grid from '../../components/Grids/TatuadoresProfilesDiscover';
 import { getUserData } from "../../components/userData";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 

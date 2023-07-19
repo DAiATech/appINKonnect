@@ -1,10 +1,10 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState, useRef } from "react";
 import { css } from './style';
-import { ScrollView, ActivityIndicator, Text, FlatList, Image, TextInput, TouchableOpacity, View, Dimensions, Alert } from 'react-native';
+import { ScrollView, ActivityIndicator, Text, FlatList, Image, TextInput, TouchableOpacity, View, Dimensions, Alert, } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../services/api';
-import Grid from '../../components/Grids/TatuadoresProfiles';
+import Grid from '../../components/Grids/TatuadoresProfilesDiscover';
 import { getUserData } from "../../components/userData";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import HeaderUsuario from "../../components/PagePreSet/HeaderUsuario";
@@ -20,26 +20,79 @@ import config from '../../../config';
 import marcador from '../../assets/images/mapa/marker.png';
 import marcadorDestino from '../../assets/images/mapa/markerDestino.png';
 
+import url from "../../services/url";
+
 export default function MapaScreen() {
 
     const navigation = useNavigation();
 
     const [origin, setOrigin] = useState(null);
+    const [region, setRegion] = useState(null);
     const [destination, setDestination] = useState(null);
     const mapEl = useRef(null);
     const [distance, setDistance] = useState(null);
     const { height, width } = Dimensions.get('window');
 
+
     const LATITUDE_DELTA = 0.005;
     const LONGITUDE_DELTA = LATITUDE_DELTA * (width / height);
 
+    const [markers, setMarkers] = useState([]);
+
+
+    const [lista, setLista] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [page, setPage] = useState(1);
+    const [totalItems, setTotalItems] = useState(0);
+
+    async function loadEstudiosLocais() {
+        try {
+            console.log('lets');
+
+            const response = await api.get(`tccBackupTeste/bd/tatuadores/listarEstudiosLocais.php?limite=10`);
+            console.log('DATA É ' + response.data);
+
+            if (lista.length >= response.data.totalItems) return;
+
+            if (loading === true) return;
+
+            setLoading(true);
+
+            setLista([...lista, ...response.data.resultado]);
+            console.log('A LENGHT É', lista);
+            setPage(page + 1);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    /* function newMarker(e) {
+        let dados = {
+            key: markers.lenght,
+            coords: {
+                latitude: e.nativeEvent.coordinate.latitude,
+                longitude: e.nativeEvent.coordinate.longitude,
+            },
+            pinColor: '#ff0000'
+        }
+        setRegion({
+            latitude: e.nativeEvent.coordinate.latitude,
+            longitude: e.nativeEvent.coordinate.longitude,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA,
+        })
+
+        setMarkers(oldArray => [...oldArray, dados])
+    } */
+
     useEffect(() => {
+
         (async function () {
             let { status } = await Location.requestForegroundPermissionsAsync();
 
             if (status == 'granted') {
                 let location = await Location.getCurrentPositionAsync({ enableHighAccuracy: true });
-                setOrigin({
+                setRegion({
                     latitude: location.coords.latitude,
                     longitude: location.coords.longitude,
                     latitudeDelta: LATITUDE_DELTA,
@@ -54,7 +107,9 @@ export default function MapaScreen() {
 
         })();
 
-    }, []);
+        loadEstudiosLocais();
+
+    }, [lista]);
 
     return (
         <View style={css.container}>
@@ -63,16 +118,53 @@ export default function MapaScreen() {
 
             <MapView //pega localizacao da onde a gnt está e cria o mapa
                 style={css.map}
-                initialRegion={origin}
+                region={region}
                 showsUserLocation={true}
                 maxZoomLevel={15}
-                minZoomLevel={5}
+                zoomTapEnabled={true}
+                zoomControlEnabled={true}
+                minZoomLevel={1}
                 zoomEnabled={true} //pessoa nao consegue dar zoom no mapa
                 loadingEnabled={true}
                 ref={mapEl}
             >
+
+                {/* {markers.map(marker => {
+                    return (
+                        <Marker key={marker.key} coordinate={marker.coords} pinColor={marker.pinColor}
+                        >
+                            <View style={css.marcador}>
+                                <Image
+                                    source={marcador}
+                                    style={css.marcadorImage}
+                                >
+                                </Image>
+                                <Text style={{ color: 'white', fontSize: 13 }}>Meu Local</Text>
+                            </View>
+                        </Marker>
+                    )
+                })} */}
+                {lista.map((estudio) => {
+                    return (
+                        <Marker key={estudio.id}
+                            coordinate={{ latitude: Number(estudio.latitude), longitude: Number(estudio.longitude) }} pinColor="#ff0000"
+                            title={estudio.nome}
+                            description={estudio.EnderecoNome}
+                        >
+                            <View style={css.marcador}>
+                                <Image
+                                    source={{uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + estudio.imgRandomName}}
+                                    style={css.marcadorImage}
+                                >
+                                </Image>
+                                <Text style={{ color: 'white', fontSize: 16, fontWeight: '700' }}>{estudio.nome}</Text>
+                            </View>
+                        </Marker>
+                    )
+                })}
+
                 {/*verifica se tem valor de destino*/}
-                <Marker
+                {/* <Marker
                     coordinate={{ latitude: -24.495, longitude: -47.8456 }}
                     title={'Você está aqui meu amigo camarada'}
                     description={'ORIGEM!'}
@@ -100,7 +192,7 @@ export default function MapaScreen() {
                         </Image>
                         <Text style={{ color: 'white', fontSize: 13 }}>Seu destino!</Text>
                     </View>
-                </Marker>
+                </Marker> */}
 
 
                 {/* {destination &&

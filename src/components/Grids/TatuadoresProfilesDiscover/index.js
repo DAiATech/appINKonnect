@@ -52,7 +52,6 @@ CardUsuarios = ({ data } = DadosProps) => {
         }
     }
 
-
     const renderItem = function ({ item }) {
         console.log(data.id);
         return (
