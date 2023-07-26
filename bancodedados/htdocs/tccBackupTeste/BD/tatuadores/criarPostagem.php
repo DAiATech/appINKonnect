@@ -31,6 +31,9 @@ if ($_FILES['photo'])
     $stmt = $pdo->prepare("INSERT INTO PostagensImg SET imgName = :imgName, imgRandomName =:imgRandomName");
     /* if ($id == "" || $id == "0") { */
     $res = $pdo->prepare("INSERT INTO $tabela SET descricao = :descricao, estilo = :estilo, imgPostId = :imgPostId, tatuadorId = :tatuadorId ");
+
+    $stmt2 = $pdo->prepare("UPDATE tatuador SET tatuador.postagem = :postagem
+    WHERE tatuador.id = $idTatuador");
 }
 
 $stmt->bindValue(":imgName", "$photo_name");
@@ -42,6 +45,10 @@ $res->bindValue(":descricao", "$descricao");
 $res->bindValue(":estilo", "$estilo");
 $res->bindValue(":imgPostId", "$IdImagem");
 $res->bindValue(":tatuadorId", "$idTatuador");
+
+$stmt2->bindValue(":postagem", "1");
+$stmt2->execute();
+
 
 
 /* $res->bindValue(":especialidade", "$especialidade");*/

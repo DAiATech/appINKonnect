@@ -11,7 +11,7 @@ profileimg.imgRandomName AS profileImgRandomName
 FROM postagenstatuadores 
 INNER JOIN postagensimg ON imgPostId = postagensimg.id
 INNER JOIN tatuador ON tatuadorId = tatuador.id
-INNER JOIN profileimg ON tatuador.profileImgId = profileimg.id where nome LIKE '$buscar' or email LIKE '$buscar' order by id desc");
+INNER JOIN profileimg ON tatuador.profileImgId = profileimg.id where nome LIKE '$buscar' or estilo LIKE '$buscar' order by id desc");
 /* $query = $pdo->prepare("SELECT * from usuarios where nome LIKE '$buscar' or email LIKE '$buscar' order by id desc"); */
 
 $query->execute();

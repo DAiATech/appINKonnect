@@ -146,7 +146,7 @@ export default function MapaScreen() {
                 })} */}
                 {lista.map((estudio) => {
                     return (
-                        <Marker key={estudio.id}
+                        <Marker key={estudio.estudioId}
                             coordinate={{ latitude: Number(estudio.latitude), longitude: Number(estudio.longitude) }} pinColor="#ff0000"
                             title={estudio.nome}
                             description={estudio.EnderecoNome}

@@ -31,6 +31,7 @@ $email = $_POST['email'];
 $senha = $_POST['senha'];
 $cpf = $_POST['cpf'];
 $especialidade = $_POST['especialidade'];
+$dataNascimento = $_POST['data'];
 
 
 //validar email
@@ -56,7 +57,7 @@ if ($_FILES['photo'])
 
     $stmt = $pdo->prepare("INSERT INTO profileimg SET imgName = :imgName, imgRandomName =:imgRandomName");
     /* if ($id == "" || $id == "0") { */
-    $res = $pdo->prepare("INSERT INTO $tabela SET nome = :nome, senha = :senha, email = :email, cpf = :cpf, especialidade = :especialidade,  profileImgId = :profileImgId");
+    $res = $pdo->prepare("INSERT INTO $tabela SET nome = :nome, senha = :senha, email = :email, cpf = :cpf, especialidade = :especialidade, dataNascimento = :dataNascimento, profileImgId = :profileImgId");
     /*}  else {
               $res = $pdo->prepare("UPDATE $tabela SET nome = :nome, email = :email, senha = :senha, imagemProfile = :imagemProfile where id = '$id'");
           } */
@@ -73,6 +74,7 @@ $res->bindValue(":senha", "$senha");
 $res->bindValue(":email", "$email");
 $res->bindValue(":cpf", "$cpf");
 $res->bindValue(":especialidade", "$especialidade");
+$res->bindValue(":dataNascimento", "$dataNascimento");
 $res->bindValue(":profileImgId", "$IdImagem");
 
 
