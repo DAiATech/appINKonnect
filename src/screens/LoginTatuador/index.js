@@ -30,7 +30,7 @@ export default function LoginTatuador() {
   async function loginTatuador() {
     const obj = { email, senha };
 
-    const res = await api.post('tccBackupTeste/BD/login/loginTatuador.php', obj);
+    const res = await api.post('InKonnectPHP/BD/login/loginTatuador.php', obj);
     await AsyncStorage.setItem('@user', JSON.stringify(res.data.result[0].id));
 
     if (res.data.result === 'Dados Incorretos!') {

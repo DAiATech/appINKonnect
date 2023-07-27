@@ -121,7 +121,7 @@ export default function CalendarioTatuador() {
                         console.log(this.responseText);
                     }
                 });
-                xhr.open("POST", url + "/tccBackupTeste/bd/tatuadores/criarSessao.php");
+                xhr.open("POST", url + "/InKonnectPHP/bd/tatuadores/criarSessao.php");
                 xhr.send(formData);
                 setSuccess(true);
                 console.log("Acho que deu!");
@@ -141,7 +141,7 @@ export default function CalendarioTatuador() {
             const user = await AsyncStorage.getItem('@user');
             console.log(user);
 
-            const response = await api.get(`tccBackupTeste/bd/tatuadores/listarSessoes.php?pagina=${page}&limite=10&tatuador=${user}`);
+            const response = await api.get(`InKonnectPHP/bd/tatuadores/listarSessoes.php?pagina=${page}&limite=10&tatuador=${user}`);
 
             if (lista.length >= response.data.totalItems) return;
 
@@ -233,7 +233,7 @@ export default function CalendarioTatuador() {
 
                         <View style={styles.modalItemSection}>
                             <Image style={styles.imgProfilePicture} source={{
-                                uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + userData?.imagem
+                                uri: url + "/InKonnectPHP/BD/tatuadores/imgsTatuadores" + "/" + userData?.imagem
                             }} />
                             <Text style={styles.textTatuadorName}>{userData?.nome} </Text>
                         </View>

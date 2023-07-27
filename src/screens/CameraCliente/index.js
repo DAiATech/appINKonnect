@@ -5,7 +5,7 @@ import { ScrollView, ActivityIndicator, FlatList, Image, TextInput, TouchableOpa
 import HeaderUsuario from "../../components/PagePreSet/HeaderUsuario";
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../services/api';
-import Grid from '../../components/Grids/TatuadoresProfiles';
+import Grid from '../../components/Grids/TatuadoresProfilesDiscover';
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -23,7 +23,7 @@ export default function CameraCliente() {
 
   async function loadData() {
     try {
-      const response = await api.get(`tccBackupTeste/bd/usuarios/listarTatuadores.php?pagina=${page}&limite=10`);
+      const response = await api.get(`InKonnectPHP/bd/usuarios/listarTatuadores.php?pagina=${page}&limite=10`);
 
       if (lista.length >= response.data.totalItems) return;
 
@@ -58,7 +58,7 @@ export default function CameraCliente() {
   }
 
   async function Search() {
-    const response = await api.get(`tccBackupTeste/bd/usuarios/buscar.php?buscar=${busca}`);
+    const response = await api.get(`InKonnectPHP/bd/usuarios/buscar.php?buscar=${busca}`);
     setLista(response.data.resultado);
   }
 

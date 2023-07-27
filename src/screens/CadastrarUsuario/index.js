@@ -22,7 +22,7 @@ export default function CadastrarUsuario() {
 
   async function login() {
     const obj = { email, senha };
-    const res = await api.post('tccBackupTeste/BD/login/login.php', obj);
+    const res = await api.post('InKonnectPHP/BD/login/login.php', obj);
 
     if (res.formData.result === 'Dados Incorretos!') {
       Alert.alert('Ops!', 'Dados Incorretos!');
@@ -119,7 +119,7 @@ export default function CadastrarUsuario() {
         }, "image.png");
 
 
-        /* fetch('http://26.191.226.215/tccBackupTeste/bd/login/cadastro.php', {
+        /* fetch('http://26.191.226.215/InKonnectPHP/bd/login/cadastro.php', {
           method: 'POST',
           headers: {
             'Content-Type': 'multipart/form-formData',
@@ -140,12 +140,12 @@ export default function CadastrarUsuario() {
           }
         });
 
-        xhr.open("POST", url + "/tccBackupTeste/bd/login/cadastro.php");
+        xhr.open("POST", url + "/InKonnectPHP/bd/login/cadastro.php");
         xhr.send(formData);
         //-----FIM UPLOAD IMAGEM----
 
         /* IMPORTANTE ESSE(ENVIA OS DADOS DO USUARIO 'NOME','SENHA')*/
-        /*         const res = await api.post('tccBackupTeste/bd/login/cadastro.php', obj); 
+        /*         const res = await api.post('InKonnectPHP/bd/login/cadastro.php', obj); 
          */
 
         //if (res.formData.sucesso === false) {

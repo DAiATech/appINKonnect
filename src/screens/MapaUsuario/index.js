@@ -49,7 +49,7 @@ export default function MapaScreen() {
         try {
             console.log('lets');
 
-            const response = await api.get(`tccBackupTeste/bd/tatuadores/listarEstudiosLocais.php?limite=10`);
+            const response = await api.get(`InKonnectPHP/bd/tatuadores/listarEstudiosLocais.php?limite=10`);
             console.log('DATA É ' + response.data);
 
             if (lista.length >= response.data.totalItems) return;
@@ -153,11 +153,11 @@ export default function MapaScreen() {
                         >
                             <View style={css.marcador}>
                                 <Image
-                                    source={{uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + estudio.imgRandomName}}
+                                    source={{uri: url + "/InKonnectPHP/BD/tatuadores/imgsTatuadores" + "/" + estudio.imgRandomName}}
                                     style={css.marcadorImage}
                                 >
                                 </Image>
-                                <Text style={{ color: 'white', fontSize: 16, fontWeight: '700' }}>{estudio.nome}</Text>
+                                <Text style={{ color: 'white', fontSize: 16, fontWeight: '700' }}>{estudio.estudioNome}</Text>
                             </View>
                         </Marker>
                     )

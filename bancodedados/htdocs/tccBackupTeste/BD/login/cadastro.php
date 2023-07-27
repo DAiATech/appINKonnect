@@ -46,7 +46,7 @@ if ($_FILES['photo'])
 
 	//MOVE FILE TO SERVER
 	$random_name = rand(1000, 1000000) . "-" . $photo_name;
-	$upload_name = $url . "/tccBackupTeste/imagem/" . $random_name;
+	$upload_name = $url . "/InKonnectPHP/imagem/" . $random_name;
 
 	(move_uploaded_file($_FILES["photo"]["tmp_name"], "../usuarios/imgsUsuarios/" . $_FILES["photo"]["name"]));
 

@@ -23,7 +23,7 @@ const Header = () => {
             <View style={styles.containerHeader}>
 
                 <Image style={styles.profilePicture} source={{
-                    uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + userData?.imagem
+                    uri: url + "/InKonnectPHP/BD/tatuadores/imgsTatuadores" + "/" + userData?.imagem
                 }} />
 
                 <Image style={styles.logo} source={require('../../../assets/logo_2.png')} />

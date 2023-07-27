@@ -49,7 +49,7 @@ export default function ClienteProfile() {
                 </View>
                 <View style={styles.headerFooter}>
                     <Image style={styles.profilePicture}source={{
-                        uri: url + "/tccBackupTeste/BD/usuarios/imgsUsuarios" + "/" + userData?.imagem
+                        uri: url + "/InKonnectPHP/BD/usuarios/imgsUsuarios" + "/" + userData?.imagem
                     }} />
                     <Text style={styles.headerUserName}>
                         {userData?.nome}

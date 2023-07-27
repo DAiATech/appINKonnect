@@ -37,7 +37,7 @@ CardUsuarios = ({ data } = DadosProps) => {
 
     async function loadData() {
         try {
-            const response = await api.get(`tccBackupTeste/bd/tatuadores/postagensTatuador.php?ab=${data.id}`);
+            const response = await api.get(`InKonnectPHP/bd/tatuadores/postagensTatuador.php?ab=${data.id}`);
 
             if (lista.length >= response.data.totalItems) return;
 
@@ -72,7 +72,7 @@ CardUsuarios = ({ data } = DadosProps) => {
     }
 
     async function Search() {
-        const response = await api.get(`tccBackupTeste/bd/usuarios/buscar.php?buscar=${busca}`);
+        const response = await api.get(`InKonnectPHP/bd/usuarios/buscar.php?buscar=${busca}`);
         setLista(response.data.resultado);
     }
 
@@ -145,7 +145,7 @@ CardUsuarios = ({ data } = DadosProps) => {
                     <View style={styles.header}>
                         <View style={{ width: 65, }}>
                             <Image style={{ width: 50, height: 50, borderRadius: 25, }} source={{
-                                uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + data.imgRandomName
+                                uri: url + "/InKonnectPHP/BD/tatuadores/imgsTatuadores" + "/" + data.imgRandomName
                             }} />
                         </View>
                         <View style={{

@@ -69,7 +69,7 @@ CardPostagens = ({ data } = DadosProps) => {
 
                 <View style={{ width: 200, height: 280, marginLeft: 18, marginTop: 10, marginBottom: 10, }}>
                     <Image style={{ width: '100%', height: '100%', borderRadius: 15, }} source={{
-                        uri: url + "/tccBackupTeste/BD/tatuadores/imgsPostagens" + "/" + data.postagemImgRandomName
+                        uri: url + "/InKonnectPHP/BD/tatuadores/imgsPostagens" + "/" + data.postagemImgRandomName
                     }} />
                 </View>
             }

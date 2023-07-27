@@ -91,7 +91,7 @@ CardPostagens = ({ data } = DadosProps) => {
                     <View style={styles.header}>
                         <View style={{ width: 65, }}>
                             <Image style={{ width: 50, height: 50, borderRadius: 25, }} source={{
-                                uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + data.profileImgRandomName
+                                uri: url + "/InKonnectPHP/BD/tatuadores/imgsTatuadores" + "/" + data.profileImgRandomName
                             }} />
                         </View>
                         <View style={{
@@ -126,7 +126,7 @@ CardPostagens = ({ data } = DadosProps) => {
                     {/* </SwipeableRow> */}
                     <View style={styles.postImageContainer}>
                         <Image style={styles.postImageImg} source={{
-                            uri: url + "/tccBackupTeste/BD/tatuadores/imgsPostagens" + "/" + data.postagemImgRandomName
+                            uri: url + "/InKonnectPHP/BD/tatuadores/imgsPostagens" + "/" + data.postagemImgRandomName
                         }} />
                     </View>
                     <View style={styles.postCaptionContainer}>

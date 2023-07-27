@@ -27,7 +27,7 @@ export default function LoginUsuario() {
 
   async function login() {
     const obj = { email, senha };
-    const res = await api.post('tccBackupTeste/BD/login/loginCliente.php', obj);
+    const res = await api.post('InKonnectPHP/BD/login/login.php', obj);
 
     if (res.data.result === 'Dados Incorretos!') {
       Alert.alert('Ops!', 'Dados Incorretos!');

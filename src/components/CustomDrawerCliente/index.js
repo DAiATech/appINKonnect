@@ -62,7 +62,7 @@ const CustomDrawerCliente = FC = () => {
     async function getUsuarioDados() {
         try {
             const user = await AsyncStorage.getItem('@user');
-            const res = await api.get('tccBackupTeste/BD/login/loginTatuador.php', user);
+            const res = await api.get('InKonnectPHP/BD/login/loginTatuador.php', user);
 
         } catch (error) {
             console.log(error)
@@ -75,7 +75,7 @@ const CustomDrawerCliente = FC = () => {
             >
                 <View style={styles.header}>
                     <Image style={styles.perfilImg} source={{
-                        uri: url + "/tccBackupTeste/BD/usuarios/imgsUsuarios" + "/" + userData?.imagem
+                        uri: url + "/InKonnectPHP/BD/usuarios/imgsUsuarios" + "/" + userData?.imagem
                     }} />
                     <Text style={styles.perfilName}>
                         {userData?.nome}

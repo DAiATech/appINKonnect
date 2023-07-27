@@ -34,7 +34,7 @@ export default function HomeCliente() {
 
     async function loadData() {
         try {
-            const response = await api.get(`tccBackupTeste/bd/tatuadores/listarPostagens.php?pagina=${page}&limite=10`);
+            const response = await api.get(`InKonnectPHP/bd/tatuadores/listarPostagens.php?pagina=${page}&limite=10`);
 
             if (lista.length >= response.data.totalItems) return;
 
@@ -69,7 +69,7 @@ export default function HomeCliente() {
     }
 
     async function Search() {
-        const response = await api.get(`tccBackupTeste/bd/usuarios/buscar.php?buscar=${busca}`);
+        const response = await api.get(`InKonnectPHP/bd/usuarios/buscar.php?buscar=${busca}`);
         setLista(response.data.resultado);
     }
 
@@ -91,7 +91,7 @@ export default function HomeCliente() {
                     <Image style={styles.logo} source={require('../../assets/logo_2.png')} />
 
                     <Image style={styles.profilePicture} source={{
-                        uri: url + "/tccBackupTeste/BD/usuarios/imgsUsuarios" + "/" + userData?.imagem
+                        uri: url + "/InKonnectPHP/BD/usuarios/imgsUsuarios" + "/" + userData?.imagem
                     }} />
                 </View>
             </View>

@@ -100,7 +100,7 @@ export default function CriacaoPost() {
             }
         });
 
-        xhr.open("POST", url + "/tccBackupTeste/bd/tatuadores/criarPostagem.php");
+        xhr.open("POST", url + "/InKonnectPHP/bd/tatuadores/criarPostagem.php");
         xhr.send(formData);
         //-----FIM UPLOAD IMAGEM----
 

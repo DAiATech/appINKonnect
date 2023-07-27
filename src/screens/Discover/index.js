@@ -25,7 +25,7 @@ export default function Discover() {
       const user = await AsyncStorage.getItem('@user');
 
       console.log(user);
-      const response = await api.get(`tccBackupTeste/bd/usuarios/listarTatuadores.php?usuarioId=${user}`);
+      const response = await api.get(`InKonnectPHP/bd/usuarios/listarTatuadores.php?usuarioId=${user}`);
 
       if (lista.length >= response.data.totalItems) return;
 
@@ -60,7 +60,7 @@ export default function Discover() {
   }
 
   async function Search() {
-    const response = await api.get(`tccBackupTeste/bd/usuarios/buscar.php?buscar=${busca}`);
+    const response = await api.get(`InKonnectPHP/bd/usuarios/buscar.php?buscar=${busca}`);
     setLista(response.data.resultado);
   }
 

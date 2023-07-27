@@ -82,7 +82,7 @@ export default function TatuadorProfile() {
                         console.log(this.responseText);
                     }
                 });
-                xhr.open("POST", url + "/tccBackupTeste/bd/tatuadores/cadastrarEstudio.php");
+                xhr.open("POST", url + "/InKonnectPHP/bd/tatuadores/cadastrarEstudio.php");
                 xhr.send(formData);
                 setSuccess(true);
                 setShowBtn(false)
@@ -130,7 +130,7 @@ export default function TatuadorProfile() {
                 </View>
                 <View style={styles.headerFooter}>
                     <Image style={styles.profilePicture} source={{
-                        uri: url + "/tccBackupTeste/BD/tatuadores/imgsTatuadores" + "/" + userData?.imagem
+                        uri: url + "/InKonnectPHP/BD/tatuadores/imgsTatuadores" + "/" + userData?.imagem
                     }} />
                     <View style={styles.headerContainerNameBtn}>
                         <Text style={styles.headerUserName}>
