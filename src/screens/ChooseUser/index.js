@@ -29,9 +29,8 @@ export default function ChooseUser() {
                     <View style={styles.containerButtons}>
                         <TouchableOpacity
                             style={styles.buttonClient}
-                            onPress={() => {
-                                alert('Os botoes agora mandam para telas diferentes, só falta criar as telas certinho, se quiser rodar o app sem dar erro é so voltar o caminho do botão do tatuador ass.Arthur');
-                                navigation.navigate("Login")
+                            onPress={() => {                                
+                                navigation.navigate("LoginUsuario")
                                 /* Insert the path that client should follow  */
                             }}
                         /* onPress={} */
@@ -44,7 +43,7 @@ export default function ChooseUser() {
                         <TouchableOpacity
                             style={styles.buttonArtist}
                             onPress={() => {
-                                navigation.navigate("Login") /*  --> Login tatuador */
+                                navigation.navigate("LoginTatuador") /*  --> Login tatuador */
                                 /* Insert the path that artist should follow  */
                             }}
                         /* onPress={} */

@@ -59,7 +59,7 @@ const NovoUsuario = FC = () => {
 
             }
 
-            const res = await api.post('pam3etim/bd/usuarios/salvar.php', obj);
+            const res = await api.post('InKonnectPHP/bd/usuarios/salvar.php', obj);
 
             if (res.data.sucesso === false) {
                 showMessage({
@@ -94,7 +94,7 @@ const NovoUsuario = FC = () => {
         try {
             setLoading(true);
             if (id_reg != "0") {
-                const res = await api.get(`pam3etim/BD/usuarios/listar_id.php?id=${id_reg}`);
+                const res = await api.get(`InKonnectPHP/BD/usuarios/listar_id.php?id=${id_reg}`);
 
 
                 setNome(res.data.dados.nome);

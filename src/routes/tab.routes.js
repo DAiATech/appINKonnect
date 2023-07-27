@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
     Text,
     TouchableOpacity,
@@ -14,15 +13,14 @@ import fonts from '../styles/fonts';
 import DrawerRoutes from './drawer.routes';
 import Usuario from '../screens/Usuario';
 import Feed from '../screens/Feed';
+import CalendarioTatuador from '../screens/CalendarioTatuador';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import Discover from '../screens/Discover';
-
-
+import ChatTatuador from '../screens/ChatTatuador';
 const AppTab = createBottomTabNavigator();
 
 const AuthRoutes = () => {
     const navigation = useNavigation();
-
     return (
         <AppTab.Navigator
             screenOptions={{
@@ -91,12 +89,12 @@ const AuthRoutes = () => {
             />
 
             <AppTab.Screen
-                name="Usuario"
-                component={Discover}
+                name="Discover"
+                component={ChatTatuador}
                 options={{
                     tabBarIcon: (({ size, color }) => (
                         <MaterialIcons
-                            name="explore"
+                            name="chat"
                             size={size}
                             color={color}
                         />
@@ -140,11 +138,11 @@ const AuthRoutes = () => {
 
             <AppTab.Screen
                 name="Aba 3"
-                component={Usuario}
+                component={CalendarioTatuador}
                 options={{
                     tabBarIcon: (({ size, color }) => (
                         <MaterialCommunityIcons
-                            name="chat-processing-outline"
+                            name="calendar"
                             size={size}
                             color={color}
                         />
@@ -185,54 +183,7 @@ const AuthRoutes = () => {
                 }}
             />
 
-            <AppTab.Screen
-                name="Aba 4"
-                component={Usuario}
-
-                options={{
-                    tabBarIcon: (({ size, color }) => (
-                        <Ionicons
-                            name="camera-outline"
-                            size={size}
-                            color={color}
-                        />
-                    )),
-
-                    tabBarLabel: (({ focused, color }) => (
-                        <View>
-                            <Text
-                                style={focused ? {
-                                    color: color,
-                                    fontFamily: fonts.text,
-                                    fontSize: 12,
-                                    textAlign: 'center',
-
-                                } : {
-                                    color: color,
-                                    fontFamily: fonts.text,
-                                    fontSize: 12
-                                }}
-                            >
-                                Pessoas
-                            </Text>
-                            <View
-                                style={focused ? {
-                                    backgroundColor: color,
-                                    borderColor: color,
-                                    width: 60,
-                                    height: 2,
-                                    borderTopLeftRadius: 5,
-                                    borderTopRightRadius: 5,
-                                    marginTop: 5,
-                                } : {
-                                    height: 2,
-                                }}
-                            >
-                            </View>
-                        </View>
-                    ))
-                }}
-            />
+            
         </AppTab.Navigator>
     )
 }

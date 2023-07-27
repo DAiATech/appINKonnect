@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     alignItems: 'center',
     marginLeft: 15,
-    
+
   },
 
   story: {
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginLeft: -100,
     overflow: 'visible',
-    
+
   },
   containerImg: {
     width: 200,

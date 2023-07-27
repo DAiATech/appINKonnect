@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
-
+import { storeUserData } from "../../components/userData";
 import { styles } from './style';
 import {
   TouchableOpacity,
@@ -25,16 +25,27 @@ export default function LoginTatuador() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
 
+
+
   async function loginTatuador() {
     const obj = { email, senha };
-    const res = await api.post('pam3etim/BD/login/logintatuador.php', obj);
+
+    const res = await api.post('InKonnectPHP/BD/login/loginTatuador.php', obj);
+    await AsyncStorage.setItem('@user', JSON.stringify(res.data.result[0].id));
 
     if (res.data.result === 'Dados Incorretos!') {
       Alert.alert('Ops!', 'Dados Incorretos!');
     } else {
-      await AsyncStorage.setItem('@user', JSON.stringify(res.data.result[0].id));
-      await AsyncStorage.setItem('@nivel', JSON.stringify(res.data.result[0].nivel));
 
+      storeUserData(res.data.result[0].id, res.data.result[0].nome, res.data.result[0].email, res.data.result[0].imgRandomName, res.data.result[0].especialidade, res.data.result[0].dataNascimento, res.data.result[0].estudio,).then(() => {
+        console.log('userdatastored');
+        console.log(res.data.result[0].dataNascimento)
+        console.log(res.data.result[0].estudio)
+        console.log('Fim do Login')
+      })
+      /* await AsyncStorage.setItem('@nome', JSON.stringify(res.data.result[0].nome));
+      await AsyncStorage.setItem('@email', JSON.stringify(res.data.result[0].email));
+      await AsyncStorage.setItem('@imgProfileNome', JSON.stringify(res.data.result[0].imgRandomName)); */
       navigation.reset({
         index: 0,
         routes: [{ name: 'Home' }]
@@ -42,8 +53,6 @@ export default function LoginTatuador() {
     }
 
   }
-
-
 
   const checkLogin = async () => {
     const user = await AsyncStorage.getItem('@user');
@@ -67,11 +76,10 @@ export default function LoginTatuador() {
 
   return (
     <View style={styles.container}>
-      <StatusBar translucent hidden />
-
       <Image style={styles.logo} source={require('../../assets/INKonnect.png')} />
 
       <View style={styles.form}>
+
         <Text style={styles.formLabel}>Email:</Text>
         <TextInput
           style={styles.login}
@@ -109,9 +117,16 @@ export default function LoginTatuador() {
       /* onPress={} */
       >
 
-        <Text style={styles.text}>Kadastrar</Text>
+        <Text style={styles.text}>Cadastrar</Text>
       </TouchableOpacity>
-
+      <TouchableOpacity
+        style={styles.loginVoltar}
+        onPress={() => {
+          navigation.navigate("ChooseUser")
+        }}
+      >
+        <Text style={styles.text}>Voltar</Text>
+      </TouchableOpacity>
       <Image style={styles.logoInk} source={require('../../assets/logo_2.png')} />
 
     </View>
