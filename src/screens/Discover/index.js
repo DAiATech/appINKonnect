@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { styles } from './style';
-import { ScrollView, ActivityIndicator, FlatList, Image, TextInput, TouchableOpacity, View, Dimensions, Alert } from 'react-native';
+import { ScrollView, ActivityIndicator, FlatList, Image,Text, TextInput, TouchableOpacity, View, Dimensions, Alert } from 'react-native';
 import HeaderUsuario from "../../components/PagePreSet/HeaderUsuario";
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../services/api';
@@ -20,6 +20,9 @@ export default function Discover() {
   const [busca, setBusca] = useState("");
   const [onEndReachedCalledDuringMomentum, setMT] = useState(true);
 
+  /* ------- btn */
+  const [showBtn, setShowBtn] = useState(false);
+  /* btn----- */
   async function loadData() {
     try {
       const user = await AsyncStorage.getItem('@user');
@@ -75,18 +78,18 @@ export default function Discover() {
 
       <View style={{ backgroundColor: '#121212', flex: 1, }}>
         <View style={styles.containerButtons}>
-          <TouchableOpacity
-            style={styles.btnItens}
-            onPress={() => {
-              /* navigation.navigate("...") */
+          {showBtn == true ?
+            <>
+            <Text>aa</Text>
+            </>
+            : <TouchableOpacity
+              style={styles.btnItens}
+              onPress={() => setShowBtn(true)}
+            >
+              <Image style={styles.btnImage} source={require('../../assets/images/icons/lupa.png')} />
 
-              /* Insert the path that client should follow  */
-            }}
-          /* onPress={} */
-          >
-            <Image style={styles.btnImage} source={require('../../assets/images/icons/lupa.png')} />
+            </TouchableOpacity>}
 
-          </TouchableOpacity>
           <TouchableOpacity
             style={styles.btnItens}
             onPress={() => {
