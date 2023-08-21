@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { styles } from './style';
-import { ScrollView, ActivityIndicator, FlatList, Image,Text, TextInput, TouchableOpacity, View, Dimensions, Alert } from 'react-native';
+import { ScrollView, ActivityIndicator, FlatList, Image, Text, TextInput, TouchableOpacity, View, Dimensions, Alert } from 'react-native';
 import HeaderUsuario from "../../components/PagePreSet/HeaderUsuario";
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../services/api';
@@ -80,7 +80,24 @@ export default function Discover() {
         <View style={styles.containerButtons}>
           {showBtn == true ?
             <>
-            <Text>aa</Text>
+              <View style={styles.containerSearch}>
+                <TextInput
+                  style={styles.search}
+                  placeholder="Buscar"
+                  placeholderTextColor="gray"
+                  keyboardType="default"
+                  onChangeText={(busca) => setBusca(busca)}
+                  returnKeyType="search"
+                  onTextInput={() => Search()}
+                />
+
+                <TouchableOpacity
+                  style={styles.iconSearch}
+                  onPress={() => Search()}
+                >
+                  <Ionicons name="search-outline" size={28} color="gray" />
+                </TouchableOpacity>
+              </View>
             </>
             : <TouchableOpacity
               style={styles.btnItens}

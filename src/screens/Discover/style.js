@@ -26,14 +26,12 @@ export const styles = StyleSheet.create({
         borderBottomWidth: 0.6,
         borderBottomColor: "gray",
         padding: 10,
-        width: '90%',
-
+        width: "80%",
     },
 
     containerSearch: {
         flexDirection: 'row',
-        marginTop: 10,
-        marginBottom: 25,
+        width: "70%"
     },
 
     iconSearch: {
