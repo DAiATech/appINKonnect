@@ -65,6 +65,7 @@ export default function Discover() {
   async function Search() {
     const response = await api.get(`InKonnectPHP/bd/usuarios/buscar.php?buscar=${busca}`);
     setLista(response.data.resultado);
+    /* setLista(response.data.resultado); */
   }
 
   useEffect(() => {
@@ -88,7 +89,7 @@ export default function Discover() {
                   keyboardType="default"
                   onChangeText={(busca) => setBusca(busca)}
                   returnKeyType="search"
-                  onTextInput={() => Search()}
+                  onTextInput={() => Search()}                
                 />
 
                 <TouchableOpacity
