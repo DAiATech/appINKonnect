@@ -19,6 +19,7 @@ import CriacaoPost from '../screens/CriacaoPost';
 import AuthRoutesCliente from './routesCliente/tab.routes';
 import CalendarioTatuador from '../screens/CalendarioTatuador';
 import MapaScreen from '../screens/MapaUsuario';
+import CameraCliente from '../screens/CameraCliente';
 const Stack = createNativeStackNavigator();
 
 
@@ -41,6 +42,7 @@ function StackNavigator() {
 
             <Stack.Screen name="Home" component={AuthRoutes} />
             <Stack.Screen name="HomeCliente" component={AuthRoutesCliente} />
+            <Stack.Screen name="CameraCliente" component={CameraCliente} />
 
             <Stack.Screen name="TatuadorProfile" component={TatuadorProfile} />
             <Stack.Screen name="ClienteProfile" component={ClienteProfile} />

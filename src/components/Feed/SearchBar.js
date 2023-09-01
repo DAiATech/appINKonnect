@@ -1,6 +1,5 @@
 import { View, Text, StyleSheet, ScrollView, Image, TextInput } from 'react-native'
 import React, { useState } from 'react'
-import { USERS } from '../../assets/data/users';
 import { Feather, Search } from 'react-native-feather';
 import SearchFIlter from '../SearchFilter';
 import { POSTS } from '../../assets/data/posts';

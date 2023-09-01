@@ -143,4 +143,57 @@ export const styles = StyleSheet.create({
         height: 100,
         backgroundColor: '#fff',
     },
+    containerCamera: {
+        paddingHorizontal: 10,
+    },
+    scrollFilters: {
+        position:'absolute',
+        zIndex:100,
+        bottom:50,
+        paddingHorizontal: 10,
+    },
+    storyContainer: {
+        justifyContent: 'flex-end',
+    },
+    story: {
+        width: 70,
+        height: 70,
+        marginLeft: 5,
+        borderWidth: 3,
+        borderColor: '#ff8501',
+        borderRadius: 70,
+    },
+    storyText: {
+        color: '#EAE0D5',
+        fontSize: 18,
+    },
+    btnCameraOpen: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#1B292F',
+        width: 200,
+        height: 50,
+        borderRadius: 50,
+        padding: 10,
+        marginTop: 50,
+        alignSelf: "center",
+    },
+    btnImage: {
+        width: 40,
+        resizeMode: 'contain',
+    },
+    cameraDiv: {
+        height: '85%',
+        flexGrow: 1,
+    },
+    btnText: {
+        color: '#EAE0D5'
+    },
+    camera: {
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        alignContent: 'center',
+        justifyContent: 'center',
+    }
 })

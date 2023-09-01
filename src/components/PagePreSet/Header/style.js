@@ -9,13 +9,14 @@ export const styles = StyleSheet.create({
 
 
     header: {
-        margin: 10,
         backgroundColor: '#121212',
         borderBottomWidth: 3,
         borderBottomColor: "#413B33",
         height: 60,
         paddingTop: 10,
         paddingBottom: 30,
+        marginBottom: 5,
+
     },
 
     menu: {
@@ -29,8 +30,7 @@ export const styles = StyleSheet.create({
         width: 100,
         height: 40,
         resizeMode: 'contain',
-        /*         position:'absolute',
-         */        /*  alignSelf: "center", */
+        alignSelf: "center",
     },
 
     profilePicture: {
@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
     },
 
     containerHeader: {
-        flexDirection: 'row',
+        flexDirection: 'row-reverse',
         justifyContent: "center",
         alignItems: "center",
     },

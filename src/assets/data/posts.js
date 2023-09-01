@@ -1,4 +1,4 @@
-import { USERS } from './users';
+/* import { USERS } from './users';
 import { IMAGES } from './Images';
 export const POSTS = [{
     imageUrl: "https://i.pinimg.com/564x/04/93/4e/04934e82da0587df982bac1976cd93ad.jpg",
@@ -36,3 +36,4 @@ export const POSTS = [{
     ]
 },
 ]
+ */
