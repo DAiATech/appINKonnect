@@ -30,12 +30,9 @@ export default function CalendarioTatuador() {
         setShowPicker(true);
     };
 
-
-
     const handlePickerClose = () => {
         setShowPicker(false);
     };
-
 
     const handleDateChange = (event, date) => {
         if (date !== undefined) {
@@ -70,9 +67,6 @@ export default function CalendarioTatuador() {
         setMode(currentMode);
     }
 
-
-
-
     const [abrirModalHorario, setAbrirModalHorario] = useState(false);
     const [abrirModal, setAbrirModal] = useState(false);
     const [userData, setUserData] = useState(null);
@@ -84,12 +78,28 @@ export default function CalendarioTatuador() {
         fetchUserData();
     }, []);
 
-
     const datasMarcadas = ['2023-07-27', '2023-07-20'];
     async function addDataMarcada(d) {
         const item = d;
         console.log(item);
         setDatasMarcadas([...datasMarcadas, item]);
+    }
+
+
+    const [listaSessoes, setListaSessoes] = useState([]);
+
+    const fetchDatasMarcadas = async () => {
+        try {
+            const responseLista = await api.get(`InKonnectPHP/BD/tatuadores/listarDataSessoes.php?tatuador=${userData?.id}`);
+            console.log("AAAAAAAAAAAAA:" + responseLista.data);
+            console.log("bbbbbbbbbbbbbb:" + responseLista.data.resultado);
+            setListaSessoes(responseLista.data.resultado);
+
+            listaSessoes.   
+        }
+        catch (error) {
+            console.log("Erro ao carregar os dados", error);
+        }
     }
 
     async function cadastrarSessao() {
@@ -164,14 +174,17 @@ export default function CalendarioTatuador() {
     }
     useEffect(() => {
         loadData();
+        fetchDatasMarcadas();
     }, [page, totalItems, lista]);
 
-
+    console.log(listaSessoes);
     const getHeader = () => {
 
         return <>
             <Header />
+        
             <View style={{ paddingBottom: 25, borderBottomWidth: 3, borderBottomColor: '#413B33', }}>
+                
                 <Calendar
                     style={{ borderRadius: 20, borderWidth: 1, height: 400, marginHorizontal: 25, marginTop: 15 }}
                     onDayPress={day => {
@@ -201,7 +214,7 @@ export default function CalendarioTatuador() {
 
     return (
         <View style={styles.container}>
-            <View style={{ backgroundColor: '#121212', paddingHorizontal: 15, flex: 1, }}>
+            <View style={{ backgroundColor: '#121212', flex: 1, }}>
                 <View style={{ flex: 1, }}>
                     <FlatList
                         data={lista}
