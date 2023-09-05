@@ -72,7 +72,7 @@ CardUsuarios = ({ data } = DadosProps) => {
     }
 
     async function Search() {
-        const response = await api.get(`InKonnectPHP/bd/usuarios/buscar.php?buscar=${busca}`);
+    const response = await api.get(`InKonnectPHP/bd/usuarios/buscar.php?buscar=${busca}`)   ;
         setLista(response.data.resultado);
     }
 

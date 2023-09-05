@@ -100,7 +100,7 @@ export default function CalendarioTatuador() {
             console.log(listaSessoes)
 
             responseLista.data.resultado.map((sessao, index) =>
-                /* setDatasSessoes(datasSessoes => [...datasSessoes, ...sessao.dataSessao]), */
+/*                 setDatasSessoes(datasSessoes => [...datasSessoes, ...sessao.dataSessao]), */
                 datasSessoes.push(sessao.dataSessao),
             )
             console.log(datasSessoes)
@@ -186,6 +186,7 @@ export default function CalendarioTatuador() {
             setUserData(data);
         };
         fetchUserData();
+        setDatasSessoes([]);
         fetchDatasMarcadas();
         loadData();
     }, [page, totalItems, lista]);
