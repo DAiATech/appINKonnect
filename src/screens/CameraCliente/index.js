@@ -144,20 +144,20 @@ export default function CameraCliente() {
     <View style={styles.container}>
       <HeaderUsuario />
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollFilters}>
-          {
-            FILTERS.map((story, index) => (
-              <TouchableOpacity
-                style={styles.storyContainer}
-                onPress={()=> setEmoji(story.filterImg)}>
-                <Image style={styles.story} source={story.filterImg} />
-                <Text style={styles.storyText}>{story.name.length > 5 ? story.name.slice(0, 7).toLocaleLowerCase() + '... ' : story.name.toLowerCase()}</Text>
-              </TouchableOpacity>
+        {
+          FILTERS.map((story, index) => (
+            <TouchableOpacity
+              style={styles.storyContainer}
+              onPress={() => setEmoji(story.filterImg)}>
+              <Image style={styles.story} source={story.filterImg} />
+              <Text style={styles.storyText}>{story.name.length > 5 ? story.name.slice(0, 7).toLocaleLowerCase() + '... ' : story.name.toLowerCase()}</Text>
+            </TouchableOpacity>
 
 
 
-            ))
-          }
-        </ScrollView> 
+          ))
+        }
+      </ScrollView>
       <View style={styles.containerCamera}>
         <View style={styles.cameraDiv}>
           {faceDetected &&
@@ -185,9 +185,9 @@ export default function CameraCliente() {
           >
 
           </Camera>
-          }           
+          }
         </View>
-        
+
         {/* <TouchableOpacity
           style={styles.btnCameraOpen}
           onPress={() => {
@@ -201,7 +201,7 @@ export default function CameraCliente() {
           <Ionicons name="camera" size={30} color={"#EAE0D5"}></Ionicons>
         </TouchableOpacity> */}
       </View>
-      
+
     </View >
   )
 }

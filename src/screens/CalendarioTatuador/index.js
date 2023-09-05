@@ -16,7 +16,16 @@ export default function CalendarioTatuador() {
 
     const navigation = useNavigation();
     const [dataSelected, setDataSelected] = useState();
-    const [dataSelectedTeste, setDataSelectedTeste] = useState('2023-07-19');
+
+    /* Testes Calendário */
+    const [dataSelectedTeste, setDataSelectedTeste] = useState(['2023-09-22', '2023-09-26']);
+    const dataSelectedTestew = ['2023-09-26', '2023-09-24'];
+    let datasTestesObj = {}
+    dataSelectedTeste.forEach(
+        (item) => { datasTestesObj[item] = { selected: true } }
+    )
+    /* ------ */
+
     const [cliente, setCliente] = useState('');
     const [horario, setHorario] = useState('');
     const [valor, setValor] = useState('');
@@ -70,32 +79,31 @@ export default function CalendarioTatuador() {
     const [abrirModalHorario, setAbrirModalHorario] = useState(false);
     const [abrirModal, setAbrirModal] = useState(false);
     const [userData, setUserData] = useState(null);
-    useEffect(() => {
-        const fetchUserData = async () => {
-            const data = await getUserData();
-            setUserData(data);
-        };
-        fetchUserData();
-    }, []);
-
-    const datasMarcadas = ['2023-07-27', '2023-07-20'];
-    async function addDataMarcada(d) {
-        const item = d;
-        console.log(item);
-        setDatasMarcadas([...datasMarcadas, item]);
-    }
-
+   
+    /*  async function addDataMarcada(d) {
+         const item = d;
+         console.log(item);
+         setDatasMarcadas([...datasMarcadas, item]);
+     }
+  */
 
     const [listaSessoes, setListaSessoes] = useState([]);
-
+    const [datasSessoes, setDatasSessoes] = useState([]);
     const fetchDatasMarcadas = async () => {
         try {
-            const responseLista = await api.get(`InKonnectPHP/BD/tatuadores/listarDataSessoes.php?tatuador=${userData?.id}`);
-            console.log("AAAAAAAAAAAAA:" + responseLista.data);
-            console.log("bbbbbbbbbbbbbb:" + responseLista.data.resultado);
-            setListaSessoes(responseLista.data.resultado);
 
-            listaSessoes.   
+            const responseLista = await api.get(`InKonnectPHP/BD/tatuadores/listarDataSessoes.php?tatuador=${userData?.id}`);
+            /*setListaSessoes(responseLista.data.resultado);*/
+            console.log(responseLista.data.resultado);
+
+            console.log("list é");
+            console.log(listaSessoes)
+
+            responseLista.data.resultado.map((sessao, index) =>
+                /* setDatasSessoes(datasSessoes => [...datasSessoes, ...sessao.dataSessao]), */
+                datasSessoes.push(sessao.dataSessao),
+            )
+            console.log(datasSessoes)
         }
         catch (error) {
             console.log("Erro ao carregar os dados", error);
@@ -173,8 +181,13 @@ export default function CalendarioTatuador() {
         )
     }
     useEffect(() => {
-        loadData();
+        const fetchUserData = async () => {
+            const data = await getUserData();
+            setUserData(data);
+        };
+        fetchUserData();
         fetchDatasMarcadas();
+        loadData();
     }, [page, totalItems, lista]);
 
     console.log(listaSessoes);
@@ -182,9 +195,24 @@ export default function CalendarioTatuador() {
 
         return <>
             <Header />
-        
+            {/* {listaSessoes.length > 0 ?
+                <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollFilters}>
+                    {
+                        listaSessoes.map((story, index) => (
+                            <TouchableOpacity
+                                style={styles.storyContainer}>
+                                <Text style={styles.storyText}>{story.dataSessao}</Text>
+                            </TouchableOpacity>
+
+
+                        ))
+                    }
+                </ScrollView>
+                :
+                <View></View>
+            } */}
             <View style={{ paddingBottom: 25, borderBottomWidth: 3, borderBottomColor: '#413B33', }}>
-                
+
                 <Calendar
                     style={{ borderRadius: 20, borderWidth: 1, height: 400, marginHorizontal: 25, marginTop: 15 }}
                     onDayPress={day => {
@@ -192,11 +220,13 @@ export default function CalendarioTatuador() {
                         console.log(day.dateString);
                         setAbrirModal(true);
                     }}
-                    markedDates={{
+                    markedDates={datasTestesObj}
+                    /* markedDates={{
+                        [datasTestesObj]: { marked: true, selectedDotColor: 'orange', selected: true },
                         [dataSelected]: { marked: true, selectedDotColor: 'orange', selected: true },
                         [dataSelectedTeste]: { marked: true, selectedDotColor: 'orange', selected: true },
-                        [datasMarcadas]: { marked: true, selectedDotColor: 'orange', selected: true },
-                    }}
+     
+                    }} */
                     theme={{
                         calendarBackground: '#222',
                         dayTextColor: '#fff',
@@ -222,6 +252,7 @@ export default function CalendarioTatuador() {
                         ListHeaderComponent={getHeader}/* Usa isso para não precisar colocar flatlist dentro da scrollview */
                     />
                 </View>
+
             </View>
 
 
@@ -332,6 +363,7 @@ export default function CalendarioTatuador() {
                     </View>
                 </View>
             </Modal>
+
         </View >
     )
 }
