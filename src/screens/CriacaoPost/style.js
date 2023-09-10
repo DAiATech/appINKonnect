@@ -9,10 +9,11 @@ export const styles = StyleSheet.create({
         backgroundColor: '#121212',
     },
     main: {
-    
         backgroundColor: '#121212',
         paddingHorizontal: 100,
         paddingTop: 20,
+        paddingBottom: 50,
+
     },
     button: {
         width: 150,
@@ -69,7 +70,7 @@ export const styles = StyleSheet.create({
     },
     selectEspecialidade: {
         height: 50,
-        width: 200,
+        width: 210,
         backgroundColor: '#1B292F',
         color: '#C6AC8F',
         zIndex: 20,
@@ -90,8 +91,7 @@ export const styles = StyleSheet.create({
     },
     pickerText: {
         color: '#C6AC8F',
-        fontSize: 15,
+        height: '100%',
         backgroundColor: '#1B292F',
-        padding: 0,
     },
 })

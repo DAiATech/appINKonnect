@@ -27,11 +27,13 @@ export const styles = StyleSheet.create({
         borderBottomColor: "gray",
         padding: 10,
         width: "80%",
+        color: '#C6AC8F'
     },
 
     containerSearch: {
         flexDirection: 'row',
-        width: "70%"
+        width: "70%",
+        paddingLeft: 15,
     },
 
     iconSearch: {

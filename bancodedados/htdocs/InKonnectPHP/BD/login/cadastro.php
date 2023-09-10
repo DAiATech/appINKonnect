@@ -28,6 +28,7 @@ $senha = @$postjson['senha']; */
 $nome = $_POST['nome'];
 $email = $_POST['email'];
 $senha = $_POST['senha'];
+$data = $_POST['data'];
 
 //validar email
 /* $query = $pdo->query("SELECT * FROM $tabela where id = '$id'");
@@ -51,10 +52,10 @@ if ($_FILES['photo'])
 	(move_uploaded_file($_FILES["photo"]["tmp_name"], "../usuarios/imgsUsuarios/" . $_FILES["photo"]["name"]));
 
 	/* if ($id == "" || $id == "0") { */
-	$res = $pdo->prepare("INSERT INTO $tabela SET nome = :nome, email = :email, senha = :senha, imagemProfile = :imagemProfile");
+	$res = $pdo->prepare("INSERT INTO $tabela SET nome = :nome, email = :email, senha = :senha, dataNascimento = :dataNascimento, imagemProfile = :imagemProfile");
 	/*}  else {
-		   $res = $pdo->prepare("UPDATE $tabela SET nome = :nome, email = :email, senha = :senha, imagemProfile = :imagemProfile where id = '$id'");
-	   } */
+					$res = $pdo->prepare("UPDATE $tabela SET nome = :nome, email = :email, senha = :senha, imagemProfile = :imagemProfile where id = '$id'");
+				} */
 
 }
 
@@ -62,6 +63,7 @@ if ($_FILES['photo'])
 $res->bindValue(":nome", "$nome");
 $res->bindValue(":email", "$email");
 $res->bindValue(":senha", "$senha");
+$res->bindValue(":dataNascimento", "$data");
 $res->bindValue(":imagemProfile", "$photo_name");
 
 /* $res->bindValue(":especialidade", "$especialidade");*/

@@ -136,43 +136,46 @@ export default function CriacaoPost() {
                             style={styles.avatar}
                         ></Image>
                     </View>
-                    <View style={{ width: '50%', flexDirection: 'row', marginBottom: 40, }}>
-                        <View style={{ alignContent: 'flex-end' }}>
-                            <TextInput
-                                style={styles.InputDescricao}
-                                placeholder="....."
-                                placeholderTextColor='#413B33'
-                                value={descricao}
-                                multiline={true}
-                                onChangeText={(descricao) => setDescricao(descricao)}
-                            />
+                    <View>
+
+
+                        <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+                            <View style={{ marginBottom: 40 }}>
+                                <TextInput
+                                    style={styles.InputDescricao}
+                                    placeholder="....."
+                                    placeholderTextColor='#413B33'
+                                    value={descricao}
+                                    multiline={true}
+                                    onChangeText={(descricao) => setDescricao(descricao)}
+                                />
+                            </View>
+                            <View style={{ borderRadius: 25, overflow: 'hidden', height: 50, width: 200, }
+                            }>
+                                <Picker
+                                    selectedValue={estiloSelecionado}
+                                    style={styles.selectEspecialidade}
+                                    onValueChange={(itemValue) =>
+                                        setEstiloSelecionado(itemValue)
+                                    }>
+                                    {
+                                        estilo.map(esp => {
+                                            return <Picker.Item color='#C6AC8F' style={styles.pickerText} label={esp} value={esp} />
+                                        })
+                                    }
+                                </Picker>
+                            </View>
+                            <TouchableOpacity
+                                style={styles.btnConfirmar}
+                                onPress={criarPostagem}>
+                                <Text style={styles.btnText}>Postar</Text>
+                            </TouchableOpacity>
                         </View>
+
                     </View>
 
-                    <View>
-                        <View style={{ borderRadius: 25, overflow: 'hidden', height: 50, width: 200, }
-                        }>
-                            <Picker
-                                selectedValue={estiloSelecionado}
-                                style={styles.selectEspecialidade}
-                                onValueChange={(itemValue) =>
-                                    setEstiloSelecionado(itemValue)
-                                }>
-                                {
-                                    estilo.map(esp => {
-                                        return <Picker.Item style={styles.pickerText} label={esp} value={esp} />
-                                    })
-                                }
-                            </Picker>
-                        </View>
-                    </View>
-                    <TouchableOpacity
-                        style={styles.btnConfirmar}
-                        onPress={criarPostagem}>
-                        <Text style={styles.btnText}>Postar</Text>
-                    </TouchableOpacity>
                 </View>
-            </ScrollView>
-        </View>
+            </ScrollView >
+        </View >
     );
 };

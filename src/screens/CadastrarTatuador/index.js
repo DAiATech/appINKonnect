@@ -9,9 +9,10 @@ import * as ImageCameraCall from "expo-image-picker";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import url from "../../services/url";
 import DateTimePicker from '@react-native-community/datetimepicker';
-
+import { Ionicons } from "@expo/vector-icons";
 //import { Splash } from '../../lotties/Splash'; 
 import api from '../../services/api';
+import { ScrollView } from "react-native-gesture-handler";
 
 export default function CadastrarTatuador() {
     const navigation = useNavigation();
@@ -91,7 +92,6 @@ export default function CadastrarTatuador() {
         setImgProfile(data);
     }
 
-
     /* Data picker */
     const [date, setDate] = useState(new Date);
     const [dataSelected, setDataSelected] = useState();
@@ -105,7 +105,7 @@ export default function CadastrarTatuador() {
 
         let tempDate = new Date(currentDate);
         let fDate = tempDate.getFullYear() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getDate();
-        
+
         setDate(currentDate);
 
         setText(fDate)
@@ -202,7 +202,6 @@ export default function CadastrarTatuador() {
                   duration: 800,
                 }); */
                 console.log("chegou!!!!");
-                alert('ola');
                 navigation.push("LoginTatuador")
 
                 /* } catch (error) {
@@ -211,167 +210,127 @@ export default function CadastrarTatuador() {
             }
         }
     }
-    /*   const checkLogin = async () => {
-        
-        const user = await AsyncStorage.getItem('@user');
-        if (confirmarSenha != "" && confirmarSenha == senha ) {
-           
-           navigate({saveformData}) ;
-        }
-        else {
-            Alert.alert('Senhas Diferentes !')
-        }
-     
-       
-      } */
-
-    /*   useEffect(() => {
-        checkLogin();
-      }, []); */
-
-
-
-
     return (
         <View style={styles.container}>
 
-            <View>
+            <ScrollView style={styles.containerScroll}>
                 <Image style={styles.logo} source={require('../../assets/INKonnect.png')} />
-            </View>
+                <Text style={styles.titleText}>CadastroTatuador</Text>
+                <View style={styles.form}>
+                    <View style={styles.divisorRow}>
+                        <View style={styles.divisorSecao}>
+                            <View>
+                                <Text style={styles.formLabel}>Nome:</Text>
+                                <TextInput
+                                    style={styles.login}
+                                    placeholder="João da Silva"
+                                    placeholderTextColor='#413B33'
+                                    value={nome}
+                                    onChangeText={(nome) => setNome(nome)}
+                                />
+                            </View>
+                            <View style={{ marginTop: 10 }}>
+                                <Text style={styles.formLabelEmail}>Email:</Text>
+                                <TextInput
+                                    style={styles.login}
+                                    placeholder="Email"
+                                    placeholderTextColor='#413B33'
+                                    value={email}
+                                    onChangeText={(email) => setEmail(email)}
+                                />
+                            </View>
+                        </View>
 
 
-            <View style={styles.form}>
-                <Text style={{ fontSize: 20, color: '#fff' }}>CadastroTatuador</Text>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 50 }}>
-                    <View style={{ alignContent: 'flex-end', width: '50%' }}>
-                        <Text style={styles.formLabel}>Nome:</Text>
-                        <TextInput
-                            style={styles.login}
-                            placeholder="João da Silva"
-                            placeholderTextColor='#413B33'
-                            value={nome}
-                            onChangeText={(nome) => setNome(nome)}
-                        />
+                        <View style={{ flexDirection: 'column', width: '50%', }}>
+                            <TouchableOpacity
+                                style={styles.button}
+                                onPress={imagePickerCall}
+                            >
+                                {imgProfile ?
+                                    <Image
+                                        source={{
+                                            uri: imgProfile
+                                                ? imgProfile.uri
+                                                : ""
+                                        }}
+                                        style={styles.imgContainer}
+                                    ></Image>
+                                    : <Ionicons name="add" size={35} color="#C6AC8F" />}
+                                <Ionicons name="add" size={35} color="#C6AC8F" style={styles.iconePlus} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <View style={styles.divisorRow}>
+                        <View style={styles.divisorSecao}>
+                            <Text style={styles.formLabel}>Senha:</Text>
+                            <TextInput
+                                placeholderTextColor='#413B33'
+                                secureTextEntry={true}
+                                style={styles.login}
+                                placeholder="Senha"
+                                value={senha}
+                                onChangeText={(senha) => setSenha(senha)}
+                            />
+                        </View>
+                        <View style={styles.divisorSecao}>
+                            <Text style={styles.formLabelData}>Data de Nascimento:</Text>
+                            <TouchableOpacity
+                                style={styles.btnData}
+                                onPress={() => showMode('date')}>
+                                <Text style={styles.textBtnData}>{date.getDate()} / {date.getMonth() + 1} / {date.getFullYear()}</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
 
-                    <View style={{ flexDirection: 'column', width: '50%' }}>
-                        <TouchableOpacity
-                            style={styles.button}
-                            onPress={imagePickerCall}
-                        >
-                            <Text styles={styles.buttonText}>Tirar Foto </Text>
-                        </TouchableOpacity>
-                        <Image
-                            source={{
-                                uri: imgProfile
-                                    ? imgProfile.uri
-                                    : ""
-                            }}
-                            style={styles.imgContainer}
-                        ></Image>
+                    {show && (
+                        <DateTimePicker
+                            testeID='dateTimePicker'
+                            value={date}
+                            mode={mode}
+                            is24Hour={true}
+                            display='default'
+                            onChange={onChangeDate}
+                        />)
+                    }
+
+                    <View style={styles.divisorRow}>
+                        <View style={styles.divisorSecao}>
+                            <Text style={styles.formLabel}>CPF:</Text>
+                            <TextInput
+                                placeholderTextColor='#413B33'
+                                secureTextEntry={false}
+                                style={styles.login}
+                                placeholder="cpf"
+                                value={cpf}
+                                onChangeText={(cpf) => setCpf(cpf)}
+                            />
+                        </View>
+                        <View style={styles.divisorSecao}>
+                            <Text style={styles.formLabel}>Especialidade:</Text>
+                            <TextInput
+                                placeholderTextColor='#413B33'
+                                secureTextEntry={false}
+                                style={styles.login}
+                                placeholder="Especialidade"
+                                value={especialidade}
+                                onChangeText={(especialidade) => setEspecialidade(especialidade)}
+                            />
+                        </View>
                     </View>
+
+                    <TouchableOpacity
+                        style={styles.loginSave}
+                        onPress={saveCadastro}>
+                        <Text style={styles.text}>Cadastrar</Text>
+                    </TouchableOpacity>
                 </View>
 
-                <Text style={styles.formLabelEmail}>Email:</Text>
-                <TextInput
-                    style={styles.login}
-                    placeholder="Email"
-                    placeholderTextColor='#413B33'
-                    value={email}
-                    onChangeText={(email) => setEmail(email)}
-                />
 
-                <View style={{ width: '100%', flexDirection: 'row', marginTop: -10, }}>
-                    <View style={{ width: '50%' }}>
-                        <Text style={styles.formLabel}>Senha:</Text>
-                        <TextInput
-                            placeholderTextColor='#413B33'
-                            secureTextEntry={true}
-                            style={styles.login}
-                            placeholder="Senha"
-                            value={senha}
-                            onChangeText={(senha) => setSenha(senha)}
-                        />
-                    </View>
-                    <View style={{ width: '50%' }}>
-                        <Text style={styles.formLabelData}>Data de Nascimento:</Text>
-                        <TouchableOpacity
-                            style={styles.btnData}
-                            onPress={() => showMode('date')}>
-                            <Text style={styles.textBtnData}>{date.getDate()} / {date.getMonth() + 1} / {date.getFullYear()}</Text>
-
-                        </TouchableOpacity>
-                    </View>
+                <View>
+                    <Image style={styles.logoInk} source={require('../../assets/logo_2.png')} />
                 </View>
-
-                {show && (
-                    <DateTimePicker
-                        testeID='dateTimePicker'
-                        value={date}
-                        mode={mode}
-                        is24Hour={true}                        
-                        display='default'
-                        onChange={onChangeDate}
-                    />)}
-
-                <View style={{ width: '100%', flexDirection: 'row', }}>
-                    <View style={{ width: '50%' }}>
-                        <Text style={styles.formLabel}>CPF:</Text>
-                        <TextInput
-                            placeholderTextColor='#413B33'
-                            secureTextEntry={false}
-                            style={styles.login}
-                            placeholder="cpf"
-                            value={cpf}
-                            onChangeText={(cpf) => setCpf(cpf)}
-                        />
-                    </View>
-                    <View style={{ width: '50%' }}>
-                        <Text style={styles.formLabel}>Especialidade:</Text>
-                        <TextInput
-                            placeholderTextColor='#413B33'
-                            secureTextEntry={false}
-                            style={styles.login}
-                            placeholder="Especialidade"
-                            value={especialidade}
-                            onChangeText={(especialidade) => setEspecialidade(especialidade)}
-                        />
-                    </View>
-                </View>
-
-
-                {/* <Text style={styles.formLabel}>Confirme a senha:</Text>
-        <TextInput
-          placeholderTextColor='#413B33'
-          secureTextEntry={true}
-          style={styles.login}
-          placeholder="Senha"
-          value={confirmarSenha}
-          onChangeText={(confirmarSenha) => setConfirmarSenha(confirmarSenha)}
-        /> */}
-
-
-                {/*   <TouchableOpacity
-        style={styles.loginSave}
-        onPress={login}
-      >
-
-            <Text style={styles.text}>Entrar</Text>
-             </TouchableOpacity>*/}
-                <TouchableOpacity
-                    style={styles.loginSave}
-                    onPress={saveCadastro}>
-                    <Text style={styles.text}>Cadastrar</Text>
-                </TouchableOpacity>
-
-
-            </View>
-
-
-            <View>
-                <Image style={styles.logoInk} source={require('../../assets/logo_2.png')} />
-            </View>
-
+            </ScrollView>
         </View>
     )
 }

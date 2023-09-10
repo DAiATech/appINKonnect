@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
     },
 
     containerHeader: {
-        flexDirection: 'row',
+        flexDirection: 'row-reverse',
         justifyContent: "center",
         alignItems: "center",
     },

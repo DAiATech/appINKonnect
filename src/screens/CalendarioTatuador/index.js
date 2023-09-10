@@ -14,16 +14,21 @@ import { Calendar } from "react-native-calendars";
 import url from "../../services/url";
 export default function CalendarioTatuador() {
 
+
     const navigation = useNavigation();
     const [dataSelected, setDataSelected] = useState();
 
     /* Testes Calendário */
-    const [dataSelectedTeste, setDataSelectedTeste] = useState(['2023-09-22', '2023-09-26']);
-    const dataSelectedTestew = ['2023-09-26', '2023-09-24'];
+    const [dataSelectedTeste, setDataSelectedTeste] = useState(["2023-09-22", "2023-09-26"]);
+    const dataSelectedTestew = ["2023-09-26", "2023-09-24"];
     let datasTestesObj = {}
+    let datassssss = { "2023-07-20": { "selected": true } }
     dataSelectedTeste.forEach(
         (item) => { datasTestesObj[item] = { selected: true } }
     )
+    console.log("Firsssssst:");
+    console.log(datasTestesObj);
+
     /* ------ */
 
     const [cliente, setCliente] = useState('');
@@ -79,7 +84,7 @@ export default function CalendarioTatuador() {
     const [abrirModalHorario, setAbrirModalHorario] = useState(false);
     const [abrirModal, setAbrirModal] = useState(false);
     const [userData, setUserData] = useState(null);
-   
+
     /*  async function addDataMarcada(d) {
          const item = d;
          console.log(item);
@@ -87,28 +92,43 @@ export default function CalendarioTatuador() {
      }
   */
 
+    let datasTestesObjDDFD = {}
+    async function marcarDatasCalendario() {
+        datasSessoes.forEach(
+            (item) => { datasTestesObjDDFD[item] = { selected: true } }
+        )
+        console.log("DATAAA");
+        console.log(datasTestesObjDDFD);
+    }
+
     const [listaSessoes, setListaSessoes] = useState([]);
     const [datasSessoes, setDatasSessoes] = useState([]);
     const fetchDatasMarcadas = async () => {
         try {
 
             const responseLista = await api.get(`InKonnectPHP/BD/tatuadores/listarDataSessoes.php?tatuador=${userData?.id}`);
-            /*setListaSessoes(responseLista.data.resultado);*/
             console.log(responseLista.data.resultado);
-
-            console.log("list é");
-            console.log(listaSessoes)
-
             responseLista.data.resultado.map((sessao, index) =>
-/*                 setDatasSessoes(datasSessoes => [...datasSessoes, ...sessao.dataSessao]), */
+                /*                 setDatasSessoes(datasSessoes => [...datasSessoes, ...sessao.dataSessao]), */
                 datasSessoes.push(sessao.dataSessao),
+                datasSessoes.forEach(
+                    (item) => { datasTestesObjDDFD[item] = { selected: true } }
+                )
             )
+
             console.log(datasSessoes)
+            marcarDatasCalendario();
+            console.log("ornintorrinco");
+            console.log(datasTestesObjDDFD);
+            console.log(Object.keys(datasTestesObjDDFD).length);
+            TesteComponente();
         }
         catch (error) {
             console.log("Erro ao carregar os dados", error);
         }
     }
+    marcarDatasCalendario();
+
 
     async function cadastrarSessao() {
         if (cliente == "" || valor == "" || horario == "") {
@@ -145,6 +165,7 @@ export default function CalendarioTatuador() {
                 console.log("Acho que deu!");
                 setAbrirModal(!abrirModal);
                 navigation.push("Home")
+
             }
         }
     }
@@ -180,6 +201,38 @@ export default function CalendarioTatuador() {
             />
         )
     }
+    const TesteComponente = () => {
+        if (Object.keys(datasTestesObjDDFD).length === 0) {
+            console.log("sssss === 0 ")
+            return <Calendar
+                style={{ borderRadius: 20, borderWidth: 1, height: 400, marginHorizontal: 25, marginTop: 15 }}
+                onDayPress={day => {
+                    setDataSelected(day.dateString);
+                    console.log(day.dateString);
+                    setAbrirModal(true);
+                }}
+                markedDates={datasTestesObjDDFD}
+                /* markedDates={{
+                    [datasTestesObj]: { marked: true, selectedDotColor: 'orange', selected: true },
+                    [dataSelected]: { marked: true, selectedDotColor: 'orange', selected: true },
+                    [dataSelectedTeste]: { marked: true, selectedDotColor: 'orange', selected: true },
+        
+                }} */
+                theme={{
+                    calendarBackground: '#222',
+                    dayTextColor: '#fff',
+                    textDisabledColor: '#444',
+                    monthTextColor: '#888'
+                }}
+            />
+        }
+        else if (Object.keys(datasTestesObjDDFD).length > 0) {
+            console.log("sssss > 0 ")
+            return <Text>AAAA</Text>
+
+        }
+    };
+
     useEffect(() => {
         const fetchUserData = async () => {
             const data = await getUserData();
@@ -189,9 +242,8 @@ export default function CalendarioTatuador() {
         setDatasSessoes([]);
         fetchDatasMarcadas();
         loadData();
-    }, [page, totalItems, lista]);
+    }, [lista]);
 
-    console.log(listaSessoes);
     const getHeader = () => {
 
         return <>
@@ -214,19 +266,19 @@ export default function CalendarioTatuador() {
             } */}
             <View style={{ paddingBottom: 25, borderBottomWidth: 3, borderBottomColor: '#413B33', }}>
 
-                <Calendar
+                {datasSessoes ? (<Calendar
                     style={{ borderRadius: 20, borderWidth: 1, height: 400, marginHorizontal: 25, marginTop: 15 }}
                     onDayPress={day => {
                         setDataSelected(day.dateString);
                         console.log(day.dateString);
                         setAbrirModal(true);
                     }}
-                    markedDates={datasTestesObj}
+                    markedDates={datasTestesObjDDFD}
                     /* markedDates={{
                         [datasTestesObj]: { marked: true, selectedDotColor: 'orange', selected: true },
                         [dataSelected]: { marked: true, selectedDotColor: 'orange', selected: true },
                         [dataSelectedTeste]: { marked: true, selectedDotColor: 'orange', selected: true },
-     
+            
                     }} */
                     theme={{
                         calendarBackground: '#222',
@@ -234,17 +286,19 @@ export default function CalendarioTatuador() {
                         textDisabledColor: '#444',
                         monthTextColor: '#888'
                     }}
-                />
+                />)
+                    : (<Text>SSS</Text>)
+                }
+
             </View>
         </>
     };
-    const getFooter = () => {
-        return <Text>'Loading...'</Text>;
-    };
+
 
 
     return (
         <View style={styles.container}>
+
             <View style={{ backgroundColor: '#121212', flex: 1, }}>
                 <View style={{ flex: 1, }}>
                     <FlatList
@@ -255,7 +309,6 @@ export default function CalendarioTatuador() {
                 </View>
 
             </View>
-
 
 
             <Modal
