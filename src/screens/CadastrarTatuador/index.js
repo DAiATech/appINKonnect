@@ -212,7 +212,6 @@ export default function CadastrarTatuador() {
     }
     return (
         <View style={styles.container}>
-
             <ScrollView style={styles.containerScroll}>
                 <Image style={styles.logo} source={require('../../assets/INKonnect.png')} />
                 <Text style={styles.titleText}>CadastroTatuador</Text>

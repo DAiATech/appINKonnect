@@ -5,15 +5,13 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
-    paddingTop: 50,
-    paddingBottom: 25,
     justifyContent: 'space-around',
     backgroundColor: "#121212",
   },
   containerScroll: {
     width: '100%',
     paddingHorizontal: 25,
-    paddingTop: 10
+    paddingTop: 10,
   },
   btnData: {
     justifyContent: 'center',
@@ -85,11 +83,13 @@ export const styles = StyleSheet.create({
 
   logo: {
     alignSelf: 'center',
+    marginTop:20,
   },
   logoInk: {
     width: 100,
     resizeMode: 'contain',
     alignSelf: 'center',
+    marginBottom:20,
   },
   titleText: {
     fontSize: 20,
