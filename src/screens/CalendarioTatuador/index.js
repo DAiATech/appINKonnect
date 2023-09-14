@@ -27,8 +27,7 @@ export default function CalendarioTatuador() {
     dataSelectedTeste.forEach(
         (item) => { datasTestesObj[item] = { selected: true } }
     )
-    console.log("Firsssssst:");
-    console.log(datasTestesObj);
+
 
     /* ------ */
 
@@ -112,9 +111,7 @@ export default function CalendarioTatuador() {
             responseLista.data.resultado.map((sessao, index) =>
                 /*                 setDatasSessoes(datasSessoes => [...datasSessoes, ...sessao.dataSessao]), */
                 datasSessoes.push(sessao.dataSessao),
-                datasSessoes.forEach(
-                    (item) => { datasTestesObjDDFD[item] = { selected: true } }
-                )
+
             )
 
             console.log(datasSessoes)
@@ -127,7 +124,6 @@ export default function CalendarioTatuador() {
             console.log("Erro ao carregar os dados", error);
         }
     }
-    marcarDatasCalendario();
 
 
     async function cadastrarSessao() {
@@ -202,6 +198,10 @@ export default function CalendarioTatuador() {
         )
     }
 
+    async function renderCalendario() {
+        return ( <></>
+        )
+    }
 
 
     useEffect(() => {
@@ -211,8 +211,8 @@ export default function CalendarioTatuador() {
         };
         fetchUserData();
         setDatasSessoes([]);
-        fetchDatasMarcadas();
         loadData();
+        fetchDatasMarcadas();
     }, [lista]);
 
     const getHeader = () => {
@@ -239,12 +239,40 @@ export default function CalendarioTatuador() {
                 <TouchableOpacity
                     style={styles.botaoAbrirCalendario}
                     onPress={() => {
+                        console.log(datasTestesObjDDFD)
+                        datasSessoes.forEach(
+                            (item) => { datasTestesObjDDFD[item] = { selected: true } }
+                        )
+                        fetchDatasMarcadas();
+                        console.log(datasTestesObjDDFD)
+
+                        renderCalendario();
                         setAbrirCalendario(true)
                     }
                     }
                 >
                     {abrirCalendario ?
-                        <Text>a</Text> : <></>
+                        <Calendar
+                            style={{ borderRadius: 20, borderWidth: 1, height: 400, marginHorizontal: 25, marginTop: 15 }}
+                            onDayPress={day => {
+                                setDataSelected(day.dateString);
+                                console.log(day.dateString);
+                                setAbrirModal(true);
+                            }}
+                            markedDates={datasTestesObjDDFD}
+                            /* markedDates={{
+                                [datasTestesObj]: { marked: true, selectedDotColor: 'orange', selected: true },
+                                [dataSelected]: { marked: true, selectedDotColor: 'orange', selected: true },
+                                [dataSelectedTeste]: { marked: true, selectedDotColor: 'orange', selected: true },
+                    
+                            }} */
+                            theme={{
+                                calendarBackground: '#222',
+                                dayTextColor: '#fff',
+                                textDisabledColor: '#444',
+                                monthTextColor: '#888'
+                            }}
+                        /> : <Text>A</Text>
                     }
                     <Text>Visualizar Calendário</Text>
                 </TouchableOpacity>
