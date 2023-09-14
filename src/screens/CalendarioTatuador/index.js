@@ -12,8 +12,10 @@ import { getUserData } from "../../components/userData";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Calendar } from "react-native-calendars";
 import url from "../../services/url";
+
 export default function CalendarioTatuador() {
 
+    const [abrirCalendario, setAbrirCalendario] = useState(false);
 
     const navigation = useNavigation();
     const [dataSelected, setDataSelected] = useState();
@@ -22,7 +24,6 @@ export default function CalendarioTatuador() {
     const [dataSelectedTeste, setDataSelectedTeste] = useState(["2023-09-22", "2023-09-26"]);
     const dataSelectedTestew = ["2023-09-26", "2023-09-24"];
     let datasTestesObj = {}
-    let datassssss = { "2023-07-20": { "selected": true } }
     dataSelectedTeste.forEach(
         (item) => { datasTestesObj[item] = { selected: true } }
     )
@@ -121,7 +122,6 @@ export default function CalendarioTatuador() {
             console.log("ornintorrinco");
             console.log(datasTestesObjDDFD);
             console.log(Object.keys(datasTestesObjDDFD).length);
-            TesteComponente();
         }
         catch (error) {
             console.log("Erro ao carregar os dados", error);
@@ -201,37 +201,8 @@ export default function CalendarioTatuador() {
             />
         )
     }
-    const TesteComponente = () => {
-        if (Object.keys(datasTestesObjDDFD).length === 0) {
-            console.log("sssss === 0 ")
-            return <Calendar
-                style={{ borderRadius: 20, borderWidth: 1, height: 400, marginHorizontal: 25, marginTop: 15 }}
-                onDayPress={day => {
-                    setDataSelected(day.dateString);
-                    console.log(day.dateString);
-                    setAbrirModal(true);
-                }}
-                markedDates={datasTestesObjDDFD}
-                /* markedDates={{
-                    [datasTestesObj]: { marked: true, selectedDotColor: 'orange', selected: true },
-                    [dataSelected]: { marked: true, selectedDotColor: 'orange', selected: true },
-                    [dataSelectedTeste]: { marked: true, selectedDotColor: 'orange', selected: true },
-        
-                }} */
-                theme={{
-                    calendarBackground: '#222',
-                    dayTextColor: '#fff',
-                    textDisabledColor: '#444',
-                    monthTextColor: '#888'
-                }}
-            />
-        }
-        else if (Object.keys(datasTestesObjDDFD).length > 0) {
-            console.log("sssss > 0 ")
-            return <Text>AAAA</Text>
 
-        }
-    };
+
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -265,30 +236,18 @@ export default function CalendarioTatuador() {
                 <View></View>
             } */}
             <View style={{ paddingBottom: 25, borderBottomWidth: 3, borderBottomColor: '#413B33', }}>
-
-                {datasSessoes ? (<Calendar
-                    style={{ borderRadius: 20, borderWidth: 1, height: 400, marginHorizontal: 25, marginTop: 15 }}
-                    onDayPress={day => {
-                        setDataSelected(day.dateString);
-                        console.log(day.dateString);
-                        setAbrirModal(true);
-                    }}
-                    markedDates={datasTestesObjDDFD}
-                    /* markedDates={{
-                        [datasTestesObj]: { marked: true, selectedDotColor: 'orange', selected: true },
-                        [dataSelected]: { marked: true, selectedDotColor: 'orange', selected: true },
-                        [dataSelectedTeste]: { marked: true, selectedDotColor: 'orange', selected: true },
-            
-                    }} */
-                    theme={{
-                        calendarBackground: '#222',
-                        dayTextColor: '#fff',
-                        textDisabledColor: '#444',
-                        monthTextColor: '#888'
-                    }}
-                />)
-                    : (<Text>SSS</Text>)
-                }
+                <TouchableOpacity
+                    style={styles.botaoAbrirCalendario}
+                    onPress={() => {
+                        setAbrirCalendario(true)
+                    }
+                    }
+                >
+                    {abrirCalendario ?
+                        <Text>a</Text> : <></>
+                    }
+                    <Text>Visualizar Calendário</Text>
+                </TouchableOpacity>
 
             </View>
         </>

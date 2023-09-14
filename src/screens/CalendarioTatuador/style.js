@@ -9,7 +9,15 @@ export const styles = StyleSheet.create({
         padding: 10,
     },
 
-
+    botaoAbrirCalendario:{
+        backgroundColor:'#f0f',
+        padding:10,
+        borderRadius:5,
+        alignItems:'center',
+        width:250,
+        alignSelf:'center',
+        marginTop:20
+    },
     /* Modal */
     ModalTitle: {
         fontFamily: fonts.text,
