@@ -101,7 +101,6 @@ export default function CalendarioTatuador() {
         console.log(datasTestesObjDDFD);
     }
 
-    const [listaSessoes, setListaSessoes] = useState([]);
     const [datasSessoes, setDatasSessoes] = useState([]);
     const fetchDatasMarcadas = async () => {
         try {
@@ -198,10 +197,6 @@ export default function CalendarioTatuador() {
         )
     }
 
-    async function renderCalendario() {
-        return ( <></>
-        )
-    }
 
 
     useEffect(() => {
@@ -213,7 +208,7 @@ export default function CalendarioTatuador() {
         setDatasSessoes([]);
         loadData();
         fetchDatasMarcadas();
-    }, [lista]);
+    }, [lista, abrirCalendario]);
 
     const getHeader = () => {
 
@@ -240,20 +235,28 @@ export default function CalendarioTatuador() {
                     style={styles.botaoAbrirCalendario}
                     onPress={() => {
                         console.log(datasTestesObjDDFD)
-                        datasSessoes.forEach(
-                            (item) => { datasTestesObjDDFD[item] = { selected: true } }
-                        )
-                        fetchDatasMarcadas();
+                        console.log("aaaaaaaaaaaaaaaaaaaaaaaa")
+                        console.log(datasSessoes)
+                        fetchDatasMarcadas()
+                        setAbrirCalendario(true) 
+                    
                         console.log(datasTestesObjDDFD)
-
-                        renderCalendario();
-                        setAbrirCalendario(true)
                     }
                     }
                 >
-                    {abrirCalendario ?
+                    <Text>Visualizar Calendário</Text>
+                </TouchableOpacity>
+
+                {abrirCalendario ?
+                    <View style={styles.containerCalendario}>
+                        <TouchableOpacity
+                            style={styles.removeItem}
+                            onPress={() => setAbrirCalendario(false)}
+                        >
+                            <EvilIcons name="close" size={25} color="black" />
+                        </TouchableOpacity>
                         <Calendar
-                            style={{ borderRadius: 20, borderWidth: 1, height: 400, marginHorizontal: 25, marginTop: 15 }}
+                            style={{ borderRadius: 20, borderWidth: 1, height: 400, marginHorizontal: 25, marginTop: 25, marginBottom: 20 }}
                             onDayPress={day => {
                                 setDataSelected(day.dateString);
                                 console.log(day.dateString);
@@ -272,10 +275,10 @@ export default function CalendarioTatuador() {
                                 textDisabledColor: '#444',
                                 monthTextColor: '#888'
                             }}
-                        /> : <Text>A</Text>
-                    }
-                    <Text>Visualizar Calendário</Text>
-                </TouchableOpacity>
+                        />
+                    </View>
+                    : <></>
+                }
 
             </View>
         </>

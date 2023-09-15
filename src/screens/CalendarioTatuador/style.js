@@ -9,14 +9,26 @@ export const styles = StyleSheet.create({
         padding: 10,
     },
 
-    botaoAbrirCalendario:{
-        backgroundColor:'#f0f',
-        padding:10,
-        borderRadius:5,
-        alignItems:'center',
-        width:250,
-        alignSelf:'center',
-        marginTop:20
+    botaoAbrirCalendario: {
+        backgroundColor: '#f0f',
+        padding: 10,
+        borderRadius: 5,
+        alignItems: 'center',
+        width: 250,
+        alignSelf: 'center',
+        marginTop: 20
+    },
+    containerCalendario: {
+        padding: 5,
+        backgroundColor: '#0099',
+        marginTop:20,
+
+    },
+    btnFecharContainerCalendario: {
+        justifyContent: "flex-end",
+        alignItems: "flex-end",
+        marginRight: 10,
+        marginTop: 15,
     },
     /* Modal */
     ModalTitle: {
