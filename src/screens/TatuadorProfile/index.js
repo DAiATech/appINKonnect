@@ -207,34 +207,32 @@ export default function TatuadorProfile() {
                 </View>
             </Modal>
             <View style={styles.mainConatiner}>
-            <View style={{}}>
                     {showBtn == true ?
                         <>
                             <TouchableOpacity
                                 style={styles.HeaderBtnEstudio}
                                 onPress={() => setAbrirModal(true)}
                             >
-                                <Text style={styles.HeaderBtnEstudioText}>Connectar Estúdio</Text>
+                                <Text style={styles.HeaderBtnEstudioText}>Conectar Estúdio</Text>
                             </TouchableOpacity>
                         </>
                         : null}
-                </View>
                 <View style={styles.userDataContainer}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
-                        <FontAwesome name="map-marker" size={24} color="white" />
+                    <View style={styles.containerLineItem}>
+                        <FontAwesome name="map-marker" size={25} color="white" />
                         <Text style={styles.userDataText}>Cidade: Cajati</Text>
                     </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
-                        <Entypo name="drop" size={24} color="white" style={{ marginLeft: -5, }} />
+                    <View style={styles.containerLineItem}>
+                        <Entypo name="drop" size={25} color="white" style={{ marginLeft: -5, }} />
                         <Text style={styles.userDataText}>Nome: {userData?.nome}</Text>
                     </View>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
+                    <View style={styles.containerLineItem}>
                         <AntDesign name="hearto" size={25} color="white" style={{ marginLeft: -5, }} />
                         <Text style={styles.userDataText}>Especialidade: {userData?.especialidade}</Text>
                     </View>
 
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
-                        <MaterialCommunityIcons name="cake" size={24} color="white" style={{ marginLeft: -5, }} />
+                    <View style={styles.containerLineItem}>
+                        <MaterialCommunityIcons name="cake" size={25} color="white" style={{ marginLeft: -5, }} />
                         <Text style={styles.userDataText}>Nasceu: {userData?.dataNascimento} </Text>
                     </View>
                 </View>

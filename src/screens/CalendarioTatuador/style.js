@@ -10,19 +10,30 @@ export const styles = StyleSheet.create({
     },
 
     botaoAbrirCalendario: {
-        backgroundColor: '#f0f',
+        backgroundColor: '#1B292f',
         padding: 10,
         borderRadius: 5,
         alignItems: 'center',
         width: 250,
         alignSelf: 'center',
-        marginTop: 20
+        marginTop: 20,
     },
     containerCalendario: {
         padding: 5,
-        backgroundColor: '#0099',
-        marginTop:20,
-
+        backgroundColor: '#1B292f',
+        marginTop: 20,
+        borderRadius: 20
+    },
+    removeItem: {
+        marginTop: 10,
+        marginLeft: 5
+    },
+    calendarStyle: {
+        borderRadius: 20,
+        borderWidth: 1,
+        height: 400,
+        marginHorizontal: 25,
+        marginTop: 25, marginBottom: 20
     },
     btnFecharContainerCalendario: {
         justifyContent: "flex-end",

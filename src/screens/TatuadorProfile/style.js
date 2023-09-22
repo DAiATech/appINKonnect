@@ -55,7 +55,7 @@ export const styles = StyleSheet.create({
         padding: 20,
     },
     userDataText: {
-        fontSize: 15,
+        fontSize: 20,
         fontWeight: '400',
         color: '#fff',
         margin: 10,
@@ -75,6 +75,7 @@ export const styles = StyleSheet.create({
     returnBtn: {
 
     },
+    containerLineItem: { flexDirection: 'row', alignItems: 'center', gap: 10, },
 
     menu: {
         left: 25,
