@@ -137,18 +137,8 @@ export default function TatuadorProfile() {
                             {userData?.nome}
                         </Text>
                         {/* Se o tatuador tiver um studio linkado esse botão não aparece: */}
-                        {showBtn == true ?
-                            <>
-                                <TouchableOpacity
-                                    style={styles.HeaderBtnEstudio}
-                                    onPress={() => setAbrirModal(true)}
-                                >
-                                    <Text style={styles.HeaderBtnEstudioText}>Connectar Estúdio</Text>
-                                </TouchableOpacity>
-                            </>
-                            : null}
                     </View>
-                </View>
+                </View>                
             </View>
             <Modal
                 visible={abrirModal}
@@ -217,6 +207,18 @@ export default function TatuadorProfile() {
                 </View>
             </Modal>
             <View style={styles.mainConatiner}>
+            <View style={{}}>
+                    {showBtn == true ?
+                        <>
+                            <TouchableOpacity
+                                style={styles.HeaderBtnEstudio}
+                                onPress={() => setAbrirModal(true)}
+                            >
+                                <Text style={styles.HeaderBtnEstudioText}>Connectar Estúdio</Text>
+                            </TouchableOpacity>
+                        </>
+                        : null}
+                </View>
                 <View style={styles.userDataContainer}>
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
                         <FontAwesome name="map-marker" size={24} color="white" />

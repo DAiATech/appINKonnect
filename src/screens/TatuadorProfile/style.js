@@ -53,7 +53,6 @@ export const styles = StyleSheet.create({
         width: "100%",
         height: 500,
         padding: 20,
-        top: 25,
     },
     userDataText: {
         fontSize: 15,
@@ -64,6 +63,7 @@ export const styles = StyleSheet.create({
     userDataContainer: {
         flexDirection: 'column',
         paddingLeft: 10,
+        marginTop: 10
     },
 
 
@@ -307,10 +307,10 @@ export const styles = StyleSheet.create({
     Icon: {
         position: 'absolute',
     },
-    search:{
-        width:200,
-        height:200
-    },  
+    search: {
+        width: 200,
+        height: 200
+    },
     btnCadastrar: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -318,7 +318,7 @@ export const styles = StyleSheet.create({
         width: '100%',
         height: 50,
         borderRadius: 10,
-        marginTop:10,
+        marginTop: 10,
     },
     textBtnCadastrar: {
         fontFamily: fonts.text,
