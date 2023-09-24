@@ -76,11 +76,7 @@ export const styles = StyleSheet.create({
     feedContainer: {
         width: '90%',
         alignSelf: 'center',
-    },
-
-    returnBtn: {
-
-    },
+    },   
 
     menu: {
         left: 25,

@@ -7,17 +7,24 @@ export const css = StyleSheet.create({
     },
     map: {
         height: '80%',
-        width:'80%',
-        alignSelf:'center',
+        width: '80%',
+        alignSelf: 'center',
     },
-    
+
     marcador: {
         width: 90,
         height: 70,
-        backgroundColor: '#f0f',
+        backgroundColor: '#C6AC8F',
         flexDirection: 'column',
-        borderRadius: 8,
-        alignItems: 'center'
+        borderRadius: 10,
+        alignItems: 'center',
+        borderWidth: 3,
+        borderColor: '#C6AC8F'
+    },
+    marcadorImage: {
+        width: '100%',
+        height: '70%',
+        resizeMode: 'cover',
     },
     marcadorDestino: {
         width: 90,
@@ -27,9 +34,5 @@ export const css = StyleSheet.create({
         borderRadius: 8,
         alignItems: 'center'
     },
-    marcadorImage: {
-        width: 90,
-        height: 45,
-        resizeMode: 'cover',
-    },
+
 })

@@ -164,8 +164,10 @@ export default function TatuadorProfile() {
         fetchUserData();
         checkPerfil();
         loadData();
+        console.log(userData?.imagem)
     }, [userData, lista]);
 
+    
 
     return (
         <SafeAreaProvider style={styles.container}>

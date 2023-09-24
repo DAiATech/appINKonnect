@@ -29,10 +29,10 @@ export default function MapaScreen() {
     const [origin, setOrigin] = useState(null);
     const [region, setRegion] = useState(null);
     const [destination, setDestination] = useState(null);
+
     const mapEl = useRef(null);
     const [distance, setDistance] = useState(null);
     const { height, width } = Dimensions.get('window');
-
 
     const LATITUDE_DELTA = 0.005;
     const LONGITUDE_DELTA = LATITUDE_DELTA * (width / height);
@@ -44,7 +44,6 @@ export default function MapaScreen() {
     const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(1);
     const [totalItems, setTotalItems] = useState(0);
-
     async function loadEstudiosLocais() {
         try {
             console.log('lets');
@@ -86,7 +85,6 @@ export default function MapaScreen() {
     } */
 
     useEffect(() => {
-
         (async function () {
             let { status } = await Location.requestForegroundPermissionsAsync();
 
@@ -104,18 +102,13 @@ export default function MapaScreen() {
             else {
                 throw new Error('Localização não encontrada');
             }
-
         })();
-
         loadEstudiosLocais();
-
     }, [lista]);
 
     return (
         <View style={css.container}>
-
             <HeaderUsuario />
-
             <MapView //pega localizacao da onde a gnt está e cria o mapa
                 style={css.map}
                 region={region}
@@ -124,7 +117,7 @@ export default function MapaScreen() {
                 zoomTapEnabled={true}
                 zoomControlEnabled={true}
                 minZoomLevel={1}
-                zoomEnabled={true} //pessoa nao consegue dar zoom no mapa
+                zoomEnabled={true}
                 loadingEnabled={true}
                 ref={mapEl}
             >
@@ -147,17 +140,27 @@ export default function MapaScreen() {
                 {lista.map((estudio) => {
                     return (
                         <Marker key={estudio.estudioId}
-                            coordinate={{ latitude: Number(estudio.latitude), longitude: Number(estudio.longitude) }} pinColor="#ff0000"
-                            title={estudio.nome}
-                            description={estudio.EnderecoNome}
-                        >
+                            coordinate={{ latitude: Number(estudio.latitude), longitude: Number(estudio.longitude) }}
+                            pinColor={'#ff0000'}
+                            title={estudio.estudioNome}
+                            description={estudio.enderecoNome}
+                            onCalloutPress={() => navigation.navigate('VisitaTatuadorProfile', {
+                                tatuadorId: estudio.tatuadorId,
+                                tatuadorNome: estudio.tatuadorNome,
+                                tatuadorEspecialidade: estudio.especialidade,
+                                tatuadorNasc: estudio.tatuadorNascimento,
+                                tatuadorImgProfile: estudio.imgRandomName,
+                                estudioEndereco: estudio.enderecoNome,
+                                estudioNome: estudio.estudioNome
+                            })
+                                                }                 >
                             <View style={css.marcador}>
                                 <Image
-                                    source={{uri: url + "/InKonnectPHP/BD/tatuadores/imgsTatuadores" + "/" + estudio.imgRandomName}}
+                                    source={{ uri: url + "/InKonnectPHP/BD/tatuadores/imgsTatuadores" + "/" + estudio.imgRandomName }}
                                     style={css.marcadorImage}
                                 >
                                 </Image>
-                                <Text style={{ color: 'white', fontSize: 16, fontWeight: '700' }}>{estudio.estudioNome}</Text>
+                                <Text style={{ color: 'white', fontSize: 16, fontWeight: '700' }}>{estudio.tatuadorNome}</Text>
                             </View>
                         </Marker>
                     )
