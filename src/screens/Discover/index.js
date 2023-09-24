@@ -12,6 +12,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 export default function Discover() {
 
   const navigation = useNavigation();
+  const [abrirFiltro, setAbrirFiltro] = useState(false);
 
   const [lista, setLista] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -89,7 +90,7 @@ export default function Discover() {
                   keyboardType="default"
                   onChangeText={(busca) => setBusca(busca)}
                   returnKeyType="search"
-                  onTextInput={() => Search()}                
+                  onTextInput={() => Search()}
                 />
 
                 <TouchableOpacity
@@ -105,8 +106,8 @@ export default function Discover() {
               onPress={() => setShowBtn(true)}
             >
               <Image style={styles.btnImage} source={require('../../assets/images/icons/lupa.png')} />
-
-            </TouchableOpacity>}
+            </TouchableOpacity>
+          }
 
           <TouchableOpacity
             style={styles.btnItens}
@@ -114,7 +115,7 @@ export default function Discover() {
               navigation.navigate("MapaScreen")
               /* Insert the path that client should follow  */
             }}
-          /* onPress={} */
+
           >
             <Image style={styles.btnImage} source={require('../../assets/images/icons/location.png')} />
 
@@ -122,15 +123,41 @@ export default function Discover() {
           <TouchableOpacity
             style={styles.btnItens}
             onPress={() => {
+              setAbrirFiltro(!abrirFiltro)
               /* navigation.navigate("...") */
               /* Insert the path that client should follow  */
             }}
-          /* onPress={} */
           >
             <Image style={styles.btnImage} source={require('../../assets/images/icons/filtro.png')} />
-
           </TouchableOpacity>
         </View>
+        {abrirFiltro ?
+          <View style={{ backgroundColor: '#f0f', height: 10, marginBottom: 20, flexDirection: 'row', justifyContent: 'space-around', }}>
+            <TouchableOpacity
+              style={styles.btnItens}
+              onPress={() => {
+                setAbrirFiltro(!abrirFiltro)
+                /* navigation.navigate("...") */
+                /* Insert the path that client should follow  */
+              }}
+            >
+              <Image style={styles.btnImage} source={require('../../assets/images/icons/filtro.png')} />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.btnItens}
+              onPress={() => {
+                setAbrirFiltro(!abrirFiltro)
+                /* navigation.navigate("...") */
+                /* Insert the path that client should follow  */
+              }}
+            >
+              <Image style={styles.btnImage} source={require('../../assets/images/icons/filtro.png')} />
+            </TouchableOpacity>
+          </View>
+          :
+          <></>
+
+        }
         <View style={{ flex: 1, height: Dimensions.get('window').height + 30, }}>
           <FlatList
             data={lista}
