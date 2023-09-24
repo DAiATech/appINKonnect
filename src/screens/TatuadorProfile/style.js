@@ -15,19 +15,25 @@ export const styles = StyleSheet.create({
         marginBottom: 30,
     },
     headerBackground: {
-        backgroundColor: '#413B33',
+        backgroundColor: '#f0f',
         width: '100%',
         height: '80%',
+    },
+    imageBackground: {
+        flex: 1,
+        width: '100%',
+        height: '150%',
     },
     headerFooter: {
         height: 100,
         flexDirection: 'row',
     },
+
     headerContainerNameBtn: {
         flexDirection: 'column',
         gap: 15,
         left: 50,
-        top: 10,
+        top: 50,
     },
     headerUserName: {
         fontSize: 27,
@@ -51,7 +57,7 @@ export const styles = StyleSheet.create({
     /* Main content */
     mainConatiner: {
         width: "100%",
-        height: 500,
+        height: "100%",
         padding: 20,
         top: 25,
     },
@@ -99,7 +105,7 @@ export const styles = StyleSheet.create({
         borderRadius: 50,
         resizeMode: 'contain',
         left: 20,
-        marginTop: -30,
+        marginTop: 20,
     },
 
     titleTasks: {
@@ -307,10 +313,10 @@ export const styles = StyleSheet.create({
     Icon: {
         position: 'absolute',
     },
-    search:{
-        width:200,
-        height:200
-    },  
+    search: {
+        width: 200,
+        height: 200
+    },
     btnCadastrar: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -318,7 +324,7 @@ export const styles = StyleSheet.create({
         width: '100%',
         height: 50,
         borderRadius: 10,
-        marginTop:10,
+        marginTop: 10,
     },
     textBtnCadastrar: {
         fontFamily: fonts.text,

@@ -6,13 +6,10 @@ import api from '../../../services/api';
 import url from '../../../services/url';
 import { styles } from './styles';
 import { Divider } from '@rneui/base'
-
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 import { showMessage, hideMessage } from "react-native-flash-message";
 import { EvilIcons, MaterialIcons, AntDesign, Ionicons } from '@expo/vector-icons';
-/* import * as ImagePicker from 'expo-image-picker';
- */
+
 const DadosProps = {
     data: {
         id: string,
@@ -26,12 +23,10 @@ const DadosProps = {
 
 CardPostagens = ({ data } = DadosProps) => {
 
-    const [abrirModal, setAbrirModal] = useState(false);
     const navigation = any = useNavigation();
-
+    const [abrirModal, setAbrirModal] = useState(false);
 
     async function excluir(nome, id) {
-
         Alert.alert('Sair', `Você tem certeza que deseja excluir o Registro : ` + nome, [
             {
                 text: 'Não',
@@ -60,34 +55,12 @@ CardPostagens = ({ data } = DadosProps) => {
         ])
     }
 
-
     return (
         <>
             {data.id === undefined && data.nome === undefined ?
-                <Text style={{ color: '#595858', fontSize: 14, marginTop: 10, alignContent: "center", textAlign: "center" }}>Nenhum Registro Encontrado!</Text>
+                <Text style={{ color: '#595858', fontSize: 15, marginTop: 10, alignContent: "center", textAlign: "center" }}>Nenhum Registro Encontrado!</Text>
                 :
-
                 <View style={{ marginBottom: 20, paddingBottom: 10, borderBottomWidth: 2, borderBottomColor: '#413B33' }}>
-                    {/*  <SwipeableRow
-                        style={{}}
-                        onPressWhatsapp={async () => {
-                            await Linking.openURL(`http://api.whatsapp.com/send?1=pt_BR&phone=55${data.nome}`)
-                        }}
-
-                        onPressEdit={async () => {
-                            navigation.push('NovoUsuario', { id_reg: data.id });
-                        }}
-
-                        onPressDelete={async () => {
-                            excluir(data.nome, data.id);
-                        }}
-
-
-                    > */}
-                    {/*   <TouchableOpacity
-                            style={styles.box}
-                            onPress={() => setAbrirModal(true)}
-                        > */}
                     <View style={styles.header}>
                         <View style={{ width: 65, }}>
                             <Image style={{ width: 50, height: 50, borderRadius: 25, }} source={{
@@ -108,22 +81,6 @@ CardPostagens = ({ data } = DadosProps) => {
                             </View>
                         </View>
                     </View>
-                    {/* <ScrollView overScrollMode='always' horizontal={true}
-                        style={styles.postImagesContainer}>
-                        <View style={{ gap: 20, flexDirection: 'row', }}>
-                            <View style={styles.containerImg}>
-                                <Image style={styles.postImageImg} source={{ uri: 'https://i.pinimg.com/236x/93/72/36/937236177965925c5a7acdd086afed11.jpg' }} />
-                            </View>
-                            <View style={styles.containerImg}>
-                                <Image style={styles.postImageImg} source={{ uri: 'https://i.pinimg.com/236x/93/72/36/937236177965925c5a7acdd086afed11.jpg' }} />
-                            </View>
-                            <View style={styles.containerImg}>
-                                <Image style={styles.postImageImg} source={{ uri: 'https://i.pinimg.com/236x/93/72/36/937236177965925c5a7acdd086afed11.jpg' }} />
-                            </View>
-                        </View>
-                    </ScrollView> */}
-                    {/*  </TouchableOpacity>/*/}
-                    {/* </SwipeableRow> */}
                     <View style={styles.postImageContainer}>
                         <Image style={styles.postImageImg} source={{
                             uri: url + "/InKonnectPHP/BD/tatuadores/imgsPostagens" + "/" + data.postagemImgRandomName
@@ -142,7 +99,6 @@ CardPostagens = ({ data } = DadosProps) => {
                             </Text>
                         </Text>
                     </View>
-                    {/*<Divider style={{ marginTop: 30 }} width={1} orientation='vertical' />*/}
                 </View >
             }
             <Modal
@@ -162,47 +118,31 @@ CardPostagens = ({ data } = DadosProps) => {
                             <EvilIcons name="close" size={25} color="black" />
                         </TouchableOpacity>
                         <Text style={styles.Cliente}>{data.nome}</Text>
-
-
                         <View style={styles.Section}>
                             <MaterialIcons style={styles.Icon} name="people-outline" size={22} color="#c1c1c1" />
 
                         </View>
-
-
-
                         <View style={styles.Section}>
                             <MaterialIcons style={styles.Icon} name="mail" size={22} color="#c1c1c1" />
                             <Text style={styles.Entrada}>Especialidade: {data.nome}</Text>
                         </View>
-
-
                         <TouchableOpacity onPress={() => Linking.openURL(url + 'painel/images/perfil/' + data.nome)}>
                             {(() => {
                                 if (data.foto != 'sem-foto.jpg' && data.foto != '' && data.foto != null) {
-
                                     return (
                                         <View style={styles.viewImg}>
                                             <Image style={styles.ImagemModal} source={{ uri: (url + 'painel/images/perfil/' + data.foto) }} />
                                             <Text style={styles.textoAbrir}>(Clique para Abrir)</Text>
                                         </View>
                                     )
-
                                 }
 
                             })()}
                         </TouchableOpacity>
-
-
-
                     </View>
                 </View>
             </Modal>
-
-
-
         </>
     );
 }
-
 export default CardPostagens;
