@@ -59,10 +59,9 @@ export const styles = StyleSheet.create({
         width: "100%",
         height: "100%",
         padding: 20,
-        top: 25,
     },
     userDataText: {
-        fontSize: 15,
+        fontSize: 20,
         fontWeight: '400',
         color: '#fff',
         margin: 10,
@@ -70,13 +69,19 @@ export const styles = StyleSheet.create({
     userDataContainer: {
         flexDirection: 'column',
         paddingLeft: 10,
+        marginTop: 10
     },
 
 
     feedContainer: {
         width: '90%',
         alignSelf: 'center',
-    },   
+    },
+
+    returnBtn: {
+
+    },
+    containerLineItem: { flexDirection: 'row', alignItems: 'center', gap: 10, },
 
     menu: {
         left: 25,

@@ -189,18 +189,8 @@ export default function TatuadorProfile() {
                             {userData?.nome}
                         </Text>
                         {/* Se o tatuador tiver um studio linkado esse botão não aparece: */}
-                        {showBtn == true ?
-                            <>
-                                <TouchableOpacity
-                                    style={styles.HeaderBtnEstudio}
-                                    onPress={() => setAbrirModal(true)}
-                                >
-                                    <Text style={styles.HeaderBtnEstudioText}>Connectar Estúdio</Text>
-                                </TouchableOpacity>
-                            </>
-                            : null}
                     </View>
-                </View>
+                </View>                
             </View>
             <Modal
                 visible={abrirModal}
@@ -268,17 +258,36 @@ export default function TatuadorProfile() {
                     </View>
                 </View>
             </Modal>
-            <View style={{
-                flex: 1, height: Dimensions.get('window').height + 50, padding: 20,
-                top: 25,
-            }}>
-                <FlatList
-                    style={{ backgroundColor: '#121212', flex: 1, }}
-                    horizontal={false}
-                    data={lista}
-                    renderItem={renderItem}
-                    ListHeaderComponent={getHeader}
-                />
+            <View style={styles.mainConatiner}>
+                    {showBtn == true ?
+                        <>
+                            <TouchableOpacity
+                                style={styles.HeaderBtnEstudio}
+                                onPress={() => setAbrirModal(true)}
+                            >
+                                <Text style={styles.HeaderBtnEstudioText}>Conectar Estúdio</Text>
+                            </TouchableOpacity>
+                        </>
+                        : null}
+                <View style={styles.userDataContainer}>
+                    <View style={styles.containerLineItem}>
+                        <FontAwesome name="map-marker" size={25} color="white" />
+                        <Text style={styles.userDataText}>Cidade: Cajati</Text>
+                    </View>
+                    <View style={styles.containerLineItem}>
+                        <Entypo name="drop" size={25} color="white" style={{ marginLeft: -5, }} />
+                        <Text style={styles.userDataText}>Nome: {userData?.nome}</Text>
+                    </View>
+                    <View style={styles.containerLineItem}>
+                        <AntDesign name="hearto" size={25} color="white" style={{ marginLeft: -5, }} />
+                        <Text style={styles.userDataText}>Especialidade: {userData?.especialidade}</Text>
+                    </View>
+
+                    <View style={styles.containerLineItem}>
+                        <MaterialCommunityIcons name="cake" size={25} color="white" style={{ marginLeft: -5, }} />
+                        <Text style={styles.userDataText}>Nasceu: {userData?.dataNascimento} </Text>
+                    </View>
+                </View>
             </View>
         </SafeAreaProvider>
     );

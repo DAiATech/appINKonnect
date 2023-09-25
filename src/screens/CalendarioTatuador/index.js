@@ -238,13 +238,13 @@ export default function CalendarioTatuador() {
                         console.log("aaaaaaaaaaaaaaaaaaaaaaaa")
                         console.log(datasSessoes)
                         fetchDatasMarcadas()
-                        setAbrirCalendario(true) 
-                    
+                        setAbrirCalendario(true)
+
                         console.log(datasTestesObjDDFD)
                     }
                     }
                 >
-                    <Text>Visualizar Calendário</Text>
+                    <Text style={{color:'#C6AC8F', fontSize:18, fontWeight:'700'}}>Visualizar Calendário</Text>
                 </TouchableOpacity>
 
                 {abrirCalendario ?
@@ -256,7 +256,7 @@ export default function CalendarioTatuador() {
                             <EvilIcons name="close" size={25} color="black" />
                         </TouchableOpacity>
                         <Calendar
-                            style={{ borderRadius: 20, borderWidth: 1, height: 400, marginHorizontal: 25, marginTop: 25, marginBottom: 20 }}
+                            style={styles.calendarStyle}
                             onDayPress={day => {
                                 setDataSelected(day.dateString);
                                 console.log(day.dateString);

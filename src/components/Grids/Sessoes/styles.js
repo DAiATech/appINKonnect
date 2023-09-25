@@ -48,12 +48,12 @@ export const styles = StyleSheet.create({
     },
     itemText: {
         color: '#FCF3EA',
-        fontSize: 19,
+        fontSize: 20,
         fontWeight: '600',
     },
     itemDataText: {
         color: '#FCF3EA',
-        fontSize: 19,
+        fontSize: 20,
         fontWeight: '300',
     },
 })
