@@ -17,6 +17,8 @@ import CalendarioTatuador from '../screens/CalendarioTatuador';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import Discover from '../screens/Discover';
 import ChatTatuador from '../screens/ChatTatuador';
+
+
 const AppTab = createBottomTabNavigator();
 
 const AuthRoutes = () => {

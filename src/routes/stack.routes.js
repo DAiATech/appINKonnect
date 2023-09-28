@@ -21,8 +21,18 @@ import CalendarioTatuador from '../screens/CalendarioTatuador';
 import MapaScreen from '../screens/MapaUsuario';
 import CameraCliente from '../screens/CameraCliente';
 import VisitaTatuadorPofile from '../screens/VisitaTatuadorProfile'
-import Discover from '../screens/Discover'
+import Discover from '../screens/Discover';
+import ChatScreenCliente from '../screens/ChatScreenCliente'
 const Stack = createNativeStackNavigator();
+
+import PubNub from "pubnub";
+import { PubNubProvider } from "pubnub-react";
+
+const pubnub = new PubNub({
+  subscribeKey: "sub-c-f716f44e-6523-4a11-a201-91732b78ab1a",
+  publishKey: "pub-c-e706fc27-484d-4ed5-a812-f0c2998efd00",
+  uuid: "0",
+});
 
 function StackNavigator() {
 
@@ -45,6 +55,7 @@ function StackNavigator() {
             <Stack.Screen name="Home" component={AuthRoutes} />
             <Stack.Screen name="HomeCliente" component={AuthRoutesCliente} />
             <Stack.Screen name="CameraCliente" component={CameraCliente} />
+            <Stack.Screen name="ChatScreenCliente" component={ChatScreenCliente} />
 
             <Stack.Screen name="TatuadorProfile" component={TatuadorProfile} />
             <Stack.Screen name="VisitaTatuadorProfile" component={VisitaTatuadorPofile} />
@@ -64,7 +75,9 @@ function AppRoutes() {
 
     return (
         <NavigationContainer>
-            <StackNavigator />
+            <PubNubProvider client={pubnub}>
+                <StackNavigator />
+            </PubNubProvider>
         </NavigationContainer>
 
     )

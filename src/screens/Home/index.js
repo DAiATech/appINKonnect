@@ -48,7 +48,6 @@ export default function Home() {
         }
     }
 
-
     const renderItem = function ({ item }) {
         return (
             <Grid
@@ -57,7 +56,7 @@ export default function Home() {
         )
     }
 
-    function Footer() {
+   /*  function Footer() {
         if (!load) return null;
 
         return (
@@ -65,7 +64,7 @@ export default function Home() {
                 <ActivityIndicator size={25} color="#000" />
             </View>
         )
-    }
+    } */
 
     async function Search() {
         const response = await api.get(`InKonnectPHP/bd/usuarios/buscar.php?buscar=${busca}`);
