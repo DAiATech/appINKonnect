@@ -22,7 +22,8 @@ import MapaScreen from '../screens/MapaUsuario';
 import CameraCliente from '../screens/CameraCliente';
 import VisitaTatuadorPofile from '../screens/VisitaTatuadorProfile'
 import Discover from '../screens/Discover';
-import ChatScreenCliente from '../screens/ChatScreenCliente'
+import ChatScreenCliente from '../screens/ChatScreenCliente';
+import ChatScreenTatuador from '../screens/ChatScreenTatuador';
 const Stack = createNativeStackNavigator();
 
 import PubNub from "pubnub";
@@ -51,6 +52,8 @@ function StackNavigator() {
             <Stack.Screen name="CadastrarTatuador" component={cadastrarTatuador} />
 
             <Stack.Screen name="CalendarioTatuador" component={CalendarioTatuador} />
+            <Stack.Screen name="ChatScreenTatuador" component={ChatScreenTatuador} />
+
 
             <Stack.Screen name="Home" component={AuthRoutes} />
             <Stack.Screen name="HomeCliente" component={AuthRoutesCliente} />

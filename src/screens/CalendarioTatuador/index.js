@@ -115,7 +115,6 @@ export default function CalendarioTatuador() {
 
             console.log(datasSessoes)
             marcarDatasCalendario();
-            console.log("ornintorrinco");
             console.log(datasTestesObjDDFD);
             console.log(Object.keys(datasTestesObjDDFD).length);
         }
@@ -246,6 +245,8 @@ export default function CalendarioTatuador() {
                 >
                     <Text style={{color:'#C6AC8F', fontSize:18, fontWeight:'700'}}>Visualizar Calendário</Text>
                 </TouchableOpacity>
+
+
 
                 {abrirCalendario ?
                     <View style={styles.containerCalendario}>

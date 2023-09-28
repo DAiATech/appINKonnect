@@ -156,7 +156,7 @@ export default function MapaScreen() {
                                                 }                 >
                             <View style={css.marcador}>
                                 <Image
-                                    source={{ uri: url + "/InKonnectPHP/BD/tatuadores/imgsTatuadores" + "/" + estudio.imgRandomName }}
+                                    source={{ uri: url + "InKonnectPHP/BD/tatuadores/imgsTatuadores" + "/" + estudio.imgRandomName }}
                                     style={css.marcadorImage}
                                 >
                                 </Image>

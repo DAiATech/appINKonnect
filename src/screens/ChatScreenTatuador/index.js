@@ -16,8 +16,8 @@ import { imagenn } from '../../assets/logo2.png'
 import { useRoute } from "@react-navigation/native";
 import url from "../../services/url";
 import { styles } from './style';
-import HeaderUsuario from "../../components/PagePreSet/HeaderUsuario";
-ChatScreenCliente = () => {
+import Header from "../../components/PagePreSet/Header";
+ChatScreenTatuador = () => {
   // A prop `route` será baixada do React Navigation.
   // Ele conterá nosso emoji em `route.params.emoji`.
   /*   const userEmoji = source={require('../../assets/images/wallpaperProfileImage.png')};
@@ -80,7 +80,8 @@ ChatScreenCliente = () => {
     // Publica nossa mensagem no canal `chat`
     pubnub.publish({ channel: "chat", message });
   };
-
+  console.log(route.params.tatuadorNome)
+  console.log('a')
   return (
     <SafeAreaView style={styles.outerContainer}>
       <KeyboardAvoidingView
@@ -91,17 +92,16 @@ ChatScreenCliente = () => {
           android: 0
         })}
       >
-
-        <HeaderUsuario />
-        <View>
+        <Header />
           <Text style={{ color: '#f0f' }}>{route.params.tatuadorNome}</Text>
-        </View>
+
+    
         <View style={styles.topContainer}>
           {messages.map(message => (
             <View key={message.timetoken} style={styles.messageContainer}>
               <View style={styles.avatar}>
                 <Image style={styles.perfilImg} source={{
-                  uri: url + "/InKonnectPHP/BD/usuarios/imgsUsuarios" + "/" + route.params.userImg
+                  uri: url + "/InKonnectPHP/BD/tatuadores/imgsTatuadores" + "/" + route.params.userImg
                 }} />
               </View>
               <View style={styles.messageContent}>
@@ -129,5 +129,5 @@ ChatScreenCliente = () => {
   );
 };
 
-export default ChatScreenCliente;
+export default ChatScreenTatuador;
 

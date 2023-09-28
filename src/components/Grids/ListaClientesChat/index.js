@@ -21,7 +21,7 @@ const DadosProps = {
     }
 }
 
-ListaTatuadoresChat = ({ data } = DadosProps) => {
+ListaClientesChat = ({ data } = DadosProps) => {
 
     const navigation = any = useNavigation();
     const [abrirModal, setAbrirModal] = useState(false);
@@ -81,13 +81,13 @@ ListaTatuadoresChat = ({ data } = DadosProps) => {
                             <View style={{ marginLeft: 20 }}>
                                 <TouchableOpacity
                                     style={styles.buttonFollow}
-                                    onPress={() => navigation.navigate('ChatScreenCliente',
+                                    onPress={() => navigation.navigate('ChatScreenTatuador',
                                         {
                                             id: data.id,
                                             userName: userData?.nome,
                                             userImg: userData?.imagem,
                                             profileImagemTatuador: data.profileImgRandomName,
-                                            tatuadorNome: data.tatuadorNome,
+                                            tatuadorNome: data.nome,
                                         })
                                     }
                                 >
@@ -158,4 +158,4 @@ ListaTatuadoresChat = ({ data } = DadosProps) => {
         </>
     );
 }
-export default ListaTatuadoresChat;
+export default ListaClientesChat;
