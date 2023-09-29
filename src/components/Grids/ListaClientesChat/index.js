@@ -14,10 +14,8 @@ const DadosProps = {
     data: {
         id: string,
         nome: string,
-        descricao: string,
-        estilo: string,
-        postagemImgRandomName: string,
-        profileImgRandomName: string,
+        imgName: string,
+        
     }
 }
 
@@ -71,7 +69,7 @@ ListaClientesChat = ({ data } = DadosProps) => {
                     <View style={styles.header}>
                         <View style={{ width: 65, }}>
                             <Image style={{ width: 50, height: 50, borderRadius: 25, }} source={{
-                                uri: url + "/InKonnectPHP/BD/tatuadores/imgsTatuadores" + "/" + data.profileImgRandomName
+                                uri: url + "/InKonnectPHP/BD/usuarios/imgsUsuarios" + "/" + data.imgName
                             }} />
                         </View>
                         <View style={{
@@ -86,8 +84,8 @@ ListaClientesChat = ({ data } = DadosProps) => {
                                             id: data.id,
                                             userName: userData?.nome,
                                             userImg: userData?.imagem,
-                                            profileImagemTatuador: data.profileImgRandomName,
-                                            tatuadorNome: data.nome,
+                                            profileImagemCliente: data.imgName,
+                                            clienteNome: data.nome,
                                         })
                                     }
                                 >

@@ -22,7 +22,7 @@ export default function ChatTatuador() {
 
   async function loadData() {
     try {
-      const response = await api.get(`InKonnectPHP/bd/tatuadores/listarPostagens.php?pagina=${page}&limite=10`);
+      const response = await api.get(`InKonnectPHP/bd/usuarios/listarUsuarios.php?pagina=${page}&limite=10`);
 
       if (lista.length >= response.data.totalItems) return;
 
@@ -38,7 +38,6 @@ export default function ChatTatuador() {
     }
   }
 
-
   const renderItem = function ({ item }) {
     return (
       <Grid
@@ -46,9 +45,6 @@ export default function ChatTatuador() {
       />
     )
   }
-
- 
- 
 
   useEffect(() => {
     loadData();
@@ -58,12 +54,9 @@ export default function ChatTatuador() {
     <View style={styles.container}>
       <Header />
       <FlatList
-      renderItem={renderItem}
-      data={lista}
+        renderItem={renderItem}
+        data={lista}
       />
-
-
-
     </View>
   )
 }

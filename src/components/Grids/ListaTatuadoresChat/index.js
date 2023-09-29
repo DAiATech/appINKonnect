@@ -13,7 +13,7 @@ import { EvilIcons, MaterialIcons, AntDesign, Ionicons } from '@expo/vector-icon
 const DadosProps = {
     data: {
         id: string,
-        nome: string,
+        nomeTatuador: string,
         descricao: string,
         estilo: string,
         postagemImgRandomName: string,
@@ -87,7 +87,7 @@ ListaTatuadoresChat = ({ data } = DadosProps) => {
                                             userName: userData?.nome,
                                             userImg: userData?.imagem,
                                             profileImagemTatuador: data.profileImgRandomName,
-                                            tatuadorNome: data.tatuadorNome,
+                                            tatuadorNome: data.nome,
                                         })
                                     }
                                 >

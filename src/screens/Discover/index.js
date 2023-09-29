@@ -132,7 +132,7 @@ export default function Discover() {
           </TouchableOpacity>
         </View>
         {abrirFiltro ?
-          <View style={{ backgroundColor: '#f0f', height: 10, marginBottom: 20, flexDirection: 'row', justifyContent: 'space-around', }}>
+          <View style={{ backgroundColor: '#413B33', padding:5, marginBottom: 20, flexDirection: 'row', justifyContent: 'space-around', }}>
             <TouchableOpacity
               style={styles.btnItens}
               onPress={() => {

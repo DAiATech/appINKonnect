@@ -30,7 +30,7 @@ ChatScreenTatuador = () => {
   const [messages, setMessages] = useState([]);
 
   const route = useRoute();
-  useEffect(() => {    
+  useEffect(() => {
     // Verifica se o PubNub está definido
     if (pubnub) {
       // Define o UUID do nosso usuário para o emoji escolhido
@@ -93,9 +93,15 @@ ChatScreenTatuador = () => {
         })}
       >
         <Header />
-          <Text style={{ color: '#f0f' }}>{route.params.tatuadorNome}</Text>
+        <View style={{ padding: 15, backgroundColor: '#1B292f', flexDirection: 'row' }}>
+          <Image style={styles.perfilImg} source={{
+            uri: url + "/InKonnectPHP/BD/usuarios/imgsUsuarios" + "/" + route.params.profileImagemCliente
+          }} />
+          <Text style={{ color: '#C6AC8F', fontSize: 18, fontWeight: '700', marginTop: 10 }}>{route.params.clienteNome}</Text>
 
-    
+        </View>
+
+
         <View style={styles.topContainer}>
           {messages.map(message => (
             <View key={message.timetoken} style={styles.messageContainer}>
