@@ -13,21 +13,15 @@ import { FILTERS } from "../../assets/data/filters";
 
 import { Camera, CameraType } from "expo-camera";
 import * as FaceDetector from 'expo-face-detector';
-import emojikis from '../../assets/images/faceCamera/kiss.png'
 import Animated, { useSharedValue, useAnimatedStyle } from 'react-native-reanimated';
-import flowerImg from '../../assets/images/faceCamera/emojiOculos.png';
+import flowerImg from '../../assets/images/faceCamera/flowerBG.png';
+import dropImg from '../../assets/images/faceCamera/drop.png';
 
 export default function CameraCliente() {
   const isFocused = useIsFocused();
 
   const navigation = useNavigation();
 
-  const [lista, setLista] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(1);
-  const [totalItems, setTotalItems] = useState(0);
-  const [busca, setBusca] = useState("");
-  const [onEndReachedCalledDuringMomentum, setMT] = useState(true);
 
   const [faceDetected, setFaceDetected] = useState(false);
   const [permission, requestPermission] = Camera.useCameraPermissions();
@@ -35,46 +29,6 @@ export default function CameraCliente() {
   const [propsFace, setPropsFace] = useState();
 
 
-  /*  async function loadData() {
-     try {
-       const response = await api.get(`InKonnectPHP/bd/usuarios/listarTatuadores.php?pagina=${page}&limite=10`);
- 
-       if (lista.length >= response.data.totalItems) return;
- 
-       if (loading === true) return;
- 
-       setLoading(true);
- 
-       setLista([...lista, ...response.data.resultado]);
-       setPage(page + 1);
-     } catch (error) {
-       console.log(error)
-     }
-   } */
-
-
-  const renderItem = function ({ item }) {
-    return (
-      <Grid
-        data={item}
-      />
-    )
-  }
-
-  function Footer() {
-    if (!load) return null;
-
-    return (
-      <View style={styles.loading}>
-        <ActivityIndicator size={25} color="#000" />
-      </View>
-    )
-  }
-
-  async function Search() {
-    const response = await api.get(`InKonnectPHP/bd/usuarios/buscar.php?buscar=${busca}`);
-    setLista(response.data.resultado);
-  }
   /* Quick fix：Set "javascript.validate.enable": false in your VS Code settings.*/
 
   const faceValues = useSharedValue({
@@ -116,9 +70,6 @@ export default function CameraCliente() {
   }
 
 
-
-
-
   const animatedStyle = useAnimatedStyle(() => ({
     position: 'absolute',
     zIndex: 1,
@@ -152,9 +103,6 @@ export default function CameraCliente() {
               <Image style={styles.story} source={story.filterImg} />
               <Text style={styles.storyText}>{story.name.length > 5 ? story.name.slice(0, 7).toLocaleLowerCase() + '... ' : story.name.toLowerCase()}</Text>
             </TouchableOpacity>
-
-
-
           ))
         }
       </ScrollView>
@@ -184,7 +132,7 @@ export default function CameraCliente() {
             }}
           >
 
-          </Camera>
+         </Camera>
           }
         </View>
 

@@ -61,12 +61,7 @@ export default function ClienteProfile() {
                     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
                         <Entypo name="drop" size={24} color="white" style={{ marginLeft: -5, }} />
                         <Text style={styles.userDataText}>Nome: {userData?.nome}</Text>
-                    </View>                  
-
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10, }}>
-                        <MaterialCommunityIcons name="cake" size={24} color="white" style={{ marginLeft: -5, }} />
-                        <Text style={styles.userDataText}> Nasceu: dd/mm/yyyy </Text>
-                    </View>
+                    </View>                                  
                 </View>
             </View>
         </SafeAreaProvider>

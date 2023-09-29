@@ -269,11 +269,7 @@ export default function TatuadorProfile() {
                             </TouchableOpacity>
                         </>
                         : null}
-                <View style={styles.userDataContainer}>
-                    <View style={styles.containerLineItem}>
-                        <FontAwesome name="map-marker" size={25} color="white" />
-                        <Text style={styles.userDataText}>Cidade: Cajati</Text>
-                    </View>
+                <View style={styles.userDataContainer}>                   
                     <View style={styles.containerLineItem}>
                         <Entypo name="drop" size={25} color="white" style={{ marginLeft: -5, }} />
                         <Text style={styles.userDataText}>Nome: {userData?.nome}</Text>

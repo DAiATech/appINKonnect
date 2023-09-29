@@ -1,40 +1,18 @@
 import { IMAGES } from "./Images";
 
 export const FILTERS = [{
+    name: 'Drop',
+    filterImg: require('../images/faceCamera/drop.png'),
+
+},
+{
+    name: 'FlowerRose',
+    filterImg: require('../images/faceCamera/flowerRose.png'),
+
+},
+{
     name: 'Flower',
-    filterImg: require('../images/faceCamera/kiss.png'),
+    filterImg: require('../images/faceCamera/flowerBG.png'),
 
-},
-{
-    name: 'Glasses',
-    filterImg: require('../images/faceCamera/emojiOculos.png'),
-
-},
-{
-    name: 'Thinking',
-    filterImg: require('../images/faceCamera/floweBG.png'),
-
-},
-{
-    name: 'Thinking',
-    filterImg: require('../images/faceCamera/thinking.png'),
-
-},
-{
-    name: 'Thinking',
-    filterImg: require('../images/faceCamera/thinking.png'),
-
-},
-{
-    name: 'Thinking',
-    filterImg: require('../images/faceCamera/thinking.png'),
-
-},
-{
-    name: 'Thinking',
-    filterImg: require('../images/faceCamera/thinking.png'),
-
-},
-
-
+}
 ]
