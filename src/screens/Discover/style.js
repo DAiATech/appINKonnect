@@ -143,4 +143,28 @@ export const styles = StyleSheet.create({
         height: 100,
         backgroundColor: '#fff',
     },
+    /* Modal: */
+    centralizarModal: {
+        flex: 1,
+        justifyContent: "center",
+        backgroundColor: 'rgba(0, 0, 0, 0.37)'
+    },
+    CardContainerModal: {
+        backgroundColor: '#C6AC8F',
+        marginBottom: 10,
+        paddingHorizontal: 15,
+        marginHorizontal: 15,
+        paddingBottom: 15,
+        paddingTop: 15,
+
+    },
+    btnSelectStyle: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#1B292F',
+        height: 40,
+        borderRadius: 50,
+        padding: 10,
+       
+    }
 })

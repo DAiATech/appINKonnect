@@ -1,18 +1,21 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import { styles } from './style';
-import { ScrollView, ActivityIndicator, FlatList, Image, Text, TextInput, TouchableOpacity, View, Dimensions, Alert } from 'react-native';
+import { ScrollView, ActivityIndicator, Modal, FlatList, Image, Text, TextInput, TouchableOpacity, View, Dimensions, Alert } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import HeaderUsuario from "../../components/PagePreSet/HeaderUsuario";
 import { Ionicons } from '@expo/vector-icons';
 import api from '../../services/api';
 import Grid from '../../components/Grids/TatuadoresProfilesDiscover';
 import { getUserData } from "../../components/userData";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { EvilIcons } from '@expo/vector-icons'
 
 export default function Discover() {
 
   const navigation = useNavigation();
   const [abrirFiltro, setAbrirFiltro] = useState(false);
+  const [abrirModalEstilos, setAbrirModalEstilos] = useState(false);
 
   const [lista, setLista] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -20,6 +23,12 @@ export default function Discover() {
   const [totalItems, setTotalItems] = useState(0);
   const [busca, setBusca] = useState("");
   const [onEndReachedCalledDuringMomentum, setMT] = useState(true);
+
+  const [estiloSearch, setEstiloSearch] = useState(
+    ['PONTILHISMO', 'OLD SCHOOL', 'GEOMÉTRICO', 'MINIMALISTA', 'BLACKWORK', 'SINGLE LINE', 'GLITCH', 'TINTA BRANCA', 'TINTA VERMELHA', 'PRETO E BRANCO', 'AQUARELA', 'ORIENTAL', 'REALISTA', 'MAORI']
+  );
+  const [estiloSelecionado, setEstiloSelecionado] = useState([]);
+
 
   /* ------- btn */
   const [showBtn, setShowBtn] = useState(false);
@@ -132,21 +141,21 @@ export default function Discover() {
           </TouchableOpacity>
         </View>
         {abrirFiltro ?
-          <View style={{ backgroundColor: '#413B33', padding:5, marginBottom: 20, flexDirection: 'row', justifyContent: 'space-around', }}>
+          <View style={{ backgroundColor: '#413B33', padding: 5, marginBottom: 20, flexDirection: 'row', justifyContent: 'space-around', }}>
             <TouchableOpacity
-              style={styles.btnItens}
+              style={styles.btnSelectStyle}
               onPress={() => {
-                setAbrirFiltro(!abrirFiltro)
+                setAbrirModalEstilos(true)
                 /* navigation.navigate("...") */
                 /* Insert the path that client should follow  */
               }}
             >
-              <Image style={styles.btnImage} source={require('../../assets/images/icons/filtro.png')} />
+              <Text style={{ color: '#f0f' }}>Filtrar Estilo</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.btnItens}
               onPress={() => {
-                setAbrirFiltro(!abrirFiltro)
+
                 /* navigation.navigate("...") */
                 /* Insert the path that client should follow  */
               }}
@@ -158,6 +167,52 @@ export default function Discover() {
           <></>
 
         }
+        <Modal
+          visible={abrirModalEstilos}
+          animationType={'fade'}
+          transparent={true}
+          onRequestClose={() => {
+            setAbrirModalEstilos(!abrirModalEstilos)
+          }}
+        >
+          <View style={styles.centralizarModal}>
+            <View style={styles.CardContainerModal}>
+              <TouchableOpacity
+                style={styles.removeItem}
+                onPress={() => setAbrirModalEstilos(false)}
+              >
+                <EvilIcons name="close" size={25} color="black" />
+              </TouchableOpacity>
+              <View style={{ flexDirection: 'row' }}>
+                <View style={{ borderRadius: 25, overflow: 'hidden', height: 50, width: 200, }
+                }>
+                  <Picker
+                    selectedValue={estiloSelecionado}
+                    style={styles.selectEspecialidade}
+                    onValueChange={(itemValue) =>
+                      setEstiloSelecionado(itemValue)
+                    }>
+                    {
+                      estiloSearch.map(esp => {
+                        return <Picker.Item color='#5E503F' style={styles.pickerText} label={esp} value={esp} />
+                      })
+                    }
+                  </Picker>
+                </View>
+                <TouchableOpacity
+                  style={styles.btnItens}
+                  onPress={() => {
+
+                    /* navigation.navigate("...") */
+                    /* Insert the path that client should follow  */
+                  }}
+                >
+                  <Image style={styles.btnImage} source={require('../../assets/images/icons/filtro.png')} />
+                </TouchableOpacity></View>
+
+            </View>
+          </View>
+        </Modal>
         <View style={{ flex: 1, height: Dimensions.get('window').height + 30, }}>
           <FlatList
             data={lista}
