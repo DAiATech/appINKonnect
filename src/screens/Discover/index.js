@@ -152,16 +152,7 @@ export default function Discover() {
             >
               <Text style={{ color: '#f0f' }}>Filtrar Estilo</Text>
             </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.btnItens}
-              onPress={() => {
-
-                /* navigation.navigate("...") */
-                /* Insert the path that client should follow  */
-              }}
-            >
-              <Image style={styles.btnImage} source={require('../../assets/images/icons/filtro.png')} />
-            </TouchableOpacity>
+           
           </View>
           :
           <></>
