@@ -127,12 +127,11 @@ export default function Discover() {
 
           >
             <Image style={styles.btnImage} source={require('../../assets/images/icons/location.png')} />
-
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.btnItens}
             onPress={() => {
-              setAbrirFiltro(!abrirFiltro)
+              setAbrirModalEstilos(true)
               /* navigation.navigate("...") */
               /* Insert the path that client should follow  */
             }}
@@ -152,11 +151,9 @@ export default function Discover() {
             >
               <Text style={{ color: '#f0f' }}>Filtrar Estilo</Text>
             </TouchableOpacity>
-           
           </View>
           :
           <></>
-
         }
         <Modal
           visible={abrirModalEstilos}
@@ -175,13 +172,15 @@ export default function Discover() {
                 <EvilIcons name="close" size={25} color="black" />
               </TouchableOpacity>
               <View style={{ flexDirection: 'row' }}>
-                <View style={{ borderRadius: 25, overflow: 'hidden', height: 50, width: 200, }
+                <View style={{ borderRadius: 25, overflow: 'hidden', height: 50, width: 200, alignSelf: 'center' }
                 }>
                   <Picker
                     selectedValue={estiloSelecionado}
                     style={styles.selectEspecialidade}
-                    onValueChange={(itemValue) =>
-                      setEstiloSelecionado(itemValue)
+                    onValueChange={(itemValue) => {
+                      setEstiloSelecionado(itemValue);
+                      setAbrirModalEstilos(false)
+                    }
                     }>
                     {
                       estiloSearch.map(esp => {
@@ -190,17 +189,7 @@ export default function Discover() {
                     }
                   </Picker>
                 </View>
-                <TouchableOpacity
-                  style={styles.btnItens}
-                  onPress={() => {
-
-                    /* navigation.navigate("...") */
-                    /* Insert the path that client should follow  */
-                  }}
-                >
-                  <Image style={styles.btnImage} source={require('../../assets/images/icons/filtro.png')} />
-                </TouchableOpacity></View>
-
+              </View>
             </View>
           </View>
         </Modal>

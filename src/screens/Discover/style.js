@@ -165,6 +165,13 @@ export const styles = StyleSheet.create({
         height: 40,
         borderRadius: 50,
         padding: 10,
-       
-    }
+    },
+    btnItensConfirmar: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#1B292F',
+        height: 40,
+        borderRadius: 25,
+        paddingHorizontal: 25,
+    },
 })
