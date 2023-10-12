@@ -9,7 +9,7 @@ import { Divider } from '@rneui/base'
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { showMessage, hideMessage } from "react-native-flash-message";
 import { getUserData } from '../../userData';
-import { EvilIcons, MaterialIcons, AntDesign, Ionicons } from '@expo/vector-icons';
+import { EvilIcons, MaterialIcons, AntDesign, Ionicons,  } from '@expo/vector-icons';
 const DadosProps = {
     data: {
         id: string,

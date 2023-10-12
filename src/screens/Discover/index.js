@@ -77,6 +77,11 @@ export default function Discover() {
     setLista(response.data.resultado);
     /* setLista(response.data.resultado); */
   }
+  async function SearchFilter(item) {
+    const response = await api.get(`InKonnectPHP/bd/usuarios/buscarFiltro.php?filtro=${item}`);
+    setLista(response.data.resultado);
+    /* setLista(response.data.resultado); */
+  }
 
   useEffect(() => {
     loadData();
@@ -179,7 +184,8 @@ export default function Discover() {
                     style={styles.selectEspecialidade}
                     onValueChange={(itemValue) => {
                       setEstiloSelecionado(itemValue);
-                      setAbrirModalEstilos(false)
+                      setAbrirModalEstilos(false);
+                      SearchFilter(itemValue)
                     }
                     }>
                     {
