@@ -24,7 +24,7 @@ export default function ChooseUser() {
 
                     <View style={styles.containerlogo}>
                         <Image style={styles.logo} source={require('./../../assets/logo_2.png')} />
-                        <Text style={styles.Title}>Seja Bem vinde ao INKonnect</Text>
+                        <Text style={styles.Title}>Seja Bem vindo/a ao INKonnect</Text>
                     </View>
                     <View style={styles.containerButtons}>
                         <TouchableOpacity
